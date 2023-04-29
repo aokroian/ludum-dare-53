@@ -393,18 +393,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Dead 0: 1375599644
-      Dead 1: 1929632063
+      Stand 1: -1592204662
       Run 0: 1363809998
-      Run 1: -188091907
+      Run 5: -1732568499
+      Stand 3: 381631601
       Run 2: 847793873
       Run 3: 937111007
-      Run 4: 1842362625
-      Run 5: -1732568499
       Stand 0: -150523396
-      Stand 1: -1592204662
       Stand 2: 1438553564
-      Stand 3: 381631601
+      Run 4: 1842362625
+      Run 1: -188091907
+      Dead 1: 1929632063
+      Dead 0: 1375599644
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

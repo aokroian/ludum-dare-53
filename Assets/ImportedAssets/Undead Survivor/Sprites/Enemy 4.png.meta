@@ -225,10 +225,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Dead: 218841338
-      Hit: -966563848
       Run 0: 172626504
+      Hit: -966563848
       Run 1: 626918169
+      Dead: 218841338
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
