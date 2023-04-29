@@ -123,6 +123,75 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &320128001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 320128004}
+  - component: {fileID: 320128003}
+  - component: {fileID: 320128002}
+  m_Layer: 0
+  m_Name: RoomsSpawnerNew
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &320128002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320128001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05e73e9171834cb1ae7eaa1e40a84dad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ground: {fileID: 2600272541818790278, guid: 3727201e6068d0849896ceb79cb24bbe, type: 3}
+  wallTop: {fileID: 6221033182082150905, guid: a0d79ac19b346a34a91ed4cd7454ae0b, type: 3}
+  wallTopDoor: {fileID: 210403074022683070, guid: 39130a7231eaa7540bdbce58237ba8e9, type: 3}
+  wallRight: {fileID: 6692733613250517661, guid: a4355de3e8fa2134ba6922b0c881aeae, type: 3}
+  wallRightDoor: {fileID: 6717071244628842574, guid: 98f2aa04e3c6a654098c9aafbc38525d, type: 3}
+  wallBottom: {fileID: 2490259966055219973, guid: e14686deb960c244e8829472b47b7fb3, type: 3}
+  wallBottomDoor: {fileID: 2268824867473098318, guid: 6f870531c1bb72b44a896ad99f23599e, type: 3}
+  wallLeft: {fileID: 4572320551849548205, guid: c182f2805743e4d42a2c4577b067be16, type: 3}
+  wallLeftDoor: {fileID: 5369792429406641542, guid: f0a8ca2da09b2ac428c604739bc09c3e, type: 3}
+--- !u!114 &320128003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320128001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f9e691818214c8fba94d272b22307be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  globalGrid: {fileID: 915185149}
+  roomGrid: {fileID: 719265388}
+  roomFactory: {fileID: 320128002}
+--- !u!4 &320128004
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320128001}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &609418062
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +208,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &609418063
 Transform:
   m_ObjectHideFlags: 0
@@ -214,7 +283,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &915185148
 GameObject:
@@ -258,7 +327,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &932943468
 GameObject:
