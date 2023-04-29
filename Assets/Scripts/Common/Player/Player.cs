@@ -32,7 +32,6 @@ namespace Common.Player
         private void FixedUpdate()
         {
             MovementPlayer();
-            
         }
 
        private void ProcessInput()
