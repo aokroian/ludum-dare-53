@@ -6,11 +6,7 @@ namespace Common.Player.Gun
     {
         [SerializeField] private new Camera camera;
         [SerializeField] private float distanceSight = 2f;
-
-        void Start()
-        {
-            // Cursor.visible = false;
-        }
+        
         
         void Update()
         {
