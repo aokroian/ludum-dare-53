@@ -1,6 +1,4 @@
-using Actors.InputThings;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Actors
 {

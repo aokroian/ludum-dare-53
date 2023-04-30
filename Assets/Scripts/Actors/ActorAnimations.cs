@@ -1,4 +1,3 @@
-using Actors.InputThings;
 using UnityEngine;
 
 namespace Actors
