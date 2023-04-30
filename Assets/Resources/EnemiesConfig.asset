@@ -15,3 +15,7 @@ MonoBehaviour:
   <Enemies>k__BackingField:
   - enemyType: 0
     enemyPrefab: {fileID: 1338577563855930194, guid: c1719c427e4784bcd910c0cdc52dc1d0, type: 3}
+    difficultyWeight: 0
+  - enemyType: 1
+    enemyPrefab: {fileID: 3618191280411072265, guid: 92599a4a275324e8489ef77818a255fc, type: 3}
+    difficultyWeight: 0
