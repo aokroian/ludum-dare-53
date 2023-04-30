@@ -10,7 +10,7 @@ namespace Actors.Combat
         [Space]
         [SerializeField] [Range(0.01f, 30f)] private float shootRate;
         [SerializeField] [Range(1, 7)] private int bulletsPerShotCount = 1;
-        [SerializeField] [Range(0, 360)] private float bulletsDispersionAngle;
+        [SerializeField] [Range(0f, 60f)] private float bulletsDispersionAngle;
 
         private float _shootRateTimer;
         private Vector3 _initialScale;
