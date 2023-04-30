@@ -1,8 +1,8 @@
 using System;
-using Map.Model;
+using Actors.InputThings.AI.States;
 using UnityEngine;
 
-namespace Actors.InputThings.AI.States
+namespace Actors.InputThings.AI
 {
     public class StationaryShooterBrain : AIActorInput
     {

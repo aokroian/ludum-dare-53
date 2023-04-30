@@ -3,7 +3,7 @@ using System.Linq;
 using Actors.InputThings.AI;
 using UnityEngine;
 
-namespace Actors
+namespace Actors.Spawn
 {
     [CreateAssetMenu(fileName = "EnemiesConfig", menuName = "LD53/EnemiesConfig", order = 0)]
     public class EnemiesConfig : ScriptableObject
