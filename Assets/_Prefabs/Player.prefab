@@ -98,11 +98,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ecca1b679d86247a3d1fd120ca9175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  muzzle: {fileID: 6245843680896330986}
+  bulletPrefab: {fileID: 2771917622163245433, guid: a31cf5c7f8f6a4b4a97974592cdcf45b, type: 3}
+  bulletSpawnPoint: {fileID: 6245843680896330986}
   shootRate: 0.2
-  bullet: {fileID: 2771917622163245433, guid: a31cf5c7f8f6a4b4a97974592cdcf45b, type: 3}
-  quantityShot: 3
-  totalAngle: 30
+  bulletsPerShotCount: 1
+  bulletsDispersionAngle: 0
 --- !u!1 &2889042778872502699
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,7 +143,7 @@ Transform:
   - {fileID: 5529978365306626617}
   - {fileID: 2067465781876914461}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &9214779968190576420
 BoxCollider2D:

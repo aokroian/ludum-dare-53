@@ -20,7 +20,7 @@ namespace Map
         {
             var correction = new Vector3(0.5f, 0.5f, 0f);
             var cameraPos = new Vector3(room.center.x, room.center.y, _zPos) + correction;
-            _camera.transform.DOMove(cameraPos, animationTime);
+            _camera.transform.DOMove(cameraPos, animationTime).SetEase(Ease.InOutCubic);
         }
     }
 }
