@@ -9,6 +9,7 @@ namespace Actors
         [SerializeField] private float gunDistance = 0.6f;
         [SerializeField] private Gun gun;
 
+
         private void Update()
         {
             RotateGunAroundPlayer();
@@ -22,7 +23,7 @@ namespace Actors
         private void RotateGunAroundPlayer()
         {
             var position = transform.position;
-            var mousePosition = ActorInput.TargetPosition;
+            var mousePosition = ActorInput.Look;
             var direction = (mousePosition - position).normalized;
 
             var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -32,14 +33,7 @@ namespace Actors
             gunPosition.z = -1;
             gunPosition.y -= 0.2f;
             gun.transform.position = gunPosition;
-            FlipGun(angle);
-        }
-
-        private void FlipGun(float angle)
-        {
-            gun.transform.localScale = angle is > 90 or < -90
-                ? new Vector3(1, -1, 1)
-                : new Vector3(1, 1, 1);
+            gun.FlipSprite(angle);
         }
     }
 }

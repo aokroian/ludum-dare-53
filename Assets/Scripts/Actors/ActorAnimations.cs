@@ -10,7 +10,7 @@ namespace Actors
         protected override void Awake()
         {
             base.Awake();
-            _animator = GetComponent<Animator>();
+            _animator = GetComponentInChildren<Animator>();
         }
 
         public void Update()
