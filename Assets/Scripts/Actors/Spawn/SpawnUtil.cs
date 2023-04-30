@@ -6,6 +6,8 @@ namespace Actors.Spawn
 {
     public static class SpawnUtil
     {
+        private static EnemiesConfig _enemiesConfig;
+
         public static AIActorInput[] SpawnEnemiesForRoom(Room room)
         {
             var walkArea = room.walkArea;
@@ -26,9 +28,10 @@ namespace Actors.Spawn
 
         private static AIActorInput SpawnEnemy(EnemyTypes enemyType, Transform parent, Vector2 localPosition)
         {
-            var enemiesConfig = Resources.Load<EnemiesConfig>("EnemiesConfig");
-            var enemyPrefab = enemiesConfig.GetEnemyPrefab(enemyType);
+            if (_enemiesConfig == null)
+                _enemiesConfig = Resources.Load<EnemiesConfig>("EnemiesConfig");
 
+            var enemyPrefab = _enemiesConfig.GetEnemyPrefab(enemyType);
             var spawned = Object.Instantiate(enemyPrefab, parent);
             spawned.transform.localPosition = localPosition;
             return spawned;
