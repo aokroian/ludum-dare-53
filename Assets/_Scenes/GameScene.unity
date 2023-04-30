@@ -135,10 +135,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Simple_Wanderer
       objectReference: {fileID: 0}
-    - target: {fileID: 1871220302660615216, guid: c1719c427e4784bcd910c0cdc52dc1d0, type: 3}
-      propertyPath: m_TagString
-      value: Actor
-      objectReference: {fileID: 0}
     - target: {fileID: 6129058526364910951, guid: c1719c427e4784bcd910c0cdc52dc1d0, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -243,14 +239,6 @@ PrefabInstance:
     - target: {fileID: 4751480028244441766, guid: 92599a4a275324e8489ef77818a255fc, type: 3}
       propertyPath: m_Name
       value: Simple_Chaser
-      objectReference: {fileID: 0}
-    - target: {fileID: 4751480028244441766, guid: 92599a4a275324e8489ef77818a255fc, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4751480028244441766, guid: 92599a4a275324e8489ef77818a255fc, type: 3}
-      propertyPath: m_TagString
-      value: Actor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -482,10 +470,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2889042778872502699, guid: 7a63a46520ceb2b459b655acbb98abe6, type: 3}
-      propertyPath: m_TagString
-      value: Actor
-      objectReference: {fileID: 0}
     - target: {fileID: 5219111058247231745, guid: 7a63a46520ceb2b459b655acbb98abe6, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -530,26 +514,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5973569174218278915, guid: 7a63a46520ceb2b459b655acbb98abe6, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7261984208531055325, guid: 7a63a46520ceb2b459b655acbb98abe6, type: 3}
-      propertyPath: shootRate
-      value: 10.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7261984208531055325, guid: 7a63a46520ceb2b459b655acbb98abe6, type: 3}
-      propertyPath: bulletPrefab
-      value: 
-      objectReference: {fileID: 3188078935974946339, guid: a31cf5c7f8f6a4b4a97974592cdcf45b, type: 3}
-    - target: {fileID: 7261984208531055325, guid: 7a63a46520ceb2b459b655acbb98abe6, type: 3}
-      propertyPath: bulletsPerShotCount
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7261984208531055325, guid: 7a63a46520ceb2b459b655acbb98abe6, type: 3}
-      propertyPath: bulletsDispersionAngle
-      value: 60
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -566,10 +530,6 @@ PrefabInstance:
     - target: {fileID: 98447242287292652, guid: 636dddcdaea0d4525bb3e59ac19c27ba, type: 3}
       propertyPath: m_Name
       value: Stationary_Shooter
-      objectReference: {fileID: 0}
-    - target: {fileID: 98447242287292652, guid: 636dddcdaea0d4525bb3e59ac19c27ba, type: 3}
-      propertyPath: m_TagString
-      value: Actor
       objectReference: {fileID: 0}
     - target: {fileID: 2772340543203908002, guid: 636dddcdaea0d4525bb3e59ac19c27ba, type: 3}
       propertyPath: m_RootOrder
@@ -615,10 +575,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9111633130124186109, guid: 636dddcdaea0d4525bb3e59ac19c27ba, type: 3}
-      propertyPath: bulletPrefab
-      value: 
-      objectReference: {fileID: 3188078935974946339, guid: a31cf5c7f8f6a4b4a97974592cdcf45b, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
