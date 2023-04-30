@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Common.Player.Gun
+namespace Actors.Combat
 {
     public class Sight : MonoBehaviour
     {
