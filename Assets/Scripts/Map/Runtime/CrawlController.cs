@@ -21,19 +21,24 @@ namespace Map.Runtime
 
         private AIActorInput[] enemiesLeft = Array.Empty<AIActorInput>();
 
-        public void SetPlayerPosStartRoom(PlayerActorInput player)
+        public void SetPlayerPosStairsRoom(PlayerActorInput player, bool downstairs)
         {
-            var startRoom = currentLevel.rooms.Values.First(it => it.roomType == RoomType.Start);
-            var center = startRoom.center;
-            player.transform.position = center + new Vector3(4, -3, 0);
-            startRoom.FadeIn(0f);
-            _cameraController.MoveToRoom(startRoom);
+            var curRoom = downstairs
+                ? currentLevel.rooms.Values.First(it => it.roomType == RoomType.Start)
+                : currentLevel.rooms.Values.First(it => it.roomType == RoomType.End);
+            
+            var startPos = downstairs ? new Vector3(4, -3, 0) : new Vector3(4, 3, 0);
+            
+            var center = curRoom.center;
+            player.transform.position = center + startPos;
+            curRoom.FadeIn(0f);
+            _cameraController.MoveToRoom(curRoom);
             
             player.gameObject.GetComponent<ActorMovement>().enabled = false;
             player.gameObject.GetComponent<Collider2D>().enabled = false;
             
             player.transform.DOMove(center + new Vector3(4, 0, 0), 0.6f)
-                .OnComplete(() => OnRoomEntered(player, startRoom));
+                .OnComplete(() => OnRoomEntered(player, curRoom));
         }
         
         public void ExitRoom(PlayerActorInput player, Room room, RoomExit exit)
@@ -76,7 +81,7 @@ namespace Map.Runtime
 
             if (enemiesLeft.Length > 0)
             {
-                room.CloseDoors();
+                // room.CloseDoors();
             }
         }
     }

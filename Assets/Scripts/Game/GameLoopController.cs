@@ -17,7 +17,7 @@ namespace Game
         public void Initialize()
         {
             var player = SpawnPlayer();
-            floorController.EnterLevel(player, 0, Vector3Int.zero);
+            floorController.EnterLevel(player, 0, true, Vector3Int.zero);
         }
 
         private PlayerActorInput SpawnPlayer()

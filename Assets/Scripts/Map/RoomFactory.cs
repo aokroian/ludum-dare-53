@@ -2,6 +2,8 @@
 using System.Linq;
 using Common;
 using Map.Model;
+using Map.Runtime;
+using Map.Transitions;
 using UnityEngine;
 
 namespace Map
@@ -78,10 +80,18 @@ namespace Map
 
         private void CustomizeRoom(RoomConstructionConfig config, GameObject room)
         {
+            GameObject obj = null;
             if (config.roomType == RoomType.Start)
-                Instantiate(FloorEntry, config.position, Quaternion.identity, room.transform);
+                obj = Instantiate(FloorEntry, config.position, Quaternion.identity, room.transform);
             else if (config.roomType == RoomType.End)
-                Instantiate(FloorExit, config.position, Quaternion.identity, room.transform);
+                obj = Instantiate(FloorExit, config.position, Quaternion.identity, room.transform);
+            
+            var exitTrigger = obj?.GetComponentInChildren<FloorExit>();
+            if (exitTrigger != null)
+            {
+                var depth = FloorController.Instance.CurrentDepth;
+                exitTrigger.Initialize(depth);
+            }
         }
     }
 }

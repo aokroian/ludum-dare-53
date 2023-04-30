@@ -1,18 +1,27 @@
 ﻿using Actors.InputThings;
 using Common;
+using Map.Model;
 using UnityEngine;
 
 namespace Map.Runtime
 {
-    public class FloorController: MonoBehaviour
+    public class FloorController: SingletonScene<FloorController>
     {
         [SerializeField] private LevelGenerator levelGenerator;
         [SerializeField] private CrawlController crawlController;
         [SerializeField] private int startRoomsCount = 10;
+
+        public int CurrentDepth { get; private set; }
         
-        public void EnterLevel(PlayerActorInput player, int depth, Vector3Int startRoomPos)
+        public void EnterLevel(PlayerActorInput player, int depth, bool downstairs, Vector3Int startRoomPos)
         {
+            
             RandomConfig.Instance.ResetRandom(depth);
+            
+            CurrentDepth = depth;
+            
+            if (crawlController.currentLevel != null)
+                Destroy(crawlController.currentLevel.gameObject);
 
             var config = new LevelConstructionConfig(
                 startRoomPos,
@@ -20,8 +29,7 @@ namespace Map.Runtime
                 depth == 0);
             var level = levelGenerator.GenerateLevel(config);
             crawlController.currentLevel = level;
-            
-            crawlController.SetPlayerPosStartRoom(player);
+            crawlController.SetPlayerPosStairsRoom(player, downstairs);
         }
 
         private int CalcRoomsCount(int depth)
