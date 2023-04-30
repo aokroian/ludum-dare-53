@@ -19,7 +19,7 @@ namespace Actors.Combat
         {
             if (other.transform.IsChildOf(ownerActor))
                 return;
-            if (other.CompareTag("Actor"))
+            if (other.CompareTag("Enemy") || other.CompareTag("Player"))
             {
                 var actorHealth = other.GetComponentInChildren<ActorHealth>();
                 if (actorHealth != null)
