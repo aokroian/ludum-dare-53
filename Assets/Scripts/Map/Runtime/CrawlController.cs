@@ -71,19 +71,5 @@ namespace Map.Runtime
             player.gameObject.GetComponent<Collider2D>().enabled = true;
             room.visited = true;
         }
-        
-        private void PlayerMoveToRoom(PlayerActorInput player, Room room)
-        {
-            var center = room.center;
-            player.transform.position = center + new Vector3(4, -3, 0);
-            room.FadeIn(0f);
-            _cameraController.MoveToRoom(room);
-            
-            player.gameObject.GetComponent<ActorMovement>().enabled = false;
-            player.gameObject.GetComponent<Collider2D>().enabled = false;
-            
-            player.transform.DOMove(center + new Vector3(4, 0, 0), 0.6f)
-                .OnComplete(() => OnRoomEntered(player, room));
-        }
     }
 }
