@@ -38,7 +38,7 @@ Transform:
   m_Children:
   - {fileID: 4090551874577769278}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &4532764768151070961
 BoxCollider2D:
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunDistance: 0.1
-  currentActiveGun: {fileID: 0}
+  startGunType: 2
 --- !u!114 &7771498504625810193
 MonoBehaviour:
   m_ObjectHideFlags: 0

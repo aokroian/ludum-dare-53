@@ -8,10 +8,11 @@ namespace Actors
     public class ActorGunSystem : ActorSystem
     {
         [SerializeField] private float gunDistance = 0.6f;
-        [SerializeField] private Gun currentActiveGun;
+        [SerializeField] private GunTypes startGunType = GunTypes.Pistol;
 
         public event Action<Gun> OnActiveGunChanged;
 
+        private Gun _currentActiveGun;
         private GunsConfigSo _gunsConfig;
 
         private bool _isGunSpawned;
@@ -21,7 +22,7 @@ namespace Actors
             base.Awake();
             _gunsConfig = Resources.Load<GunsConfigSo>("GunsConfig");
 
-            ChangeActiveGun(GunTypes.Pistol);
+            ChangeActiveGun(startGunType);
         }
 
         private void Update()
@@ -30,7 +31,7 @@ namespace Actors
                 return;
             RotateGunAroundPlayer();
             if (ActorInput.Fire)
-                currentActiveGun.Fire();
+                _currentActiveGun.Fire();
 
             // temp code jus for testing 
             if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -43,7 +44,7 @@ namespace Actors
 
         private void ChangeActiveGun(GunTypes gunType)
         {
-            if (currentActiveGun != null && currentActiveGun.GunType == gunType)
+            if (_currentActiveGun != null && _currentActiveGun.GunType == gunType)
                 return;
             var gun = _gunsConfig.GetGunPrefab(gunType);
             if (gun == null)
@@ -52,14 +53,14 @@ namespace Actors
                 return;
             }
 
-            if (currentActiveGun != null)
-                Destroy(currentActiveGun.gameObject);
+            if (_currentActiveGun != null)
+                Destroy(_currentActiveGun.gameObject);
 
             var spawnedGun = Instantiate(gun, transform);
 
-            currentActiveGun = spawnedGun;
+            _currentActiveGun = spawnedGun;
             _isGunSpawned = true;
-            OnActiveGunChanged?.Invoke(currentActiveGun);
+            OnActiveGunChanged?.Invoke(_currentActiveGun);
         }
 
 
@@ -70,13 +71,13 @@ namespace Actors
             var direction = (mousePosition - position).normalized;
 
             var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            currentActiveGun.transform.rotation = Quaternion.Euler(0, 0, angle);
+            _currentActiveGun.transform.rotation = Quaternion.Euler(0, 0, angle);
 
             var gunPosition = position + Quaternion.Euler(0.4f, 0, angle) * Vector3.right * gunDistance;
             gunPosition.z = -1;
             gunPosition.y -= 0.2f;
-            currentActiveGun.transform.position = gunPosition;
-            currentActiveGun.FlipSprite(angle);
+            _currentActiveGun.transform.position = gunPosition;
+            _currentActiveGun.FlipSprite(angle);
         }
     }
 }
