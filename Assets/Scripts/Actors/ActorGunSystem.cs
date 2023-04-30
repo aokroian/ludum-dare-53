@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Actors
@@ -7,11 +8,11 @@ namespace Actors
         [SerializeField] private float gunDistance = 0.6f;
         [SerializeField] private Transform gunTransform;
 
-
-        public void Update()
+        private void Update()
         {
             RotateGunAroundPlayer();
         }
+
 
         private void RotateGunAroundPlayer()
         {

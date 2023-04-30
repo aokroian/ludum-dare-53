@@ -97,8 +97,8 @@ GameObject:
   - component: {fileID: 9214779968190576420}
   - component: {fileID: 8655563223025597701}
   - component: {fileID: 6769990015637847222}
-  - component: {fileID: 3525438379026229936}
   - component: {fileID: 4931881641423840605}
+  - component: {fileID: 3525438379026229936}
   - component: {fileID: 4831910466470118224}
   - component: {fileID: 7027276179020110475}
   - component: {fileID: 6167454294725120480}
@@ -123,7 +123,7 @@ Transform:
   m_Children:
   - {fileID: 5529978365306626617}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3983212398219596173
 SpriteRenderer:
@@ -270,18 +270,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3525438379026229936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2889042778872502699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e90454bae62942fcb8f89f7e4f8512f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4931881641423840605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,6 +300,18 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &3525438379026229936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2889042778872502699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90454bae62942fcb8f89f7e4f8512f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4831910466470118224
 MonoBehaviour:
   m_ObjectHideFlags: 0

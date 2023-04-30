@@ -7,7 +7,7 @@ namespace Actors
     {
         public IActorInput ActorInput { get; private set; }
 
-        private void Awake()
+        protected virtual void Awake()
         {
             ActorInput = GetComponent<IActorInput>();
         }

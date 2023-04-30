@@ -9,8 +9,9 @@ namespace Actors
         [SerializeField] private float speed = 5f;
         private Rigidbody2D _rigidbody2D;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             _rigidbody2D = GetComponent<Rigidbody2D>();
         }
 
