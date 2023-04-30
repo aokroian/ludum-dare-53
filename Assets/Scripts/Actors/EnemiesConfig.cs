@@ -26,6 +26,6 @@ namespace Actors
     {
         public EnemyTypes enemyType;
         public AIActorInput enemyPrefab;
-        [Range(0, 10)] public int difficultyWeight;
+        public int difficultyWeight;
     }
 }
