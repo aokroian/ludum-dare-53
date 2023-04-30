@@ -5,6 +5,7 @@ namespace Actors.Combat
 {
     public class Gun : MonoBehaviour
     {
+        [field: SerializeField] public GunTypes GunType { get; private set; }
         [SerializeField] private Bullet bulletPrefab;
         [SerializeField] private Transform bulletSpawnPoint;
         [Space]
