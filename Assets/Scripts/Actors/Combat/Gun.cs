@@ -8,10 +8,12 @@ namespace Actors.Combat
         [field: SerializeField] public GunTypes GunType { get; private set; }
         [SerializeField] private Bullet bulletPrefab;
         [SerializeField] private Transform bulletSpawnPoint;
-        [Space]
-        [SerializeField] [Range(0.01f, 30f)] private float shootRate;
-        [SerializeField] [Range(1, 7)] private int bulletsPerShotCount = 1;
-        [SerializeField] [Range(0, 360)] private float bulletsDispersionAngle;
+        
+        [Space] 
+        
+        [SerializeField] private float shootRate = 1;
+        [SerializeField] private int bulletsPerShotCount = 1;
+        [SerializeField] private float bulletsDispersionAngle;
 
         private float _shootRateTimer;
         private Vector3 _initialScale;
