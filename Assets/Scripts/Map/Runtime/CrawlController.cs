@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Actors;
 using Actors.InputThings;
+using Actors.InputThings.AI;
 using Actors.Spawn;
 using Common;
 using DG.Tweening;
@@ -17,6 +19,7 @@ namespace Map.Runtime
         
         public Level currentLevel;
 
+        private AIActorInput[] enemiesLeft = Array.Empty<AIActorInput>();
 
         public void SetPlayerPosStartRoom(PlayerActorInput player)
         {
@@ -46,7 +49,7 @@ namespace Map.Runtime
             
             OnRoomSwitchStarted(room, exit, newRoom, newRoomEntrance);
 
-            player.transform.DOMove(newRoomEntrance.transform.position, roomSwitchDuration)
+            player.transform.DOMove(newRoomEntrance.transform.position, roomSwitchDuration).SetEase(Ease.InOutCubic)
                 .OnComplete(() => OnRoomEntered(player, newRoom));
         }
 
@@ -60,7 +63,7 @@ namespace Map.Runtime
             
             if (!newRoom.visited && newRoom.roomType is RoomType.Common)
             {
-                var enemies = SpawnUtil.SpawnEnemiesForRoom(newRoom);
+                enemiesLeft = SpawnUtil.SpawnEnemiesForRoom(newRoom);
             }
         }
 
@@ -70,6 +73,11 @@ namespace Map.Runtime
             player.gameObject.GetComponent<ActorMovement>().enabled = true;
             player.gameObject.GetComponent<Collider2D>().enabled = true;
             room.visited = true;
+
+            if (enemiesLeft.Length > 0)
+            {
+                room.CloseDoors();
+            }
         }
     }
 }

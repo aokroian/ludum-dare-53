@@ -37,6 +37,22 @@ namespace Map.Model
         {
             TweenToColor(Color.white, duration);
         }
+
+        public void CloseDoors()
+        {
+            foreach (var roomExit in exits)
+            {
+                roomExit.CloseDoor();
+            }
+        }
+        
+        public void OpenDoors()
+        {
+            foreach (var roomExit in exits)
+            {
+                roomExit.OpenDoor();
+            }
+        }
         
         private void TweenToColor(Color color, float duration)
         {
