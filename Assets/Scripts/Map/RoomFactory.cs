@@ -25,11 +25,11 @@ namespace Map
             roomObj.transform.SetParent(config.parent);
             roomObj.transform.position = config.position;
             var room = roomObj.AddComponent<Room>();
-            room.roomType = config.roomType;
             
             CreateGround(config, roomObj);
             CreateAllWalls(config, roomObj);
             
+            room.InitializeRoom(config.roomType);
             return room;
         }
         

@@ -36,10 +36,10 @@ namespace Scene
 
 #if UNITY_EDITOR
             var activeScene = SceneManager.GetActiveScene();
-            if ((activeScene.buildIndex is indexGame) && !_TMP_ALREADY_LOADED)
-            {
+            // if ((activeScene.buildIndex is indexGame) && !_TMP_ALREADY_LOADED)
+            // {
                 StartCoroutine(InitializeComponentsCoroutine(activeScene));
-            }
+            // }
 
             _TMP_ALREADY_LOADED = true;
 #endif

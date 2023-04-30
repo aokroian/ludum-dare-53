@@ -7,8 +7,8 @@ namespace Map
 {
     public class LevelGenerator : MonoBehaviour
     {
-        [SerializeField] private bool randomSeed;
-        [SerializeField] private int seed = 12345;
+        // [SerializeField] private bool randomSeed;
+        // [SerializeField] private int seed = 12345;
         [SerializeField] private int retriesMaxCount = 5;
         
         [Space]
@@ -22,10 +22,10 @@ namespace Map
         {
             ClearData();
             
-            if (randomSeed)
-                seed = Random.Range(0, 1000000);
-            
-            Random.InitState(seed);
+            // if (randomSeed)
+            //     seed = Random.Range(0, 1000000);
+            //
+            // Random.InitState(seed);
 
             CreateRoomsData(config);
             
