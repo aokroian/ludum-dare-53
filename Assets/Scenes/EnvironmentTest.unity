@@ -208,6 +208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomSeed: 0
   seed: 12345
+  retriesMaxCount: 5
   globalGrid: {fileID: 915185149}
   roomGrid: {fileID: 719265388}
   roomFactory: {fileID: 320128002}
@@ -224,7 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelGenerator: {fileID: 320128005}
-  roomsCount: 50
+  roomsCount: 10
 --- !u!1 &469518255
 GameObject:
   m_ObjectHideFlags: 0

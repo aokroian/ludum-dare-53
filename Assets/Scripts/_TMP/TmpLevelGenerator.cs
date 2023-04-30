@@ -13,7 +13,8 @@ namespace _TMP
         public void Generate()
         {
             Destroy(prevLevel);
-            prevLevel = levelGenerator.GenerateLevel(Vector3Int.zero, roomsCount);
+            var config = new LevelConstructionConfig(Vector3Int.zero, roomsCount, true);
+            prevLevel = levelGenerator.GenerateLevel(config);
         }
     }
 }
