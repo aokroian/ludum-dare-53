@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8703680153074267620}
   - component: {fileID: 5685811395722452794}
   m_Layer: 0
-  m_Name: Gun 1
+  m_Name: Pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,11 +98,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ecca1b679d86247a3d1fd120ca9175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <GunType>k__BackingField: 0
   bulletPrefab: {fileID: 3188078935974946339, guid: 7d6dccf5a348d6943a9e3a6fc7c93ee2, type: 3}
   bulletSpawnPoint: {fileID: 8971872787659182349}
-  shootRate: 11.2
-  bulletsPerShotCount: 3
-  bulletsDispersionAngle: 8
+  shootRate: 2.5
+  bulletsPerShotCount: 1
+  bulletsDispersionAngle: 0
 --- !u!1 &7876265652095531552
 GameObject:
   m_ObjectHideFlags: 0

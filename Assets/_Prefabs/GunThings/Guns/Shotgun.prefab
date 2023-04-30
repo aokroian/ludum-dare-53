@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8703680153074267620}
   - component: {fileID: 5685811395722452794}
   m_Layer: 0
-  m_Name: Gun 3
+  m_Name: Shotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 55
-  m_Sprite: {fileID: -144335857, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
+  m_Sprite: {fileID: 1772703093, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,12 +98,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ecca1b679d86247a3d1fd120ca9175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <GunType>k__BackingField: 2
-  bulletPrefab: {fileID: 8046959318469718091, guid: 832baa5849ecc44c78d75571c7910b5e, type: 3}
+  <GunType>k__BackingField: 1
+  bulletPrefab: {fileID: 3188078935974946339, guid: 73fd499eea664fa4aadc87a7b0fc2a5c, type: 3}
   bulletSpawnPoint: {fileID: 8971872787659182349}
-  shootRate: 0.2
-  bulletsPerShotCount: 1
-  bulletsDispersionAngle: 0
+  shootRate: 1.5
+  bulletsPerShotCount: 4
+  bulletsDispersionAngle: 30
 --- !u!1 &7876265652095531552
 GameObject:
   m_ObjectHideFlags: 0
