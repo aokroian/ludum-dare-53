@@ -22,7 +22,7 @@ namespace Actors
         private void RotateGunAroundPlayer()
         {
             var position = transform.position;
-            var mousePosition = ActorInput.TargetPosition;
+            var mousePosition = ActorInput.Look;
             var direction = (mousePosition - position).normalized;
 
             var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;

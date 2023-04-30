@@ -7,9 +7,8 @@ namespace Actors.InputThings
     public class PlayerActorInput : MonoBehaviour, IActorInput
     {
         public Vector2 Movement { get; private set; }
-        public Vector3 TargetPosition { get; private set; }
+        public Vector3 Look { get; private set; }
         public bool Fire { get; private set; }
-
 
         private Camera _mainCamera;
 
@@ -23,7 +22,7 @@ namespace Actors.InputThings
             Vector3 mousePos = Mouse.current.position.ReadValue();
             mousePos.z = _mainCamera.farClipPlane * .5f;
             var worldPoint = _mainCamera.ScreenToWorldPoint(mousePos);
-            TargetPosition = worldPoint;
+            Look = worldPoint;
         }
 
         public void OnMove(InputValue context)
