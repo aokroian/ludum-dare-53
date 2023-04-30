@@ -9,7 +9,7 @@ namespace Actors
 
         private void Update()
         {
-            scopeTransform.transform.position = ActorInput.TargetPosition;
+            scopeTransform.transform.position = ActorInput.Look;
         }
     }
 }
