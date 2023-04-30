@@ -8,7 +8,7 @@ namespace Actors.Combat
         [SerializeField] [Range(0.1f, 30f)] private float bulletSpeed = 10f;
         [SerializeField] [Range(1, 1000)] private int bulletDamage = 30;
 
-        public Transform ownerActor;
+        [HideInInspector] public Transform ownerActor;
 
         private void Update()
         {
