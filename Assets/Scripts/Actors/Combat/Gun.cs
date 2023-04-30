@@ -1,10 +1,11 @@
+using Actors.InputThings;
 using UnityEngine;
 
 namespace Actors.Combat
 {
     public class Gun : MonoBehaviour
     {
-        [SerializeField] private GameObject bulletPrefab;
+        [SerializeField] private Bullet bulletPrefab;
         [SerializeField] private Transform bulletSpawnPoint;
         [Space]
         [SerializeField] [Range(0.01f, 30f)] private float shootRate;
@@ -14,9 +15,12 @@ namespace Actors.Combat
         private float _shootRateTimer;
         private Vector3 _initialScale;
 
+        private ActorGunSystem _gunSystem;
+
         private void Awake()
         {
             _initialScale = transform.localScale;
+            _gunSystem = GetComponentInParent<ActorGunSystem>();
         }
 
         private void Update()
@@ -41,7 +45,8 @@ namespace Actors.Combat
                         0,
                         0,
                         transform.rotation.eulerAngles.z + initialAngle + (i * angleBetweenBullets));
-                    Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletRotation);
+                    var spawnedBullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletRotation);
+                    spawnedBullet.ownerActor = _gunSystem.transform;
                 }
 
                 _shootRateTimer = 1 / shootRate;
