@@ -40,7 +40,7 @@ Transform:
   - {fileID: 5529978365306626617}
   - {fileID: 2067465781876914461}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &9214779968190576420
 BoxCollider2D:
@@ -409,6 +409,18 @@ PrefabInstance:
     - target: {fileID: 3974577319365276498, guid: da0efb232a0064f2c9431d86fe9ca3e5, type: 3}
       propertyPath: m_Name
       value: Gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 5685811395722452794, guid: da0efb232a0064f2c9431d86fe9ca3e5, type: 3}
+      propertyPath: shootRate
+      value: 10.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5685811395722452794, guid: da0efb232a0064f2c9431d86fe9ca3e5, type: 3}
+      propertyPath: bulletsPerShotCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5685811395722452794, guid: da0efb232a0064f2c9431d86fe9ca3e5, type: 3}
+      propertyPath: bulletsDispersionAngle
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 7390866007300546526, guid: da0efb232a0064f2c9431d86fe9ca3e5, type: 3}
       propertyPath: m_RootOrder
