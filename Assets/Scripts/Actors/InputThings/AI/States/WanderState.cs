@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Actors.InputThings.AI.States
 {
     public class WanderState : State
-    {
+    { 
         private Transform _actorTransform;
         private readonly Action<Vector2> _setMovementAction;
         private readonly Action<Vector3> _setLookAction;
@@ -19,6 +19,7 @@ namespace Actors.InputThings.AI.States
         private Vector3 _prevLook;
 
         public WanderState(
+            Collider2D walkArea,
             Transform actorTransform,
             Action<Vector2> setMovementAction,
             Action<Vector3> setLookAction,
@@ -36,14 +37,6 @@ namespace Actors.InputThings.AI.States
             _idleStartTime = Time.time - timeToIdle;
         }
 
-        public override void Enter()
-        {
-        }
-
-        public override void Exit()
-        {
-        }
-
         public override void Execute()
         {
             var time = Time.time;
@@ -55,7 +48,7 @@ namespace Actors.InputThings.AI.States
                 {
                     _isIdle = false;
                     _wanderStartTime = time;
-                    movement = UnityEngine.Random.insideUnitCircle.normalized; 
+                    movement = UnityEngine.Random.insideUnitCircle.normalized;
                     look = _actorTransform.position + new Vector3(movement.x, 0f, movement.y);
                 }
             }

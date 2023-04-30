@@ -10,18 +10,24 @@ namespace Actors.InputThings.AI
 
         private WanderState _wanderState;
 
-        private void Awake()
-        {
-            InitStates();
-        }
+        private bool _isInit;
 
-        private void InitStates()
+        private void Init()
         {
-            _wanderState = new WanderState(transform, SetMovement, SetLook, timeToWander, timeToIdle);
+            _wanderState = new WanderState(WalkArea,transform, SetMovement, SetLook, timeToWander, timeToIdle);
+            _isInit = true;
         }
 
         private void Update()
         {
+            if (!_isInit)
+            {
+                if (WalkArea != null)
+                    Init();
+                else
+                    return;
+            }
+
             StateMachine.CurrentState = _wanderState;
             StateMachine.ExecuteCurrentState();
         }

@@ -1,3 +1,4 @@
+using System;
 using Actors.InputThings.StateMachineThings;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace Actors.InputThings.AI
         public bool Fire { get; private set; }
 
         protected readonly StateMachine StateMachine = new();
+        protected Collider2D WalkArea;
 
         protected void SetMovement(Vector2 movement)
         {
@@ -24,6 +26,12 @@ namespace Actors.InputThings.AI
         protected void SetFire(bool fire)
         {
             Fire = fire;
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.gameObject.CompareTag("AI_Walk_Area"))
+                WalkArea = other;
         }
     }
 }
