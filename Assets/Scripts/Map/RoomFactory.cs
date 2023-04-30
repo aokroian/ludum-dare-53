@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Common;
+using Map.Model;
 using UnityEngine;
 
 namespace Map
@@ -18,14 +19,16 @@ namespace Map
         [SerializeField] private GameObject wallLeft;
         [SerializeField] private GameObject wallLeftDoor;
             
-        public GameObject CreateRoom(RoomConstructionConfig config)
+        public Room CreateRoom(RoomConstructionConfig config)
         {
-            var room = new GameObject(GetRoomName(config));
-            room.transform.SetParent(config.parent);
-            room.transform.position = config.position;
+            var roomObj = new GameObject(GetRoomName(config));
+            roomObj.transform.SetParent(config.parent);
+            roomObj.transform.position = config.position;
+            var room = roomObj.AddComponent<Room>();
+            room.roomType = config.roomType;
             
-            CreateGround(config, room);
-            CreateAllWalls(config, room);
+            CreateGround(config, roomObj);
+            CreateAllWalls(config, roomObj);
             
             return room;
         }

@@ -27,7 +27,8 @@ namespace _TMP
                         new RoomConstructionConfig(
                             TMPRandomDirections(),
                             roomPos,
-                            roomGrid.transform
+                            roomGrid.transform,
+                            RoomType.Common
                         ));
                 }
             }

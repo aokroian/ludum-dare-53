@@ -1,4 +1,5 @@
 ﻿using Map;
+using Map.Model;
 using UnityEngine;
 
 namespace _TMP
@@ -8,11 +9,11 @@ namespace _TMP
         [SerializeField] private LevelGenerator levelGenerator;
         [SerializeField] private int roomsCount = 10;
 
-        private GameObject prevLevel;
+        private Level prevLevel;
 
         public void Generate()
         {
-            Destroy(prevLevel);
+            Destroy(prevLevel?.gameObject);
             var config = new LevelConstructionConfig(Vector3Int.zero, roomsCount, true);
             prevLevel = levelGenerator.GenerateLevel(config);
         }

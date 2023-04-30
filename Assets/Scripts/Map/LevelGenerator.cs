@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Common;
+using Map.Model;
 using UnityEngine;
 
 namespace Map
@@ -17,7 +18,7 @@ namespace Map
 
         private Dictionary<Vector3Int, RoomSpawnData> roomPositions = new();
 
-        public GameObject GenerateLevel(LevelConstructionConfig config)
+        public Level GenerateLevel(LevelConstructionConfig config)
         {
             ClearData();
             
@@ -28,10 +29,13 @@ namespace Map
 
             CreateRoomsData(config);
             
-            var level = new GameObject("Level");
-            level.transform.SetParent(roomGrid.transform);
-            level.transform.position = Vector3.zero;
-            SpawnRooms(level.transform);
+            var levelObj = new GameObject("Level");
+            levelObj.transform.SetParent(roomGrid.transform);
+            levelObj.transform.position = Vector3.zero;
+            var spawnedRooms = SpawnRooms(levelObj.transform);
+
+            var level = levelObj.AddComponent<Level>();
+            level.rooms = spawnedRooms;
 
             return level;
         }
@@ -70,17 +74,22 @@ namespace Map
             }
         }
 
-        private void SpawnRooms(Transform parent)
+        private Dictionary<Vector3Int, Room> SpawnRooms(Transform parent)
         {
+            var result = new Dictionary<Vector3Int, Room>();
             foreach (var (pos, data) in roomPositions)
             {
                 var roomConfig = new RoomConstructionConfig(
                     CalcDoorsDirections(pos),
                     globalGrid.CellToWorld(pos),
-                    parent
+                    parent,
+                    data.roomType
                 );
                 var room = roomFactory.CreateRoom(roomConfig);
+                result[pos] = room;
             }
+
+            return result;
         }
         
         private WallDirection[] CalcDoorsDirections(Vector3Int pos)

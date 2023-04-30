@@ -8,12 +8,14 @@ namespace Map
         public readonly WallDirection[] doors;
         public readonly Vector3 position;
         public readonly Transform parent;
+        public readonly RoomType roomType;
         
-        public RoomConstructionConfig(WallDirection[] doors, Vector3 position, Transform parent)
+        public RoomConstructionConfig(WallDirection[] doors, Vector3 position, Transform parent, RoomType roomType)
         {
             this.doors = doors;
             this.position = position;
             this.parent = parent;
+            this.roomType = roomType;
         }
     }
 }

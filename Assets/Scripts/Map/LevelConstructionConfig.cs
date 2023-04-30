@@ -20,7 +20,7 @@ namespace Map
             this.startPos = startPos;
             this.roomsCount = roomsCount;
             this.bounds = restrictZeroY
-                ? new BoundsInt(new Vector3Int(-50, -1, -50), new Vector3Int(100, 50, 100))
+                ? new BoundsInt(new Vector3Int(-50, 0, -50), new Vector3Int(100, 50, 100))
                 : new BoundsInt(new Vector3Int(-50, -50, -50), new Vector3Int(100, 100, 100));
         }
     }
