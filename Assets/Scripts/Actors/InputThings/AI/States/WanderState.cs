@@ -31,6 +31,9 @@ namespace Actors.InputThings.AI.States
             _setLookAction = setLookAction;
             _timeToWander = timeToWander;
             _timeToIdle = timeToIdle;
+
+            _isIdle = true;
+            _idleStartTime = Time.time - timeToIdle;
         }
 
         public override void Enter()
