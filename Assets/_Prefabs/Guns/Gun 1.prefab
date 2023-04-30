@@ -25,14 +25,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3974577319365276498}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.1145, y: -0.2574, z: -0.72}
-  m_LocalScale: {x: 0.6296, y: 0.6296, z: 0.6296}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8971872787659182349}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8703680153074267620
 SpriteRenderer:
@@ -100,9 +100,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 3188078935974946339, guid: a31cf5c7f8f6a4b4a97974592cdcf45b, type: 3}
   bulletSpawnPoint: {fileID: 8971872787659182349}
-  shootRate: 0.2
-  bulletsPerShotCount: 1
-  bulletsDispersionAngle: 0
+  shootRate: 11.2
+  bulletsPerShotCount: 3
+  bulletsDispersionAngle: 8
 --- !u!1 &7876265652095531552
 GameObject:
   m_ObjectHideFlags: 0
