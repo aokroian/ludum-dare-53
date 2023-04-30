@@ -22,7 +22,7 @@ namespace Map.Transitions
             if (other.CompareTag("Player"))
             {
                 var player = other.gameObject.GetComponent<PlayerActorInput>();
-                FloorController.Instance.EnterLevel(player, toLevel, currentLevel < toLevel, Vector3Int.zero);
+                FloorController.Instance.TryToEnterLevel(player, toLevel, currentLevel < toLevel, Vector3Int.zero);
             }
         }
     }

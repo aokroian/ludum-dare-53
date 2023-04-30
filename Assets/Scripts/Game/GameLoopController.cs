@@ -1,5 +1,4 @@
 ﻿using Actors.InputThings;
-using Map;
 using Map.Runtime;
 using Scene;
 using UnityEngine;
@@ -17,7 +16,7 @@ namespace Game
         public void Initialize()
         {
             var player = SpawnPlayer();
-            floorController.EnterLevel(player, 0, true, Vector3Int.zero);
+            floorController.TryToEnterLevel(player, 0, true, Vector3Int.zero);
         }
 
         private PlayerActorInput SpawnPlayer()

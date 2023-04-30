@@ -1,5 +1,6 @@
 ﻿using Actors.InputThings;
 using Common;
+using Game;
 using Map.Model;
 using UnityEngine;
 
@@ -12,8 +13,14 @@ namespace Map.Runtime
         [SerializeField] private int startRoomsCount = 10;
 
         public int CurrentDepth { get; private set; }
+
+        public void TryToEnterLevel(PlayerActorInput player, int depth, bool downstairs, Vector3Int startRoomPos)
+        {
+            if (downstairs && PackageController.Instance.HasPackage(depth))
+                EnterLevel(player, depth, downstairs, startRoomPos);
+        }
         
-        public void EnterLevel(PlayerActorInput player, int depth, bool downstairs, Vector3Int startRoomPos)
+        private void EnterLevel(PlayerActorInput player, int depth, bool downstairs, Vector3Int startRoomPos)
         {
             
             RandomConfig.Instance.ResetRandom(depth);
