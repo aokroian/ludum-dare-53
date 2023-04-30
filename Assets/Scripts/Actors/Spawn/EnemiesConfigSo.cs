@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Actors.Spawn
 {
     [CreateAssetMenu(fileName = "EnemiesConfig", menuName = "LD53/EnemiesConfig", order = 0)]
-    public class EnemiesConfig : ScriptableObject
+    public class EnemiesConfigSo : ScriptableObject
     {
         [field: SerializeField] public EnemyTypeAndPrefabPair[] Enemies { get; private set; }
 

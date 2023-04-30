@@ -6,7 +6,7 @@ namespace Actors.Spawn
 {
     public static class SpawnUtil
     {
-        private static EnemiesConfig _enemiesConfig;
+        private static EnemiesConfigSo _enemiesConfig;
 
         public static AIActorInput[] SpawnEnemiesForRoom(Room room)
         {
@@ -29,7 +29,7 @@ namespace Actors.Spawn
         private static AIActorInput SpawnEnemy(EnemyTypes enemyType, Transform parent, Vector2 localPosition)
         {
             if (_enemiesConfig == null)
-                _enemiesConfig = Resources.Load<EnemiesConfig>("EnemiesConfig");
+                _enemiesConfig = Resources.Load<EnemiesConfigSo>("EnemiesConfig");
 
             var enemyPrefab = _enemiesConfig.GetEnemyPrefab(enemyType);
             var spawned = Object.Instantiate(enemyPrefab, parent);

@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ecca1b679d86247a3d1fd120ca9175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <GunType>k__BackingField: 1
   bulletPrefab: {fileID: 3188078935974946339, guid: 73fd499eea664fa4aadc87a7b0fc2a5c, type: 3}
   bulletSpawnPoint: {fileID: 8971872787659182349}
   shootRate: 0.2
