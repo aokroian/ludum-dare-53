@@ -5,16 +5,22 @@ namespace Actors.Combat
     public class Bullet : MonoBehaviour
     {
         [SerializeField] private float speedBullet;
-        private float _timer;
-        private const float TimeDestroy = 2f;
-        
+        [SerializeField] private GameObject particle;
+
         void Update()
         {
-            _timer += Time.deltaTime;
             transform.Translate(Vector2.right * (speedBullet * Time.deltaTime));
-            if (!(_timer >= TimeDestroy)) return;
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            var position = transform.position;
+            var hit = Physics2D.Raycast(position, other.transform.position - position);
+            Vector3 normal = hit.normal;
+            var spawned = Instantiate(particle, hit.point, Quaternion.identity);
+            spawned.transform.forward = normal;
             Destroy(gameObject);
-            _timer = 0;
         }
     }
 }
+

@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7970927835999130521}
   - component: {fileID: 850161537162925352}
   - component: {fileID: 103779372873604636}
-  - component: {fileID: 4868509346449745853}
-  - component: {fileID: 5127909810241436692}
+  - component: {fileID: 5456772688197592820}
+  - component: {fileID: 3188078935974946339}
   m_Layer: 0
   m_Name: Bullet4
   m_TagString: Untagged
@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2771917622163245433}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7081, y: 0.7081, z: 0.7081}
+  m_LocalPosition: {x: 6.0477, y: 0.088, z: -0.5070879}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 7431529995326980795, guid: 5fd4897bad99ede4bb6c2e5c318d07e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -108,7 +108,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!61 &4868509346449745853
+--- !u!61 &5456772688197592820
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,7 +140,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.028508559, y: -0.00070399046}
+  m_Offset: {x: -0.023586273, y: -0.0017418265}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -151,9 +151,9 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4632525, y: 0.26106513}
+  m_Size: {x: 0.4739008, y: 0.2842971}
   m_EdgeRadius: 0
---- !u!114 &5127909810241436692
+--- !u!114 &3188078935974946339
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,4 +165,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e17c05449bbc88144a53873f7add02a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedBullet: 20
+  speedBullet: 10
+  particle: {fileID: 1685472729878100105, guid: 641400df292dc4e47b2cf200a1991595, type: 3}
