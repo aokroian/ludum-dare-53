@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3448817048446589986}
   - component: {fileID: 4455096584336544007}
   m_Layer: 7
-  m_Name: ParticleBullets-4
+  m_Name: ParticleBullets-2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1546,7 +1546,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 2420867765292838666, guid: 6a06d657c085ee840997fe1249e39f02, type: 3}
+    - sprite: {fileID: -7803065417098437583, guid: 5fd4897bad99ede4bb6c2e5c318d07e6, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
