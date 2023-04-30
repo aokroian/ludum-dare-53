@@ -1,6 +1,5 @@
 using Actors.Combat;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Actors
 {
@@ -9,14 +8,11 @@ namespace Actors
         [SerializeField] private float gunDistance = 0.6f;
         [SerializeField] private Gun gun;
 
-
         private void Update()
         {
             RotateGunAroundPlayer();
             if (ActorInput.Fire)
-            {
                 gun.Fire();
-            }
         }
 
 
