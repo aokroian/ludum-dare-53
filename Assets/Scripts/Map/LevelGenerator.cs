@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Common;
 using Map.Model;
 using UnityEngine;
@@ -28,6 +29,7 @@ namespace Map
             // Random.InitState(seed);
 
             CreateRoomsData(config);
+            SetRoomTypes();
             
             var levelObj = new GameObject("Level");
             levelObj.transform.SetParent(roomGrid.transform);
@@ -72,6 +74,13 @@ namespace Map
                 curIndex++;
                 emergencyExit++;
             }
+        }
+
+        private void SetRoomTypes()
+        {
+            var distantRoom = roomPositions.Values.OrderByDescending(it => it.distanceFromStart)
+                .First();
+            distantRoom.roomType = RoomType.End;
         }
 
         private Dictionary<Vector3Int, Room> SpawnRooms(Transform parent)

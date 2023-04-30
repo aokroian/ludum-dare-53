@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Actors;
 using Actors.InputThings;
+using Actors.Spawn;
 using Common;
 using DG.Tweening;
 using Map.Model;
@@ -20,10 +21,16 @@ namespace Map.Runtime
         public void SetPlayerPosStartRoom(PlayerActorInput player)
         {
             var startRoom = currentLevel.rooms.Values.First(it => it.roomType == RoomType.Start);
-            var entrance = startRoom.entrances.First();
-            player.transform.position = entrance.transform.position;
+            var center = startRoom.center;
+            player.transform.position = center + new Vector3(4, -3, 0);
+            startRoom.FadeIn(0f);
             _cameraController.MoveToRoom(startRoom);
-            OnRoomEntered(player, startRoom);
+            
+            player.gameObject.GetComponent<ActorMovement>().enabled = false;
+            player.gameObject.GetComponent<Collider2D>().enabled = false;
+            
+            player.transform.DOMove(center + new Vector3(4, 0, 0), 0.6f)
+                .OnComplete(() => OnRoomEntered(player, startRoom));
         }
         
         public void ExitRoom(PlayerActorInput player, Room room, RoomExit exit)
@@ -47,15 +54,36 @@ namespace Map.Runtime
         {
             Debug.Log("Room switch started");
             _cameraController.MoveToRoom(newRoom, roomSwitchDuration);
+            prevRoom.FadeOut(roomSwitchDuration);
+            newRoom.FadeIn(roomSwitchDuration);
             // TODO: enemies spawn if not visited
+            
+            if (!newRoom.visited && newRoom.roomType is RoomType.Common)
+            {
+                var enemies = SpawnUtil.SpawnEnemiesForRoom(newRoom);
+            }
         }
-        
+
         private void OnRoomEntered(PlayerActorInput player, Room room)
         {
             Debug.Log($"Entered room {room.roomType}");
             player.gameObject.GetComponent<ActorMovement>().enabled = true;
             player.gameObject.GetComponent<Collider2D>().enabled = true;
             room.visited = true;
+        }
+        
+        private void PlayerMoveToRoom(PlayerActorInput player, Room room)
+        {
+            var center = room.center;
+            player.transform.position = center + new Vector3(4, -3, 0);
+            room.FadeIn(0f);
+            _cameraController.MoveToRoom(room);
+            
+            player.gameObject.GetComponent<ActorMovement>().enabled = false;
+            player.gameObject.GetComponent<Collider2D>().enabled = false;
+            
+            player.transform.DOMove(center + new Vector3(4, 0, 0), 0.6f)
+                .OnComplete(() => OnRoomEntered(player, room));
         }
     }
 }

@@ -18,6 +18,8 @@ namespace Map
         [SerializeField] private GameObject wallBottomDoor;
         [SerializeField] private GameObject wallLeft;
         [SerializeField] private GameObject wallLeftDoor;
+        [SerializeField] private GameObject FloorEntry;
+        [SerializeField] private GameObject FloorExit;
             
         public Room CreateRoom(RoomConstructionConfig config)
         {
@@ -28,6 +30,7 @@ namespace Map
             
             CreateGround(config, roomObj);
             CreateAllWalls(config, roomObj);
+            CustomizeRoom(config, roomObj);
             
             room.InitializeRoom(config.roomType);
             return room;
@@ -72,6 +75,13 @@ namespace Map
 
             return name;
         }
-        
+
+        private void CustomizeRoom(RoomConstructionConfig config, GameObject room)
+        {
+            if (config.roomType == RoomType.Start)
+                Instantiate(FloorEntry, config.position, Quaternion.identity, room.transform);
+            else if (config.roomType == RoomType.End)
+                Instantiate(FloorExit, config.position, Quaternion.identity, room.transform);
+        }
     }
 }

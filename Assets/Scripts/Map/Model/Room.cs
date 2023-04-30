@@ -1,4 +1,5 @@
 ﻿using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -15,11 +16,34 @@ namespace Map.Model
 
         public bool visited;
 
+        private Tilemap[] _tilemaps;
+
         public void InitializeRoom(RoomType roomType)
         {
+            this.roomType = roomType;
             FindEntrances();
             FindExits();
             FindWalkArea();
+            LoadTilemaps();
+            HideAllTilemaps();
+        }
+
+        public void FadeOut(float duration)
+        {
+            TweenToColor(Color.black, duration);
+        }
+        
+        public void FadeIn(float duration)
+        {
+            TweenToColor(Color.white, duration);
+        }
+        
+        private void TweenToColor(Color color, float duration)
+        {
+            foreach (var tilemap in _tilemaps)
+            {
+                DOTween.To(() => tilemap.color, c => tilemap.color = c, color, duration);
+            }
         }
 
         private void FindEntrances()
@@ -36,6 +60,19 @@ namespace Map.Model
         private void FindWalkArea()
         {
             walkArea = GetComponentInChildren<WalkArea>();
+        }
+
+        private void LoadTilemaps()
+        {
+            _tilemaps = GetComponentsInChildren<Tilemap>();
+        }
+
+        private void HideAllTilemaps()
+        {
+            foreach (var tilemap in _tilemaps)
+            {
+                tilemap.color = Color.black;
+            }
         }
     }
 }
