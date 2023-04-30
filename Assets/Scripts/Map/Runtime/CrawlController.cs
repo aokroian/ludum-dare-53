@@ -19,7 +19,8 @@ namespace Map.Runtime
         
         public Level currentLevel;
 
-        private AIActorInput[] enemiesLeft = Array.Empty<AIActorInput>();
+        private int enemiesLeft;
+        private Room currentRoom;
 
         public void SetPlayerPosStairsRoom(PlayerActorInput player, bool downstairs)
         {
@@ -46,7 +47,6 @@ namespace Map.Runtime
             player.gameObject.GetComponent<ActorMovement>().enabled = false;
             player.gameObject.GetComponent<Collider2D>().enabled = false;
             
-            Debug.Log($"Exiting room {room.roomType}");
             var newRoom = currentLevel.rooms[currentLevel.GetRoomPosition(room) +
                                              CommonUtils.DirectionToVector(exit.Direction)];
             var newRoomEntrance = newRoom.entrances.First(
@@ -60,7 +60,6 @@ namespace Map.Runtime
 
         private void OnRoomSwitchStarted(Room prevRoom, RoomExit exit, Room newRoom, RoomEntrance entrance)
         {
-            Debug.Log("Room switch started");
             _cameraController.MoveToRoom(newRoom, roomSwitchDuration);
             prevRoom.FadeOut(roomSwitchDuration);
             newRoom.FadeIn(roomSwitchDuration);
@@ -68,20 +67,34 @@ namespace Map.Runtime
             
             if (!newRoom.visited && newRoom.roomType is RoomType.Common)
             {
-                enemiesLeft = SpawnUtil.SpawnEnemiesForRoom(newRoom);
+                var enemies = SpawnUtil.SpawnEnemiesForRoom(newRoom);
+                enemiesLeft = enemies.Length;
+                foreach (var enemy in enemies)
+                {
+                    enemy.gameObject.GetComponent<ActorHealth>().OnDeath += EnemyEliminated;
+                }
             }
         }
 
         private void OnRoomEntered(PlayerActorInput player, Room room)
         {
-            Debug.Log($"Entered room {room.roomType}");
+            currentRoom = room;
             player.gameObject.GetComponent<ActorMovement>().enabled = true;
             player.gameObject.GetComponent<Collider2D>().enabled = true;
             room.visited = true;
 
-            if (enemiesLeft.Length > 0)
+            if (enemiesLeft > 0)
             {
-                // room.CloseDoors();
+                room.CloseDoors();
+            }
+        }
+
+        private void EnemyEliminated()
+        {
+            enemiesLeft--;
+            if (enemiesLeft == 0)
+            {
+                currentRoom.OpenDoors();
             }
         }
     }
