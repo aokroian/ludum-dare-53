@@ -11,6 +11,7 @@ namespace Map.Model
         public RoomEntrance[] entrances;
         public RoomExit[] exits;
         public Vector3 center;
+        public WalkArea walkArea;
 
         public bool visited;
 
@@ -18,6 +19,7 @@ namespace Map.Model
         {
             FindEntrances();
             FindExits();
+            FindWalkArea();
         }
 
         private void FindEntrances()
@@ -29,6 +31,11 @@ namespace Map.Model
         private void FindExits()
         {
             exits = GetComponentsInChildren<RoomExit>();
+        }
+        
+        private void FindWalkArea()
+        {
+            walkArea = GetComponentInChildren<WalkArea>();
         }
     }
 }
