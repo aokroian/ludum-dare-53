@@ -19,3 +19,6 @@ MonoBehaviour:
   - enemyType: 1
     enemyPrefab: {fileID: 3618191280411072265, guid: 92599a4a275324e8489ef77818a255fc, type: 3}
     difficultyWeight: 2
+  - enemyType: 2
+    enemyPrefab: {fileID: 3158851545522084415, guid: 636dddcdaea0d4525bb3e59ac19c27ba, type: 3}
+    difficultyWeight: 3
