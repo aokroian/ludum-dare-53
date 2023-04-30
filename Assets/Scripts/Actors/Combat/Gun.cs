@@ -1,19 +1,32 @@
+using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Actors.Combat
 {
     public class Gun : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
-        {
+        [SerializeField] private Transform muzzle;
+        [SerializeField][Range(0.01f,30f)] private float shootRate;
+        [SerializeField] private GameObject bullet;
+
+
+        private float _shootRateTimer;
         
+        private void Update()
+        {
+            _shootRateTimer -= Time.deltaTime;
         }
 
-        // Update is called once per frame
-        void Update()
+        public void Fire()
         {
-        
+            if (_shootRateTimer <= 0)
+            {
+                Instantiate(bullet, muzzle.position, transform.rotation);
+                _shootRateTimer = 1 / shootRate;
+                
+                
+            }
         }
     }
 }
