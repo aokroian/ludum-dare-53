@@ -14,6 +14,11 @@ namespace Actors
         {
             return Enemies.FirstOrDefault(e => e.enemyType == enemyType)?.enemyPrefab;
         }
+
+        public AIActorInput[] GetEnemiesPrefabsByDifficultyWeight(int difficultyWeight)
+        {
+            return Enemies.Where(e => e.difficultyWeight == difficultyWeight).Select(e => e.enemyPrefab).ToArray();
+        }
     }
 
     [Serializable]
@@ -21,5 +26,6 @@ namespace Actors
     {
         public EnemyTypes enemyType;
         public AIActorInput enemyPrefab;
+        [Range(0, 10)] public int difficultyWeight;
     }
 }
