@@ -2,6 +2,7 @@
 using Common;
 using UI.Dialogue;
 using UnityEngine;
+using Upgrades;
 
 namespace Game
 {
@@ -15,6 +16,8 @@ namespace Game
 
         private bool _introShowed;
         public bool IntroShowed => _introShowed;
+
+        private PackageToDeliver _deliveredPackage;
         
         public void Intro(Action action = null)
         {
@@ -52,7 +55,7 @@ namespace Game
 
         public void DeliverPackage(PackageToDeliver package, Action anyAction)
         {
-            
+            _deliveredPackage = package;
             var config = new DialogueConfig
             {
                 portrait = npc1Portrait,
@@ -61,8 +64,19 @@ namespace Game
                 confirmBtnText = "Ok",
                 cancelBtnText = package.receiverDepth == 0 ? "Later" : null
             };
-            dialoguePanel.Show(config, () => ReceivePackage(package.receiverDepth, anyAction), anyAction);
+
+            dialoguePanel.Show(config, UpgradeCallback, anyAction);
             PackageController.Instance.DeliverPackage();
+            
+            void NextMsgCallback()
+            {
+                ReceivePackage(_deliveredPackage.receiverDepth, anyAction);
+            }
+
+            void UpgradeCallback()
+            {
+                UpgradeSystemUI.Instance.ShowUpgradeSelection(_ => NextMsgCallback());
+            }
         }
 
         public void ReceivePackage(int curDepth, Action confirm)

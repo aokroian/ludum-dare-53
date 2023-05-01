@@ -93,7 +93,7 @@ namespace Map.Runtime
             }
 
             if (room.roomType == RoomType.End &&
-                PackageController.Instance.currentPackage.receiverDepth ==
+                PackageController.Instance.currentPackage?.receiverDepth ==
                 FloorController.Instance.CurrentDepth)
             {
                 player.ToggleInput(false);
