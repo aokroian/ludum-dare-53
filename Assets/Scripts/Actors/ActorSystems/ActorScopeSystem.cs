@@ -64,7 +64,7 @@ namespace Actors
             var direction = _currentScope.transform.position - transform.position;
             var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             
-            _currentScope.transform.rotation = Quaternion.Euler(0, 0, angle);
+            _currentScope.transform.rotation = Quaternion.Euler(0, 0, angle + 270);
         }
 
         private void SetScopeColor()
