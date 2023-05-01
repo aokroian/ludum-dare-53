@@ -11,7 +11,7 @@ namespace Actors
         public bool isHealSound;
 
         [field: SerializeField] public int MaxHealth { get; private set; } = 100;
-        public int Health { get; private set; }
+        [field: SerializeField] public int Health { get; private set; }
         public bool IsDead => Health <= 0;
 
         public event Action<ActorHealth> OnDeath;
@@ -51,6 +51,10 @@ namespace Actors
             if (damage <= 0)
                 return;
 
+            Health -= damage;
+            if (Health < 0)
+                Health = 0;
+            
             if (IsDead)
             {
                 if (isDeathSound)
@@ -58,9 +62,6 @@ namespace Actors
                 OnDeath?.Invoke(this);
             }
 
-            Health -= damage;
-            if (Health < 0)
-                Health = 0;
 
             OnHealthChanged?.Invoke(Health);
             OnDamageTaken?.Invoke(damage);

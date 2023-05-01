@@ -24,7 +24,7 @@ namespace UI.Hud
         {
             if (curMaxHealth != maxHealth)
             {
-                RecreateHearts(health / healthInHeart);
+                RecreateHearts(maxHealth / healthInHeart);
             }
             
             FillHearts(health);
@@ -47,23 +47,18 @@ namespace UI.Hud
 
         private void FillHearts(int health)
         {
-            // TODO: rewrite with one cycle
-            
             var fullHearts = Mathf.FloorToInt(health / healthInHeart);
-            for (int i = 0; i < fullHearts; i++)
-            {
-                _hearts[i].SetFill(1);
-            }
-
             var healthLeft = health % healthInHeart;
-            if (healthLeft > 0)
-            {
-                _hearts[fullHearts].SetFill(healthLeft / (float) healthInHeart);
-            }
 
-            for (int i = fullHearts + 1; i < _hearts.Count; i++)
+            for (var i = 0; i < _hearts.Count; i++)
             {
-                _hearts[i].SetFill(0);
+                var heart = _hearts[i];
+                if (i < fullHearts)
+                    heart.SetFill(1);
+                else if (i == fullHearts)
+                    heart.SetFill(healthLeft / (float) healthInHeart);
+                else
+                    heart.SetFill(0);
             }
         }
     }

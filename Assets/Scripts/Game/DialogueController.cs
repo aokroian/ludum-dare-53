@@ -61,5 +61,19 @@ namespace Game
             };
             dialoguePanel.Show(config, action, action);
         }
+
+        public void PlayerDeath(Action confirm, Action cancel)
+        {
+            var deliveredCount = PackageController.Instance.deliveredCount;
+            var config = new DialogueConfig
+            {
+                portrait = null,
+                title = "You died",
+                message = $"You delivered {deliveredCount} packages. Do you want to try again?",
+                confirmBtnText = "Restart",
+                cancelBtnText = "Main menu"
+            };
+            dialoguePanel.Show(config, confirm, cancel);
+        }
     }
 }

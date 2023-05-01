@@ -17,7 +17,7 @@ namespace Actors.Spawn
             var spawnedEnemies = new AIActorInput[randCount];
             for (var i = 0; i < randCount; i++)
             {
-                var randEnemyType = EnemyTypes.SimpleWanderer; // Random.Range(0, 2);
+                var randEnemyType = EnemyTypes.StationaryShooter; // Random.Range(0, 2);
                 var enemyType = (EnemyTypes) randEnemyType;
                 var enemy = SpawnUtil.SpawnEnemy(enemyType, walkArea.transform, Vector2.zero);
                 spawnedEnemies[i] = enemy;
