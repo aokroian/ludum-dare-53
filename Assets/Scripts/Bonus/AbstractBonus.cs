@@ -32,7 +32,8 @@ namespace Bonus
             if (other.CompareTag("Player"))
             {
                 ApplyBonus(other.GetComponent<PlayerActorInput>());
-                Destroy(gameObject);
+                gameObject.SetActive(false);
+                // Destroy(gameObject);
             }
         }
     }

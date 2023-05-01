@@ -941,6 +941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19b53fd2a82d40faa65f16c7268f03f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bonusChance: 0.2
   bonuses:
   - {fileID: 8073114900132134073, guid: d7dade602101ab642a7b36fac6431b6d, type: 3}
   - {fileID: -1799216738268494828, guid: bd4c5620f3ad1cc45938cf31ffab9b1d, type: 3}

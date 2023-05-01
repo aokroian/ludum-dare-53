@@ -11,6 +11,7 @@ namespace Bonus.BonusTypes
         protected override void ApplyBonus(PlayerActorInput player)
         {
             player.GetComponent<ActorHealth>().Heal(healAmount);
+            Destroy(gameObject);
         }
     }
 }
