@@ -1,3 +1,4 @@
+using System;
 using Actors.Upgrades;
 using Sounds;
 using UnityEngine;
@@ -23,6 +24,8 @@ namespace Actors.Combat
 
         private float _currentShootRate;
         private float _currentBulletsPerShotCount;
+
+        public event Action OnFire;
 
         private void Awake()
         {
@@ -63,6 +66,7 @@ namespace Actors.Combat
                     : 0;
 
                 var initialAngle = -(fullAngle / 2);
+                OnFire?.Invoke();
                 for (var i = 0; i < _currentBulletsPerShotCount; i++)
                 {
                     var bulletRotation = Quaternion.Euler(

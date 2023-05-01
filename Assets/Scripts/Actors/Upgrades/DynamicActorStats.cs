@@ -18,10 +18,10 @@ namespace Actors.Upgrades
 
         private void Awake()
         {
-            ActorStatsSo.OnValidateEvent += ApplyToAllReceivers;
-        }
+            ActorStatsSo.OnValidateEvent += ApplyStatsToAllReceivers;
+        } 
 
-        private void ApplyToAllReceivers()
+        private void ApplyStatsToAllReceivers()
         {
             foreach (var receiver in _dynamicStatsReceivers)
                 receiver.ApplyDynamicStats(ActorStatsSo);

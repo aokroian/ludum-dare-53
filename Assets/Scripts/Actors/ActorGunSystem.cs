@@ -42,15 +42,15 @@ namespace Actors
                 ChangeActiveGun(GunTypes.Rifle);
         }
 
-        private void ChangeActiveGun(GunTypes gunType)
+        public Gun ChangeActiveGun(GunTypes gunType)
         {
             if (_currentActiveGun != null && _currentActiveGun.GunType == gunType)
-                return;
+                return _currentActiveGun;
             var gun = _gunsConfig.GetGunPrefab(gunType);
             if (gun == null)
             {
                 Debug.LogError($"Gun with type {gunType} not found");
-                return;
+                return null;
             }
 
             if (_currentActiveGun != null)
@@ -61,6 +61,7 @@ namespace Actors
             _currentActiveGun = spawnedGun;
             _isGunSpawned = true;
             OnActiveGunChanged?.Invoke(_currentActiveGun);
+            return spawnedGun;
         }
 
 
