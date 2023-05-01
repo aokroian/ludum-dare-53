@@ -94,11 +94,12 @@ namespace Actors.Spawn
 
         private static Vector3 RandomPointInBounds(Bounds bounds, WallDirection entranceDirection)
         {
+            var smallerBounds = new Bounds(bounds.center, bounds.size - (Vector3.one * 2));
             var offset = CommonUtils.DirectionToVector(entranceDirection);
 
             return new Vector3(
-                Random.Range(bounds.min.x, bounds.max.x),
-                Random.Range(bounds.min.y, bounds.max.y),
+                Random.Range(smallerBounds.min.x, smallerBounds.max.x),
+                Random.Range(smallerBounds.min.y, smallerBounds.max.y),
                 0
             ) - offset;
         }

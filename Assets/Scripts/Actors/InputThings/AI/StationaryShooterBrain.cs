@@ -43,10 +43,7 @@ namespace Actors.InputThings.AI
                 return;
             if (!_isInit)
             {
-                if (WalkArea != null)
-                    Init();
-                else
-                    return;
+                Init();
             }
 
             StateMachine.CurrentState = _fireState;

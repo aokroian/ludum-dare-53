@@ -9,6 +9,7 @@ namespace Map.Model
     public class RoomExit : MonoBehaviour
     {
         [SerializeField] private WallDirection direction;
+        [SerializeField] private BoxCollider2D shrinkCollider;
         public WallDirection Direction => direction;
 
         [SerializeField] private GameObject door;
@@ -25,11 +26,13 @@ namespace Map.Model
         public void CloseDoor()
         {
             door.SetActive(true);
+            shrinkCollider.gameObject.SetActive(false);
         }
         
         public void OpenDoor()
         {
             door.SetActive(false);
+            shrinkCollider.gameObject.SetActive(true);
         }
     }
 }
