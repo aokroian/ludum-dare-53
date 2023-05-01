@@ -14,40 +14,53 @@ namespace Actors.InputThings
 
         private bool _isActive = true;
 
+        private Vector3 _liveLook;
+        private Vector2 _liveMovement;
+        private bool _liveFire;
+
         public void OnFire(InputValue value)
         {
+            _liveFire = Math.Abs(value.Get<float>() - 1f) < 0.1f;
             if (!_isActive)
                 return;
-
-            Fire = Math.Abs(value.Get<float>() - 1f) < 0.1f;
+            Fire = _liveFire;
         }
 
         public void OnLook(InputValue value)
         {
-            if (!_isActive)
-                return;
-
             Vector3 mousePos = Mouse.current.position.ReadValue();
             mousePos.z = _mainCamera.farClipPlane * .5f;
             var worldPoint = _mainCamera.ScreenToWorldPoint(mousePos);
-            Look = worldPoint;
+            _liveLook = worldPoint;
+            if (!_isActive)
+                return;
+            Look = _liveLook;
         }
 
         public void OnMove(InputValue context)
         {
+            _liveMovement = context.Get<Vector2>();
             if (!_isActive)
                 return;
-
-            Movement = context.Get<Vector2>();
+            Movement = _liveMovement;
         }
 
         public void ToggleInput(bool isActive)
         {
             _isActive = isActive;
 
-            Look = default;
-            Movement = default;
-            Fire = default;
+            if (!_isActive)
+            {
+                Look = default;
+                Movement = default;
+                Fire = default;
+            }
+            else
+            {
+                Look = _liveLook;
+                Movement = _liveMovement;
+                Fire = _liveFire;
+            }
         }
 
         private void Awake()
