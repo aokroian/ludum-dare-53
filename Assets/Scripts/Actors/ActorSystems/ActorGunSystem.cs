@@ -21,6 +21,10 @@ namespace Actors.ActorSystems
             base.Awake();
             _gunsConfig = Resources.Load<GunsConfigSo>("GunsConfig");
 
+        }
+
+        private void Start()
+        {
             ChangeActiveGun(startGunType);
         }
 
