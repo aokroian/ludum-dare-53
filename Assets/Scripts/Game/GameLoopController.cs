@@ -24,14 +24,20 @@ namespace Game
         private PlayerActorInput SpawnPlayer()
         {
             var playerObj = Instantiate(playerPrefab);
-            playerObj.GetComponent<ActorHealth>().OnDeath += _ =>
-                DialogueController.Instance.PlayerDeath(
-                    () => RestartGame(),
-                    () => SceneController.Instance.LoadStartMenuScene()
-                );
-            return playerObj.GetComponent<PlayerActorInput>();
+            var playerInput = playerObj.GetComponent<PlayerActorInput>();
+            playerObj.GetComponent<ActorHealth>().OnDeath += _ => OnPlayerDeath(playerInput);
+            return playerInput;
         }
 
+        private void OnPlayerDeath(PlayerActorInput playerInput)
+        {
+            playerInput.ToggleInput(false);
+            DialogueController.Instance.PlayerDeath(
+                () => RestartGame(),
+                () => SceneController.Instance.LoadStartMenuScene()
+            );
+        }
+        
         public void RestartGame()
         {
             SceneController.Instance.LoadGameScene();

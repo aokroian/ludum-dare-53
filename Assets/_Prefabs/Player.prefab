@@ -310,7 +310,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 987b28ceaff64bf2bdab4b4a0c7cc464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scopeTransform: {fileID: 0}
 --- !u!114 &1139072629945911033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,10 +322,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b42004af44f24c859ba2617bbc0b4b32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invincibilityTime: 0.5
   isDeathSound: 0
   isDamageSound: 0
   isHealSound: 0
   <MaxHealth>k__BackingField: 6
+  <Health>k__BackingField: 0
 --- !u!1 &7372094988291725269
 GameObject:
   m_ObjectHideFlags: 0
