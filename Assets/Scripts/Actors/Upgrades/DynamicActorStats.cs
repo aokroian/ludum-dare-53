@@ -19,13 +19,27 @@ namespace Actors.Upgrades
         private void Awake()
         {
             ActorStatsSo.OnValidateEvent += ApplyStatsToAllReceivers;
-        } 
+        }
+
+        public void ModifyCurrentStatsSo(ActorStatsSo actorStatsToAdd)
+        {
+            ActorStatsSo.addedMovementSpeed += actorStatsToAdd.addedMovementSpeed;
+            ActorStatsSo.addedScaleModifier += actorStatsToAdd.addedScaleModifier; 
+            ActorStatsSo.addedMaxHealth += actorStatsToAdd.addedMaxHealth;
+            ActorStatsSo.addedShootRate += actorStatsToAdd.addedShootRate;
+            ActorStatsSo.addedBulletsSpeed += actorStatsToAdd.addedBulletsSpeed;
+            ActorStatsSo.addedBulletsDamage += actorStatsToAdd.addedBulletsDamage;
+            ActorStatsSo.addedBulletsScale += actorStatsToAdd.addedBulletsScale;
+            ActorStatsSo.addedBulletsPerShotCount += actorStatsToAdd.addedBulletsPerShotCount;
+            ActorStatsSo.addedBulletsPiercingCount += actorStatsToAdd.addedBulletsPiercingCount;
+            ApplyStatsToAllReceivers();
+        }
 
         private void ApplyStatsToAllReceivers()
         {
             foreach (var receiver in _dynamicStatsReceivers)
                 receiver.ApplyDynamicStats(ActorStatsSo);
-        } 
+        }
 
         public void AddReceiver(IDynamicStatsReceiver dynamicStatsReceiver)
         {
