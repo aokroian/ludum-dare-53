@@ -12,13 +12,21 @@ namespace Actors.InputThings
 
         private Camera _mainCamera;
 
+        private bool _isActive;
+
         public void OnFire(InputValue value)
         {
+            if (!_isActive)
+                return;
+
             Fire = Math.Abs(value.Get<float>() - 1f) < 0.1f;
         }
 
         public void OnLook(InputValue value)
         {
+            if (!_isActive)
+                return;
+
             Vector3 mousePos = Mouse.current.position.ReadValue();
             mousePos.z = _mainCamera.farClipPlane * .5f;
             var worldPoint = _mainCamera.ScreenToWorldPoint(mousePos);
@@ -27,7 +35,19 @@ namespace Actors.InputThings
 
         public void OnMove(InputValue context)
         {
+            if (!_isActive)
+                return;
+
             Movement = context.Get<Vector2>();
+        }
+
+        public void ToggleInput(bool isActive)
+        {
+            _isActive = isActive;
+
+            Look = default;
+            Movement = default;
+            Fire = default;
         }
 
         private void Awake()
