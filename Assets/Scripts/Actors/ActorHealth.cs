@@ -1,6 +1,7 @@
 using System;
 using Actors.Upgrades;
 using Sounds;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -13,9 +14,8 @@ namespace Actors
         public bool isDeathSound;
         public bool isDamageSound;
         public bool isHealSound;
-
         [SerializeField] private int maxHealth;
-        [SerializeField] private int health;
+
         public bool IsDead => CurrentHealth <= 0;
 
         public event Action<ActorHealth> OnDeath;
@@ -32,9 +32,8 @@ namespace Actors
 
         protected override void Awake()
         {
-            health = maxHealth;
             CurrentMaxHealth = maxHealth;
-            CurrentHealth = health;
+            CurrentHealth = CurrentMaxHealth; 
 
             base.Awake();
 
@@ -50,9 +49,9 @@ namespace Actors
         }
 
         public void ApplyDynamicStats(ActorStatsSo actorStatsSo)
-        {
+        { 
             CurrentMaxHealth = maxHealth + actorStatsSo.addedMaxHealth;
-            CurrentHealth = health + actorStatsSo.addedCurrentHealth;
+            OnHealthChanged?.Invoke(CurrentHealth);
         }
 
         public void Heal(int amount)
@@ -91,7 +90,6 @@ namespace Actors
                     SoundSystem.ActorDeathSound(this);
                 OnDeath?.Invoke(this);
             }
-
 
             OnHealthChanged?.Invoke(CurrentHealth);
             OnDamageTaken?.Invoke(damage);

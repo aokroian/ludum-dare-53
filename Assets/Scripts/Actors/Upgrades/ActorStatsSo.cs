@@ -19,7 +19,6 @@ namespace Actors.Upgrades
 
         [Header("Health")]
         public int addedMaxHealth;
-        public int addedCurrentHealth;
 
         [Header("Combat")]
         public float addedShootRate;
