@@ -30,7 +30,8 @@ namespace Actors.Combat
 
         private void TryToDealDamage(Collider2D other)
         {
-            if (other.transform.IsChildOf(ownerActor) || other.CompareTag(OwnerActorTag))
+            if (other.transform.IsChildOf(ownerActor) || other.CompareTag(OwnerActorTag) ||
+                other.CompareTag("AI_Walk_Area"))
                 return;
 
             if (_damageTimer > cooldownBetweenDamage)
