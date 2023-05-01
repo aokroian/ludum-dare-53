@@ -2,7 +2,7 @@ using System;
 using Actors.Combat;
 using UnityEngine;
 
-namespace Actors
+namespace Actors.ActorSystems
 {
     public class ActorGunSystem : ActorSystem
     {

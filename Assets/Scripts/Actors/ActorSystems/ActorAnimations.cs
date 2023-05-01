@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Actors
+namespace Actors.ActorSystems
 {
     public class ActorAnimations : ActorSystem
     {

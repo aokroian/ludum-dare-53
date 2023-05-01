@@ -1,9 +1,7 @@
-using System;
 using Actors.Upgrades;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Actors
+namespace Actors.ActorSystems
 {
     public class ActorPhysics : ActorSystem, IDynamicStatsReceiver
     {

@@ -1,7 +1,7 @@
 using Actors.InputThings;
 using UnityEngine;
 
-namespace Actors
+namespace Actors.ActorSystems
 {
     public class ActorSystem : MonoBehaviour
     {

@@ -1,11 +1,9 @@
 using System;
 using Actors.Upgrades;
 using Sounds;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Actors
+namespace Actors.ActorSystems
 {
     public class ActorHealth : ActorSystem, IDynamicStatsReceiver
     {
