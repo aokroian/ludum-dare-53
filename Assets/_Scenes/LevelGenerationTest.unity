@@ -665,7 +665,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialoguePanel: {fileID: 1887750834}
-  npc1Portrait: {fileID: 0}
+  npc1Portrait: {fileID: 21300000, guid: 915cbd8a2e4065b41bd43f7f71acc6c9, type: 3}
   letterSprite: {fileID: 21300000, guid: 745c230e29c9393469cb614114618353, type: 3}
 --- !u!4 &726367177
 Transform:
@@ -1639,6 +1639,7 @@ MonoBehaviour:
   wallLeftDoor: {fileID: 5369792429406641542, guid: f0a8ca2da09b2ac428c604739bc09c3e, type: 3}
   FloorEntry: {fileID: 2424975704019906441, guid: b7f2cd9e60a3f7d42ab5445705d2eae9, type: 3}
   FloorExit: {fileID: 1030835613389013159, guid: 1daa35d9b916d964bb0b8e47e6358549, type: 3}
+  npc: {fileID: 8501130820922274448, guid: cdc00e273345a824488f048d0987c558, type: 3}
 --- !u!1 &1395338347
 GameObject:
   m_ObjectHideFlags: 0

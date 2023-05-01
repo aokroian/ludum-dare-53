@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Common;
 using Map.Model;
 using Map.Runtime;
@@ -22,6 +21,7 @@ namespace Map
         [SerializeField] private GameObject wallLeftDoor;
         [SerializeField] private GameObject FloorEntry;
         [SerializeField] private GameObject FloorExit;
+        [SerializeField] private GameObject npc;
             
         public Room CreateRoom(RoomConstructionConfig config)
         {
@@ -84,16 +84,34 @@ namespace Map
         {
             GameObject obj = null;
             if (config.roomType == RoomType.Start)
+            {
                 obj = Instantiate(FloorEntry, config.position, Quaternion.identity, room.transform);
+                if (FloorController.Instance.CurrentDepth == 0)
+                {
+                    CreateNpc(config, room);
+                }
+            }
             else if (config.roomType == RoomType.End)
+            {
                 obj = Instantiate(FloorExit, config.position, Quaternion.identity, room.transform);
-            
+                CreateNpc(config, room);
+            }
+
             var exitTrigger = obj?.GetComponentInChildren<FloorExit>();
             if (exitTrigger != null)
             {
                 var depth = FloorController.Instance.CurrentDepth;
                 exitTrigger.Initialize(depth);
             }
+        }
+
+        private void CreateNpc(RoomConstructionConfig config, GameObject room)
+        {
+            Instantiate(
+                npc,
+                config.position + npc.transform.position,
+                Quaternion.identity,
+                room.transform);
         }
     }
 }
