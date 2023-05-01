@@ -1,16 +1,21 @@
 using System;
-using System.Linq;
-using Actors;
 using Actors.Combat;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Sounds
 {
-    [CreateAssetMenu(fileName = "SoundsConfig", menuName = "LD53/SoundsConfig", order = 1)]
+    [CreateAssetMenu(fileName = "SoundsConfig", menuName = "LD53/SoundsConfig", order = 3)]
     public class SoundsConfig : ScriptableObject
     {
-        [Header("Player Sounds")]
+        // music not implemented
+        
+        [Header("Music")]
+        public AudioClip menuMusic;
+        public AudioClip combatMusic;
+        public AudioClip peacefulMusic;
+
+
+        [Header("Actor Sounds")]
         public AudioClip actorDamageSound;
         public AudioClip actorDeathSound;
         public AudioClip actorHealSound;
@@ -18,6 +23,21 @@ namespace Sounds
         [Header("Combat Sounds")]
         public BulletTypeToSoundBinding[] bulletsSounds;
         public GunTypeToSoundBinding[] gunShotsSound;
+
+        // below not implemented
+
+        [Header("Map Related Sounds")]
+        public AudioClip moveToAnotherDepthSound;
+        public AudioClip doorsOpenSound;
+        public AudioClip doorsCloseSound;
+        public AudioClip collectableSound;
+        public AudioClip deliveryReceivedSound;
+        public AudioClip deliverySuccessSound;
+
+        [Header("UI Sounds")]
+        public AudioClip menuButtonClickSound;
+        public AudioClip upgradeButtonClickSound;
+        public AudioClip dialogueSound;
     }
 
     [Serializable]
@@ -32,5 +52,5 @@ namespace Sounds
     {
         public GunTypes gunType;
         public AudioClip shotSound;
-    }
+    } 
 }

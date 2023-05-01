@@ -12,8 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b081ce787ee41e98ba773e9b54139c7, type: 3}
   m_Name: SoundsConfig
   m_EditorClassIdentifier: 
+  menuMusic: {fileID: 8300000, guid: 5d8b4b39708464c38a0a076379fd8f1b, type: 3}
+  combatMusic: {fileID: 8300000, guid: c39a46df834194123b7f29817cd66432, type: 3}
+  peacefulMusic: {fileID: 8300000, guid: fb6c52e8a4d9146a693d4b088ffd2dc2, type: 3}
   actorDamageSound: {fileID: 0}
   actorDeathSound: {fileID: 0}
   actorHealSound: {fileID: 0}
   bulletsSounds: []
   gunShotsSound: []
+  moveToAnotherDepthSound: {fileID: 0}
+  doorsOpenSound: {fileID: 0}
+  doorsCloseSound: {fileID: 0}
+  collectableSound: {fileID: 0}
+  deliveryReceivedSound: {fileID: 0}
+  deliverySuccessSound: {fileID: 0}
+  menuButtonClickSound: {fileID: 0}
+  upgradeButtonClickSound: {fileID: 0}
+  dialogueSound: {fileID: 0}
