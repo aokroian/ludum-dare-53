@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -6598946016331564889, guid: 23748c298f885bf4c89671f6d30f562b, type: 3}
-  m_Color: {r: 1, g: 0.5518868, b: 0.5518868, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -95,7 +95,7 @@ Animator:
   m_GameObject: {fileID: 474616396193653230}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4340a89b1d1dcaf43bddc209e4f47583, type: 2}
+  m_Controller: {fileID: 9100000, guid: e29badaec2e8e68468d2c106e8f80279, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -143,7 +143,7 @@ Transform:
   m_Children:
   - {fileID: 4906995109581868479}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &8755011142485539044
 BoxCollider2D:
@@ -266,7 +266,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b42004af44f24c859ba2617bbc0b4b32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 100
+  invincibilityTime: 0
+  isDeathSound: 0
+  isDamageSound: 0
+  isHealSound: 0
+  maxHealth: 0
 --- !u!114 &-5530050865184091242
 MonoBehaviour:
   m_ObjectHideFlags: 0

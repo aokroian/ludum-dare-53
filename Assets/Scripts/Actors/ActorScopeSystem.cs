@@ -8,6 +8,7 @@ namespace Actors
         private Transform _currentScope;
         private SpriteRenderer _currentScopeSpite;
         private GunTypes _currentGunType;
+        
 
         private GunsConfigSo _gunsConfig;
         private ActorGunSystem _actorGunSystem;
@@ -63,7 +64,7 @@ namespace Actors
             var direction = _currentScope.transform.position - transform.position;
             var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             
-            _currentScope.transform.rotation = Quaternion.Euler(0, 0, angle + 90);
+            _currentScope.transform.rotation = Quaternion.Euler(0, 0, angle);
         }
 
         private void SetScopeColor()
