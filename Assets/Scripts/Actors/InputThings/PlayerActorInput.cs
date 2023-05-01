@@ -12,7 +12,7 @@ namespace Actors.InputThings
 
         private Camera _mainCamera;
 
-        private bool _isActive;
+        private bool _isActive = true;
 
         public void OnFire(InputValue value)
         {
