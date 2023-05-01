@@ -177,7 +177,7 @@ Transform:
   - {fileID: 789645390867607132}
   - {fileID: 5128511365247913657}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &9214779968190576420
 BoxCollider2D:
@@ -357,8 +357,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invincibilityTime: 0.5
-  isDeathSound: 0
-  isDamageSound: 0
+  isDeathSound: 1
+  isDamageSound: 1
   isHealSound: 1
   maxHealth: 6
 --- !u!114 &1159252010573160953
