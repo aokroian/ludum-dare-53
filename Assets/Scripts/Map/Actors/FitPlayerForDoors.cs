@@ -7,6 +7,8 @@ namespace Map.Actors
 {
     public class FitPlayerForDoors : MonoBehaviour
     {
+        private Tweener _tweener;
+
         private void OnTriggerEnter2D(Collider2D other)
         {
             TryToScaleDown(other);
@@ -21,14 +23,16 @@ namespace Map.Actors
         {
             if (!other.CompareTag("Player"))
                 return;
-            other.transform.DOScale(.6f, .4f).SetEase(Ease.OutExpo);
+            _tweener?.Kill();
+            _tweener = other.transform.DOScale(.6f, .4f).SetEase(Ease.OutExpo);
         }
 
         private void TryToRestoreScale(Collider2D other)
         {
             if (!other.CompareTag("Player"))
                 return;
-            other.transform.DOScale(GetUnaffectedScaleValue(other.gameObject), .3f).SetEase(Ease.OutExpo);
+            _tweener?.Kill();
+            _tweener = other.transform.DOScale(GetUnaffectedScaleValue(other.gameObject), .3f).SetEase(Ease.OutExpo);
         }
 
         private float GetUnaffectedScaleValue(GameObject player)
