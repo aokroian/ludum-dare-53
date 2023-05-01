@@ -33,10 +33,39 @@ namespace Game
                 confirmBtnText = "Ok",
                 // cancelBtnText = "Fine"
             };
-            dialoguePanel.Show(config, () => Intro1(action));
+            dialoguePanel.Show(config, () => ReceivePackage(-1, action));
         }
 
-        private void Intro1(Action action)
+        // private void Intro1(Action action)
+        // {
+        //     var config = new DialogueConfig
+        //     {
+        //         portrait = letterSprite,
+        //         // title = "NPC_NAME",
+        //         message = "You received envelope.",
+        //         confirmBtnText = "Ok",
+        //         // cancelBtnText = "Fine"
+        //     };
+        //     dialoguePanel.Show(config, action);
+        //     PackageController.Instance.ReceivePackage(-1);
+        // }
+
+        public void DeliverPackage(PackageToDeliver package, Action anyAction)
+        {
+            
+            var config = new DialogueConfig
+            {
+                portrait = npc1Portrait,
+                title = package.receiverName,
+                message = "Thank you!",
+                confirmBtnText = "Ok",
+                cancelBtnText = package.receiverDepth == 0 ? "Later" : null
+            };
+            dialoguePanel.Show(config, () => ReceivePackage(package.receiverDepth, anyAction), anyAction);
+            PackageController.Instance.DeliverPackage();
+        }
+
+        public void ReceivePackage(int curDepth, Action confirm)
         {
             var config = new DialogueConfig
             {
@@ -46,7 +75,8 @@ namespace Game
                 confirmBtnText = "Ok",
                 // cancelBtnText = "Fine"
             };
-            dialoguePanel.Show(config, action);
+            dialoguePanel.Show(config, confirm);
+            PackageController.Instance.ReceivePackage(curDepth);
         }
         
         public void CantGoUpstairs(Action action = null)

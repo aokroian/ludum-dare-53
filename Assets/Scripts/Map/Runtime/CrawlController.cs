@@ -8,6 +8,7 @@ using Common;
 using DG.Tweening;
 using Game;
 using Map.Model;
+using UnityEditor.PackageManager.UI;
 using UnityEngine;
 using Utils;
 
@@ -93,6 +94,16 @@ namespace Map.Runtime
             {
                 player.ToggleInput(false);
                 DialogueController.Instance.Intro(() => player.ToggleInput(true));
+            }
+
+            if (room.roomType == RoomType.End &&
+                PackageController.Instance.currentPackage.receiverDepth ==
+                FloorController.Instance.CurrentDepth)
+            {
+                player.ToggleInput(false);
+                DialogueController.Instance.DeliverPackage(
+                    PackageController.Instance.currentPackage,
+                    () => player.ToggleInput(true));
             }
         }
 
