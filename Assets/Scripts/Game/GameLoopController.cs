@@ -1,4 +1,5 @@
-﻿using Actors.InputThings;
+﻿using Actors;
+using Actors.InputThings;
 using Map.Runtime;
 using Scene;
 using UnityEngine;
@@ -23,7 +24,33 @@ namespace Game
         private PlayerActorInput SpawnPlayer()
         {
             var playerObj = Instantiate(playerPrefab);
-            return playerObj.GetComponent<PlayerActorInput>();
+            var playerInput = playerObj.GetComponent<PlayerActorInput>();
+            playerObj.GetComponent<ActorHealth>().OnDeath += _ => OnPlayerDeath(playerInput);
+            return playerInput;
+        }
+
+        private void OnPlayerDeath(PlayerActorInput playerInput)
+        {
+            playerInput.ToggleInput(false);
+            DialogueController.Instance.PlayerDeath(
+                () => RestartGame(),
+                () => SceneController.Instance.LoadStartMenuScene()
+            );
+        }
+        
+        public void RestartGame()
+        {
+            SceneController.Instance.LoadGameScene();
+        }
+
+        public void PauseGame()
+        {
+            Time.timeScale = 0;
+        }
+
+        public void ResumeGame()
+        {
+            Time.timeScale = 1;
         }
     }
 }

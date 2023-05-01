@@ -5,6 +5,8 @@ namespace Game
 {
     public class PackageController : SingletonScene<PackageController>
     {
+        public int deliveredCount;
+        
         public bool HasPackage(int depth)
         {
             // TODO: Implement

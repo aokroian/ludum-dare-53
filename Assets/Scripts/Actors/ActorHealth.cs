@@ -6,12 +6,14 @@ namespace Actors
 {
     public class ActorHealth : ActorSystem
     {
+        public float invincibilityTime = 0f;
+        
         public bool isDeathSound;
         public bool isDamageSound;
         public bool isHealSound;
 
         [field: SerializeField] public int MaxHealth { get; private set; } = 100;
-        public int Health { get; private set; }
+        [field: SerializeField] public int Health { get; private set; }
         public bool IsDead => Health <= 0;
 
         public event Action<ActorHealth> OnDeath;
@@ -20,6 +22,8 @@ namespace Actors
         public event Action<int> OnHealthChanged;
         public event Action<int> OnHeal;
         public event Action<int> OnDamageTaken;
+
+        private float _invincibilityEndTime;
 
         protected override void Awake()
         {
@@ -48,9 +52,15 @@ namespace Actors
 
         public void TakeDamage(int damage)
         {
-            if (damage <= 0)
+            if (damage <= 0 || _invincibilityEndTime > Time.time)
                 return;
+            
+            _invincibilityEndTime = Time.time + invincibilityTime;
 
+            Health -= damage;
+            if (Health < 0)
+                Health = 0;
+            
             if (IsDead)
             {
                 if (isDeathSound)
@@ -58,9 +68,6 @@ namespace Actors
                 OnDeath?.Invoke(this);
             }
 
-            Health -= damage;
-            if (Health < 0)
-                Health = 0;
 
             OnHealthChanged?.Invoke(Health);
             OnDamageTaken?.Invoke(damage);
