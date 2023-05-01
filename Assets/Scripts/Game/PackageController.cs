@@ -1,21 +1,50 @@
 ﻿using Common;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Game
 {
     public class PackageController : SingletonScene<PackageController>
     {
-        public int deliveredCount;
+        [SerializeField] private Image packageImage;
         
-        public bool HasPackage(int depth)
+        public int deliveredCount;
+        public PackageToDeliver currentPackage;
+        private PackageToDeliver _lastPackage;
+        
+        public void ReceivePackage(int senderDepth)
         {
-            // TODO: Implement
-            return true;
+            currentPackage = new PackageToDeliver(senderDepth,
+                senderDepth + 1,
+                _lastPackage?.receiverName ?? "San Palych",
+                "Pal Sanych");
+            
+            packageImage.gameObject.SetActive(true);
         }
-
-        public bool NoPackage()
+        
+        public void DeliverPackage()
         {
-            return true;
+            _lastPackage = currentPackage;
+            deliveredCount++;
+            currentPackage = null;
+            
+            packageImage.gameObject.SetActive(false);
+        }
+    }
+
+    public class PackageToDeliver
+    {
+        public readonly int senderDepth;
+        public readonly int receiverDepth;
+        public readonly string senderName;
+        public readonly string receiverName;
+        
+        public PackageToDeliver(int senderDepth, int receiverDepth, string senderName, string receiverName)
+        {
+            this.senderDepth = senderDepth;
+            this.receiverDepth = receiverDepth;
+            this.senderName = senderName;
+            this.receiverName = receiverName;
         }
     }
 }

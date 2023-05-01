@@ -18,7 +18,7 @@ namespace Map.Runtime
 
         public void TryToEnterLevel(PlayerActorInput player, int depth, bool downstairs, Vector3Int startRoomPos)
         {
-            if (downstairs && PackageController.Instance.HasPackage(depth))
+            if (downstairs && (depth == 0 || PackageController.Instance.currentPackage?.receiverDepth == depth))
             {
                 EnterLevel(player, depth, downstairs, startRoomPos);
             }
