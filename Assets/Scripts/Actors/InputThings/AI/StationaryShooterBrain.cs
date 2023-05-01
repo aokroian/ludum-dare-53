@@ -10,9 +10,13 @@ namespace Actors.InputThings.AI
 
         private bool _isInit;
         private Transform _playerTransform;
+        
+        private readonly float _delayBeforeChase = 1.5f;
+        private float _chaseStartTime;
 
         private void Awake()
         {
+            _chaseStartTime = Time.time + _delayBeforeChase;
             _playerTransform = LocatePlayer();
         }
 
@@ -35,6 +39,8 @@ namespace Actors.InputThings.AI
 
         private void Update()
         {
+            if (_chaseStartTime == 0 || Time.time < _chaseStartTime)
+                return;
             if (!_isInit)
             {
                 if (WalkArea != null)

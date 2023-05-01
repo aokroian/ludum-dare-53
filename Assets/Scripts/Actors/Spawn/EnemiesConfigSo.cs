@@ -19,6 +19,26 @@ namespace Actors.Spawn
         {
             return Enemies.Where(e => e.difficultyWeight == difficultyWeight).Select(e => e.enemyPrefab).ToArray();
         }
+        
+        public EnemyTypeAndPrefabPair GetRandomLessThenDifficultyWeight(float difficultyWeight, int retries = 0)
+        {
+            var enemies = Enemies.Where(e => e.difficultyWeight <= difficultyWeight).ToArray();
+            if (enemies.Length == 0)
+                return null;
+            
+            var retriesLeft = retries;
+            EnemyTypeAndPrefabPair result = null;
+            do
+            {
+                retriesLeft--;
+                var randIndex = UnityEngine.Random.Range(0, enemies.Length);
+                var curEnemy = enemies[randIndex];
+                if (result == null || curEnemy.difficultyWeight > result.difficultyWeight)
+                    result = curEnemy;
+            } while (retriesLeft >= 0);
+            
+            return result;
+        }
     }
 
     [Serializable]

@@ -92,7 +92,8 @@ namespace Map
                     CalcDoorsDirections(pos),
                     globalGrid.CellToWorld(pos),
                     parent,
-                    data.roomType
+                    data.roomType,
+                    data.distanceFromStart
                 );
                 var room = roomFactory.CreateRoom(roomConfig);
                 result[pos] = room;
