@@ -145,17 +145,17 @@ namespace Sounds
 
         public static void ActorDamageSound(ActorHealth actorHealth)
         {
-            AudioSource.PlayClipAtPoint(Sounds.actorDamageSound, actorHealth.transform.position);
+            PlayAtPointIfNotNull(Sounds.actorDamageSound, actorHealth.transform.position);
         }
 
         public static void ActorDeathSound(ActorHealth actorHealth)
         {
-            AudioSource.PlayClipAtPoint(Sounds.actorDeathSound, actorHealth.transform.position);
+            PlayAtPointIfNotNull(Sounds.actorDeathSound, actorHealth.transform.position);
         }
 
         public static void ActorHealSound(ActorHealth actorHealth)
         {
-            AudioSource.PlayClipAtPoint(Sounds.actorHealSound, actorHealth.transform.position);
+            PlayAtPointIfNotNull(Sounds.actorHealSound, actorHealth.transform.position);
         }
 
         #endregion
@@ -166,14 +166,14 @@ namespace Sounds
         {
             var sound = Sounds.bulletsSounds.FirstOrDefault(p => p.bulletType == bullet.BulletType)?.bulletHitSound;
             if (sound != null)
-                AudioSource.PlayClipAtPoint(sound, bullet.transform.position);
+                PlayAtPointIfNotNull(sound, bullet.transform.position);
         }
 
         public static void GunShotSound(Gun gun)
         {
             var sound = Sounds.gunShotsSound.FirstOrDefault(p => p.gunType == gun.GunType)?.shotSound;
             if (sound != null)
-                AudioSource.PlayClipAtPoint(sound, gun.transform.position);
+                PlayAtPointIfNotNull(sound, gun.transform.position);
         }
 
         #endregion
@@ -182,32 +182,32 @@ namespace Sounds
 
         public static void PlayMoveToAnotherDepthSound(PlayerActorInput player)
         {
-            AudioSource.PlayClipAtPoint(Sounds.moveToAnotherDepthSound, player.transform.position);
+            PlayAtPointIfNotNull(Sounds.moveToAnotherDepthSound, player.transform.position);
         }
 
         public static void PlayDoorOpenSound(Room room)
         {
-            AudioSource.PlayClipAtPoint(Sounds.doorsOpenSound, room.transform.position);
+            PlayAtPointIfNotNull(Sounds.doorsOpenSound, room.transform.position);
         }
 
         public static void PlayDoorCloseSound(Room room)
         {
-            AudioSource.PlayClipAtPoint(Sounds.doorsCloseSound, room.transform.position);
+            PlayAtPointIfNotNull(Sounds.doorsCloseSound, room.transform.position);
         }
 
         public static void PlayCollectableSound(MonoBehaviour collectable)
         {
-            AudioSource.PlayClipAtPoint(Sounds.collectableSound, collectable.transform.position);
+            PlayAtPointIfNotNull(Sounds.collectableSound, collectable.transform.position);
         }
 
         public static void PlayDeliveryReceivedSound(PlayerActorInput player)
         {
-            AudioSource.PlayClipAtPoint(Sounds.deliveryReceivedSound, player.transform.position);
+            PlayAtPointIfNotNull(Sounds.deliveryReceivedSound, player.transform.position);
         }
 
         public static void PlayDeliverySuccessSound(PlayerActorInput player)
         {
-            AudioSource.PlayClipAtPoint(Sounds.deliverySuccessSound, player.transform.position);
+            PlayAtPointIfNotNull(Sounds.deliverySuccessSound, player.transform.position);
         }
 
         #endregion
@@ -216,19 +216,25 @@ namespace Sounds
 
         public static void PlayMenuButtonClickSound()
         {
-            AudioSource.PlayClipAtPoint(Sounds.menuButtonClickSound, MainCamera.transform.position);
+            PlayAtPointIfNotNull(Sounds.menuButtonClickSound, MainCamera.transform.position);
         }
 
         public static void PlayUpgradeButtonClickSound()
         {
-            AudioSource.PlayClipAtPoint(Sounds.upgradeButtonClickSound, MainCamera.transform.position);
+            PlayAtPointIfNotNull(Sounds.upgradeButtonClickSound, MainCamera.transform.position);
         }
 
         public static void PlayDialogueSound()
         {
-            AudioSource.PlayClipAtPoint(Sounds.dialogueSound, MainCamera.transform.position);
+            PlayAtPointIfNotNull(Sounds.dialogueSound, MainCamera.transform.position);
         }
 
         #endregion
+
+        private static void PlayAtPointIfNotNull(AudioClip clip, Vector3 position)
+        {
+            if (clip != null) 
+                AudioSource.PlayClipAtPoint(clip, position);
+        }
     }
 }
