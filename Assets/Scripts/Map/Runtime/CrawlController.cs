@@ -6,6 +6,7 @@ using Actors.InputThings.AI;
 using Actors.Spawn;
 using Common;
 using DG.Tweening;
+using Game;
 using Map.Model;
 using UnityEngine;
 using Utils;
@@ -86,6 +87,12 @@ namespace Map.Runtime
             if (enemiesLeft > 0)
             {
                 room.CloseDoors();
+            }
+
+            if (!DialogueController.Instance.IntroShowed)
+            {
+                player.ToggleInput(false);
+                DialogueController.Instance.Intro(() => player.ToggleInput(true));
             }
         }
 

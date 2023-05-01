@@ -10,7 +10,8 @@ namespace Game
         [SerializeField] private GameObject playerPrefab;
         // [SerializeField] private LevelGenerator levelGenerator;
         [SerializeField] private FloorController floorController;
-        
+
+        public bool skipIntro;
         
 
         public void Initialize()

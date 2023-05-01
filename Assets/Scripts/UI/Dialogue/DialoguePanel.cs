@@ -23,23 +23,23 @@ namespace UI.Dialogue
             cancelBtn.onClick.RemoveAllListeners();
             confirmBtn.onClick.AddListener(() =>
             {
-                confirmAction?.Invoke();
                 gameObject.SetActive(false);
+                confirmAction?.Invoke();
             });
             cancelBtn.onClick.AddListener(() =>
             {
-                cancelAction?.Invoke();
                 gameObject.SetActive(false);
+                cancelAction?.Invoke();
             });
         }
 
         private void ApplyConfig(DialogueConfig config)
         {
-            portrait.enabled = config.portrait != null;
-            nameText.enabled = config.title != null;
-            messageText.enabled = config.message != null;
-            confirmBtn.enabled = config.confirmBtnText != null;
-            cancelBtn.enabled = config.cancelBtnText != null;
+            portrait.gameObject.SetActive(config.portrait != null);
+            nameText.gameObject.SetActive(config.title != null);
+            messageText.gameObject.SetActive(config.message != null);
+            confirmBtn.gameObject.SetActive(config.confirmBtnText != null);
+            cancelBtn.gameObject.SetActive(config.cancelBtnText != null);
             
             portrait.sprite = config.portrait;
             nameText.text = config.title;
