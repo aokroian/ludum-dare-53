@@ -34,6 +34,8 @@ namespace Map
             CreateAllWalls(config, roomObj);
             CustomizeRoom(config, roomObj);
             
+            room.distanceFromStart = config.distanceFromStart;
+            
             room.InitializeRoom(config.roomType);
             return room;
         }

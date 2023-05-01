@@ -1,5 +1,4 @@
-﻿using System;
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -13,6 +12,8 @@ namespace Map.Model
         public RoomExit[] exits;
         public Vector3 center;
         public WalkArea walkArea;
+
+        public int distanceFromStart;
 
         public bool visited;
 

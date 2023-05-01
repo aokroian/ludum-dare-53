@@ -1,14 +1,11 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Actors;
 using Actors.InputThings;
-using Actors.InputThings.AI;
 using Actors.Spawn;
 using Common;
 using DG.Tweening;
 using Game;
 using Map.Model;
-using UnityEditor.PackageManager.UI;
 using UnityEngine;
 using Utils;
 
@@ -65,12 +62,11 @@ namespace Map.Runtime
             _cameraController.MoveToRoom(newRoom, roomSwitchDuration);
             prevRoom.FadeOut(roomSwitchDuration);
             newRoom.FadeIn(roomSwitchDuration);
-            // TODO: enemies spawn if not visited
             
             if (!newRoom.visited && newRoom.roomType is RoomType.Common)
             {
-                var enemies = SpawnUtil.SpawnEnemiesForRoom(newRoom);
-                enemiesLeft = enemies.Length;
+                var enemies = SpawnUtil.SpawnEnemiesForRoom(newRoom, entrance.Direction);
+                enemiesLeft = enemies.Count;
                 foreach (var enemy in enemies)
                 {
                     enemy.gameObject.GetComponent<ActorHealth>().OnDeath += EnemyEliminated;
