@@ -9,20 +9,20 @@ namespace UI.Hud
         [SerializeField] private int healthInHeart = 2;
         [SerializeField] private GameObject heartPrefab;
 
-        private int curMaxHealth;
-        private List<PlayerHeart> _hearts = new();
+        private int _curMaxHealth;
+        private readonly List<PlayerHeart> _hearts = new();
 
         private void Awake()
         {
             var playerHealth = GetComponentInParent<ActorHealth>();
-            SetHealth(playerHealth.MaxHealth, playerHealth.Health);
+            SetHealth(playerHealth.CurrentMaxHealth, playerHealth.CurrentHealth);
             playerHealth.OnHealthChanged +=
-                curHealth => SetHealth(playerHealth.MaxHealth, curHealth);
+                curHealth => SetHealth(playerHealth.CurrentMaxHealth, curHealth);
         }
 
         private void SetHealth(int maxHealth, int health)
         {
-            if (curMaxHealth != maxHealth)
+            if (_curMaxHealth != maxHealth)
             {
                 RecreateHearts(maxHealth / healthInHeart);
             }

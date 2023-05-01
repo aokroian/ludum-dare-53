@@ -1,50 +1,74 @@
 using System;
+using Actors.Upgrades;
 using Sounds;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Actors
 {
-    public class ActorHealth : ActorSystem
+    public class ActorHealth : ActorSystem, IDynamicStatsReceiver
     {
-        public float invincibilityTime = 0f;
-        
+        public float invincibilityTime;
+
         public bool isDeathSound;
         public bool isDamageSound;
         public bool isHealSound;
 
-        [field: SerializeField] public int MaxHealth { get; private set; } = 100;
-        [field: SerializeField] public int Health { get; private set; }
-        public bool IsDead => Health <= 0;
+        [SerializeField] private int maxHealth;
+        [SerializeField] private int health;
+        public bool IsDead => CurrentHealth <= 0;
 
         public event Action<ActorHealth> OnDeath;
         private event Action<ActorHealth> OnRevive;
-
         public event Action<int> OnHealthChanged;
         public event Action<int> OnHeal;
         public event Action<int> OnDamageTaken;
+        public int CurrentMaxHealth { get; private set; }
+        public int CurrentHealth { get; private set; }
+
+        private DynamicActorStats _dynamicActorStats;
 
         private float _invincibilityEndTime;
 
         protected override void Awake()
         {
+            health = maxHealth;
+            CurrentMaxHealth = maxHealth;
+            CurrentHealth = health;
+
             base.Awake();
-            Health = MaxHealth;
+
+            _dynamicActorStats = GetComponent<DynamicActorStats>();
+            if (_dynamicActorStats != null)
+                _dynamicActorStats.AddReceiver(this);
+        }
+
+        private void OnDestroy()
+        {
+            if (_dynamicActorStats != null)
+                _dynamicActorStats.RemoveReceiver(this);
+        }
+
+        public void ApplyDynamicStats(ActorStatsSo actorStatsSo)
+        {
+            CurrentMaxHealth = maxHealth + actorStatsSo.addedMaxHealth;
+            CurrentHealth = health + actorStatsSo.addedCurrentHealth;
         }
 
         public void Heal(int amount)
         {
             if (amount <= 0)
                 return;
-            var newHealth = Health + amount;
+            var newHealth = CurrentHealth + amount;
 
             if (IsDead && newHealth > 0)
                 OnRevive?.Invoke(this);
 
-            Health = newHealth;
-            if (Health > MaxHealth)
-                Health = MaxHealth;
+            CurrentHealth = newHealth;
+            if (CurrentHealth > CurrentMaxHealth)
+                CurrentHealth = CurrentMaxHealth;
 
-            OnHealthChanged?.Invoke(Health);
+            OnHealthChanged?.Invoke(CurrentHealth);
             OnHeal?.Invoke(amount);
             if (isHealSound)
                 SoundSystem.ActorHealSound(this);
@@ -54,13 +78,13 @@ namespace Actors
         {
             if (damage <= 0 || _invincibilityEndTime > Time.time)
                 return;
-            
+
             _invincibilityEndTime = Time.time + invincibilityTime;
 
-            Health -= damage;
-            if (Health < 0)
-                Health = 0;
-            
+            CurrentHealth -= damage;
+            if (CurrentHealth < 0)
+                CurrentHealth = 0;
+
             if (IsDead)
             {
                 if (isDeathSound)
@@ -69,7 +93,7 @@ namespace Actors
             }
 
 
-            OnHealthChanged?.Invoke(Health);
+            OnHealthChanged?.Invoke(CurrentHealth);
             OnDamageTaken?.Invoke(damage);
             if (isDamageSound)
                 SoundSystem.ActorDamageSound(this);
