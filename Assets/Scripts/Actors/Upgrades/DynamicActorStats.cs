@@ -11,7 +11,7 @@ namespace Actors.Upgrades
         [field: SerializeField] public ActorGunSystem ActorGunSystem { get; private set; }
 
         [field: SerializeField] public ActorHealth ActorHealthSystem { get; private set; }
-        [field: SerializeField] public ActorMovement ActorMovementSystem { get; private set; }
+        [field: SerializeField] public ActorPhysics ActorPhysicsSystem { get; private set; }
         [field: SerializeField] public ActorScopeSystem ActorScopeSystem { get; private set; }
 
         private readonly List<IDynamicStatsReceiver> _dynamicStatsReceivers = new();

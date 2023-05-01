@@ -16,9 +16,9 @@ MonoBehaviour:
   addedScaleModifier: 0
   addedMaxHealth: 0
   addedCurrentHealth: 0
-  addedShootRate: 0.4
+  addedShootRate: 0
   addedBulletsSpeed: 0
   addedBulletsDamage: 0
   addedBulletsScale: 0
-  addedBulletsPerShotCount: 5
-  addedBulletsPenetrationCount: 0
+  addedBulletsPerShotCount: 0
+  addedBulletsPiercingCount: 0
