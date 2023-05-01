@@ -6,6 +6,7 @@ using Actors.InputThings.AI;
 using Actors.Spawn;
 using Common;
 using DG.Tweening;
+using Game;
 using Map.Model;
 using UnityEngine;
 using Utils;
@@ -35,7 +36,7 @@ namespace Map.Runtime
             curRoom.FadeIn(0f);
             _cameraController.MoveToRoom(curRoom);
             
-            player.gameObject.GetComponent<ActorMovement>().enabled = false;
+            player.ToggleInput(false);
             player.gameObject.GetComponent<Collider2D>().enabled = false;
             
             player.transform.DOMove(center + new Vector3(4, 0, 0), 0.6f)
@@ -44,7 +45,7 @@ namespace Map.Runtime
         
         public void ExitRoom(PlayerActorInput player, Room room, RoomExit exit)
         {
-            player.gameObject.GetComponent<ActorMovement>().enabled = false;
+            player.ToggleInput(false);
             player.gameObject.GetComponent<Collider2D>().enabled = false;
             
             var newRoom = currentLevel.rooms[currentLevel.GetRoomPosition(room) +
@@ -79,13 +80,19 @@ namespace Map.Runtime
         private void OnRoomEntered(PlayerActorInput player, Room room)
         {
             currentRoom = room;
-            player.gameObject.GetComponent<ActorMovement>().enabled = true;
+            player.ToggleInput(true);
             player.gameObject.GetComponent<Collider2D>().enabled = true;
             room.visited = true;
 
             if (enemiesLeft > 0)
             {
                 room.CloseDoors();
+            }
+
+            if (!DialogueController.Instance.IntroShowed)
+            {
+                player.ToggleInput(false);
+                DialogueController.Instance.Intro(() => player.ToggleInput(true));
             }
         }
 

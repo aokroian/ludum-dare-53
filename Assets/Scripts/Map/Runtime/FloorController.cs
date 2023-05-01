@@ -1,5 +1,7 @@
-﻿using Actors.InputThings;
+﻿using Actors;
+using Actors.InputThings;
 using Common;
+using DG.Tweening;
 using Game;
 using Map.Model;
 using UnityEngine;
@@ -17,7 +19,14 @@ namespace Map.Runtime
         public void TryToEnterLevel(PlayerActorInput player, int depth, bool downstairs, Vector3Int startRoomPos)
         {
             if (downstairs && PackageController.Instance.HasPackage(depth))
+            {
                 EnterLevel(player, depth, downstairs, startRoomPos);
+            }
+            else if (!downstairs)
+            {
+                player.ToggleInput(false);
+                DialogueController.Instance.CantGoUpstairs(() => player.ToggleInput(true));
+            }
         }
         
         private void EnterLevel(PlayerActorInput player, int depth, bool downstairs, Vector3Int startRoomPos)
