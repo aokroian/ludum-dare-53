@@ -17,9 +17,9 @@ namespace Actors
         public event Action<ActorHealth> OnDeath;
         private event Action<ActorHealth> OnRevive;
 
-        public event Action<float> OnHealthChanged;
-        public event Action<float> OnHeal;
-        public event Action<float> OnDamageTaken;
+        public event Action<int> OnHealthChanged;
+        public event Action<int> OnHeal;
+        public event Action<int> OnDamageTaken;
 
         protected override void Awake()
         {
