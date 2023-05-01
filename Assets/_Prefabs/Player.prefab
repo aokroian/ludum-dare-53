@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 6167454294725120480}
   - component: {fileID: 3470803016355783899}
   - component: {fileID: 1139072629945911033}
+  - component: {fileID: 1159252010573160953}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -328,6 +329,23 @@ MonoBehaviour:
   isHealSound: 0
   <MaxHealth>k__BackingField: 6
   <Health>k__BackingField: 0
+--- !u!114 &1159252010573160953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2889042778872502699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 863ce373c0c54f15b90449ebd8fc117e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ActorStats>k__BackingField: {fileID: 11400000, guid: 688ba0138538a4d0f8d360cf6ff3285f, type: 2}
+  <ActorGunSystem>k__BackingField: {fileID: 4831910466470118224}
+  <ActorHealthSystem>k__BackingField: {fileID: 1139072629945911033}
+  <ActorMovementSystem>k__BackingField: {fileID: 7027276179020110475}
+  <ActorScopeSystem>k__BackingField: {fileID: 3470803016355783899}
 --- !u!1 &7372094988291725269
 GameObject:
   m_ObjectHideFlags: 0

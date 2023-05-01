@@ -1,7 +1,6 @@
 using System;
 using Actors.Combat;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Actors
 {
@@ -23,7 +22,7 @@ namespace Actors
             _gunsConfig = Resources.Load<GunsConfigSo>("GunsConfig");
 
             ChangeActiveGun(startGunType);
-        }
+        } 
 
         private void Update()
         {

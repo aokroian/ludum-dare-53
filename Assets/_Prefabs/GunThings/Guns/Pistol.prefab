@@ -103,7 +103,7 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 8971872787659182349}
   shootRate: 2.5
   bulletsPerShotCount: 1
-  bulletsDispersionAngle: 0
+  zAngleBetweenBullets: 8
 --- !u!1 &7876265652095531552
 GameObject:
   m_ObjectHideFlags: 0
