@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Actors
@@ -15,7 +14,7 @@ namespace Actors
             _actorHealth.OnDeath += OnDeath;
         }
 
-        private void OnDeath()
+        private void OnDeath(ActorHealth actorHealth)
         {
             _actorHealth.gameObject.SetActive(false);
             var spawnedDeathEffect = Instantiate(deathEffectPrefab, transform.position, Quaternion.identity);

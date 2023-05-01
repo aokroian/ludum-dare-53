@@ -1,9 +1,11 @@
+using Sounds;
 using UnityEngine;
 
 namespace Actors.Combat
 {
     public class Bullet : MonoBehaviour
     {
+        [field: SerializeField] public BulletTypes BulletType { get; private set; }
         [SerializeField] private GameObject particlesPrefab;
         [SerializeField] [Range(0.1f, 30f)] private float bulletSpeed = 10f;
         [SerializeField] [Range(1, 1000)] private int bulletDamage = 30;
@@ -25,6 +27,7 @@ namespace Actors.Combat
                 if (actorHealth != null)
                     actorHealth.TakeDamage(bulletDamage);
                 Destroy(gameObject);
+                SoundSystem.BulletHitSound(this);
             }
             else
                 OnHitObstacle(other);
@@ -37,6 +40,7 @@ namespace Actors.Combat
             Vector3 normal = hit.normal;
             var spawned = Instantiate(particlesPrefab, hit.point, Quaternion.identity);
             spawned.transform.forward = normal;
+            SoundSystem.BulletHitSound(this);
             Destroy(gameObject);
         }
     }
