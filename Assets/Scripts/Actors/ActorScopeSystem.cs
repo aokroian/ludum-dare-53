@@ -5,7 +5,9 @@ namespace Actors
 {
     public class ActorScopeSystem : ActorSystem
     {
-        [SerializeField] private Transform scopeTransform;
+        private Transform _currentScope;
+        private SpriteRenderer _currentScopeSpite;
+        private GunTypes _currentGunType;
 
         private GunsConfigSo _gunsConfig;
         private ActorGunSystem _actorGunSystem;
@@ -25,8 +27,16 @@ namespace Actors
 
         private void Update()
         {
-            if (_isScopeSpawned)
-                scopeTransform.transform.position = ActorInput.Look;
+            if (!_isScopeSpawned)
+                return;
+            _currentScope.transform.position = ActorInput.Look;
+
+            if (_currentGunType == GunTypes.Shotgun)
+            {
+                RotationForShotgun();
+            }
+            
+            SetScopeColor();
         }
 
         private void OnGunChanged(Gun gun)
@@ -38,11 +48,39 @@ namespace Actors
                 return;
             }
 
-            if (scopeTransform != null)
-                Destroy(scopeTransform.gameObject);
+            if (_currentScope != null)
+                Destroy(_currentScope.gameObject);
             var spawnedScope = Instantiate(scopePrefab, transform);
-            scopeTransform = spawnedScope.transform;
+            _currentScopeSpite = spawnedScope.GetComponentInChildren<SpriteRenderer>();
+            _currentScope = spawnedScope.transform;
+            _currentGunType = gun.GunType;
             _isScopeSpawned = true;
+        }
+
+        private void RotationForShotgun()
+        {
+            
+            var direction = _currentScope.transform.position - transform.position;
+            var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            
+            _currentScope.transform.rotation = Quaternion.Euler(0, 0, angle + 90);
+        }
+
+        private void SetScopeColor()
+        {  
+            var checkRadius = 0.13f;
+            var results = new Collider2D[3];
+            var size = Physics2D.OverlapCircleNonAlloc(_currentScope.transform.position, checkRadius, results);
+            var isEnemyInRange = false;
+            var index = 0;
+            for (; index < size; index++)
+            {
+                var colliderEnemy = results[index];
+                if (!colliderEnemy.CompareTag("Enemy")) continue;
+                isEnemyInRange = true;
+                break;
+            }
+            _currentScopeSpite.color = isEnemyInRange ? Color.red : Color.white;
         }
     }
 }

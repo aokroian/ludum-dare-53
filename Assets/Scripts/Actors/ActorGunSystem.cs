@@ -14,7 +14,7 @@ namespace Actors
 
         private Gun _currentActiveGun;
         private GunsConfigSo _gunsConfig;
-
+        
         private bool _isGunSpawned;
 
         protected override void Awake()
