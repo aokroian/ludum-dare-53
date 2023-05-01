@@ -27,6 +27,6 @@ namespace Actors.Upgrades
         public int addedBulletsDamage;
         public float addedBulletsScale;
         public int addedBulletsPerShotCount;
-        public int addedBulletsPenetrationCount;
+        public int addedBulletsPiercingCount;
     }
 }

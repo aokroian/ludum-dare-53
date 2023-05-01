@@ -26,6 +26,9 @@ namespace Actors.Combat
 
         private void Awake()
         {
+            _currentShootRate = shootRate;
+            _currentBulletsPerShotCount = bulletsPerShotCount;
+            
             _dynamicActorStats = GetComponentInParent<DynamicActorStats>();
             _initialScale = transform.localScale;
             _gunSystem = GetComponentInParent<ActorGunSystem>();
@@ -67,6 +70,8 @@ namespace Actors.Combat
                         0,
                         transform.rotation.eulerAngles.z + initialAngle + i * zAngleBetweenBullets);
                     var spawnedBullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletRotation);
+                    spawnedBullet.dynamicActorStats = _dynamicActorStats;
+                    spawnedBullet.Init();
                     spawnedBullet.ownerActor = _gunSystem.transform;
                     SoundSystem.GunShotSound(this);
                 }
