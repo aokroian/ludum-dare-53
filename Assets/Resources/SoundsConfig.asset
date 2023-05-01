@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b081ce787ee41e98ba773e9b54139c7, type: 3}
   m_Name: SoundsConfig
   m_EditorClassIdentifier: 
-  menuMusic: {fileID: 8300000, guid: 5d8b4b39708464c38a0a076379fd8f1b, type: 3}
+  menuMusic: {fileID: 8300000, guid: 1f2ad53bacc245642854dbdc8ea71a9b, type: 3}
   combatMusic: {fileID: 8300000, guid: c39a46df834194123b7f29817cd66432, type: 3}
   peacefulMusic: {fileID: 8300000, guid: 51a4f1157b7ff1449b5e5cf064d584c7, type: 3}
   actorDamageSound: {fileID: 0}
@@ -25,7 +25,7 @@ MonoBehaviour:
   - gunType: 1
     shotSound: {fileID: 8300000, guid: 65201ddabb4144f6a8fb9480120b7656, type: 3}
   - gunType: 2
-    shotSound: {fileID: 8300000, guid: fc582df3572b64d279888946675505af, type: 3}
+    shotSound: {fileID: 8300000, guid: 65a8e1f13143c47ab9b96881eac40dff, type: 3}
   moveToAnotherDepthSound: {fileID: 8300000, guid: 2682f1816d89e554eb5a65e5d2867a21, type: 3}
   doorsOpenSound: {fileID: 8300000, guid: fb4f41231b95d85438237bb7917c5c49, type: 3}
   doorsCloseSound: {fileID: 8300000, guid: 1239da9490239cf4fb1fb95fc168191e, type: 3}
@@ -34,4 +34,4 @@ MonoBehaviour:
   deliverySuccessSound: {fileID: 8300000, guid: bf81bafaed1a2494fb11e88b0c1e6750, type: 3}
   menuButtonClickSound: {fileID: 8300000, guid: 3986944f65b86e04b8418ecb10734a2d, type: 3}
   upgradeButtonClickSound: {fileID: 8300000, guid: dd7523aa939dbd44399666696ef4e0a6, type: 3}
-  dialogueSound: {fileID: 8300000, guid: 8a0138f1a570b8b46b6ee898f970d337, type: 3}
+  dialogueSound: {fileID: 8300000, guid: 8e9513b9529a5474daddf6330ce3e912, type: 3}
