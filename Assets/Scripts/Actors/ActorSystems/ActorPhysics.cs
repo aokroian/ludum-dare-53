@@ -1,6 +1,7 @@
 using System;
 using Actors.Upgrades;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Actors
 {
@@ -10,7 +11,7 @@ namespace Actors
         private Rigidbody2D _rigidbody2D;
 
         private float _currentSpeed;
-        private float _defaultScale;
+        public float DefaultScale { get; private set; }
         private float _currentScale;
         private DynamicActorStats _dynamicActorStats;
 
@@ -18,8 +19,8 @@ namespace Actors
         protected override void Awake()
         {
             _currentSpeed = speed;
-            _defaultScale = transform.localScale.x;
-            _currentScale = _defaultScale;
+            DefaultScale = transform.localScale.x;
+            _currentScale = DefaultScale;
 
             base.Awake();
             _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -38,7 +39,7 @@ namespace Actors
         public void ApplyDynamicStats(ActorStatsSo actorStatsSo)
         {
             _currentSpeed = speed + actorStatsSo.addedMovementSpeed;
-            _currentScale = _defaultScale + actorStatsSo.addedScaleModifier;
+            _currentScale = DefaultScale + actorStatsSo.addedScaleModifier;
 
             transform.localScale = new Vector3(_currentScale, _currentScale, 1);
         }
