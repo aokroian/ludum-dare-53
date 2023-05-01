@@ -57,6 +57,14 @@ namespace Map.Model
             BonusSystem.Instance.SpawnRandomBonus(center);
         }
         
+        public void SetExitTriggersEnabled(bool enabled)
+        {
+            foreach (var roomExit in exits)
+            {
+                roomExit.SetTriggerEnabled(enabled);
+            }
+        }
+        
         private void TweenToColor(Color color, float duration)
         {
             foreach (var tilemap in _tilemaps)

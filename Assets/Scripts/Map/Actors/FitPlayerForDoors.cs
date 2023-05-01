@@ -7,7 +7,10 @@ namespace Map.Actors
 {
     public class FitPlayerForDoors : MonoBehaviour
     {
-        private Tweener _tweener;
+        private Tweener _moveTweener;
+        private Tweener _scaleTweener;
+
+        private const float MoveInOutSpeed = .45f;
 
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -23,16 +26,33 @@ namespace Map.Actors
         {
             if (!other.CompareTag("Player"))
                 return;
-            _tweener?.Kill();
-            _tweener = other.transform.DOScale(.6f, .4f).SetEase(Ease.OutExpo);
+            _moveTweener?.Kill();
+            _scaleTweener?.Kill();
+            var otherPos = other.transform.position;
+            var dir = transform.position - otherPos;
+            var movePos = otherPos + dir * MoveInOutSpeed;
+            _moveTweener = other.transform.DOMove(movePos, .2f);
+            _moveTweener.onComplete += () =>
+            {
+                _scaleTweener = other.transform.DOScale(.6f, .4f).SetEase(Ease.OutExpo);
+            };
         }
 
         private void TryToRestoreScale(Collider2D other)
         {
             if (!other.CompareTag("Player"))
                 return;
-            _tweener?.Kill();
-            _tweener = other.transform.DOScale(GetUnaffectedScaleValue(other.gameObject), .3f).SetEase(Ease.OutExpo);
+            _moveTweener?.Kill();
+            _scaleTweener?.Kill();
+            var otherPos = other.transform.position;
+            var dir = transform.position - otherPos;
+            var movePos = otherPos - dir * MoveInOutSpeed;
+            _moveTweener = other.transform.DOMove(movePos, .2f);
+            _moveTweener.onComplete += () =>
+            {
+                _scaleTweener = other.transform.DOScale(GetUnaffectedScaleValue(other.gameObject), .4f)
+                    .SetEase(Ease.OutExpo);
+            };
         }
 
         private float GetUnaffectedScaleValue(GameObject player)

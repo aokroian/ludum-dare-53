@@ -40,7 +40,6 @@ namespace Actors.Combat
                 if (actorHealth == null)
                     return;
                 actorHealth.TakeDamage(damage);
-                Debug.Log("damage");
                 PushVictim(other.transform);
                 _damageTimer = 0;
             }
@@ -50,8 +49,8 @@ namespace Actors.Combat
         {
             var victimPos = victim.position;
             var dir = victimPos - transform.position;
-            var targetPos = victimPos + dir * .8f;
-            victim.DOMove(targetPos, 0.25f).SetEase(Ease.OutElastic);
+            var targetPos = victimPos + dir * .3f;
+            victim.DOMove(targetPos, 0.2f).SetEase(Ease.OutExpo);
         }
     }
 }
