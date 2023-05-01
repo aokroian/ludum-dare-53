@@ -358,9 +358,8 @@ MonoBehaviour:
   invincibilityTime: 0.5
   isDeathSound: 0
   isDamageSound: 0
-  isHealSound: 0
-  <MaxHealth>k__BackingField: 6
-  <Health>k__BackingField: 0
+  isHealSound: 1
+  maxHealth: 6
 --- !u!114 &1159252010573160953
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using Bonus;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -53,6 +54,7 @@ namespace Map.Model
             {
                 roomExit.OpenDoor();
             }
+            BonusSystem.Instance.SpawnRandomBonus(center);
         }
         
         private void TweenToColor(Color color, float duration)
