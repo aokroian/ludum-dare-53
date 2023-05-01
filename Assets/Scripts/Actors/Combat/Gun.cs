@@ -68,6 +68,7 @@ namespace Actors.Combat
 
                 var initialAngle = -(fullAngle / 2);
                 OnFire?.Invoke();
+                SoundSystem.GunShotSound(this);
                 for (var i = 0; i < _currentBulletsPerShotCount; i++)
                 {
                     var bulletRotation = Quaternion.Euler(
@@ -78,7 +79,6 @@ namespace Actors.Combat
                     spawnedBullet.dynamicActorStats = _dynamicActorStats;
                     spawnedBullet.Init();
                     spawnedBullet.ownerActor = _gunSystem.transform;
-                    SoundSystem.GunShotSound(this);
                 }
 
                 _shootRateTimer = 1 / _currentShootRate;
