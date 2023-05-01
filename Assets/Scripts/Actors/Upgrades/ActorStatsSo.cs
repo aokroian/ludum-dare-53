@@ -27,5 +27,27 @@ namespace Actors.Upgrades
         public float addedBulletsScale;
         public int addedBulletsPerShotCount;
         public int addedBulletsPiercingCount;
+
+        [Header("Others")]
+        public Sprite icon;
+        public string description;
+
+        public ActorStatsSo GetCopy()
+        {
+            var copy = CreateInstance<ActorStatsSo>();
+            copy.name = name + "_Copy";
+            copy.addedMovementSpeed = addedMovementSpeed;
+            copy.addedScaleModifier = addedScaleModifier;
+            copy.addedMaxHealth = addedMaxHealth;
+            copy.addedShootRate = addedShootRate;
+            copy.addedBulletsSpeed = addedBulletsSpeed;
+            copy.addedBulletsDamage = addedBulletsDamage;
+            copy.addedBulletsScale = addedBulletsScale;
+            copy.addedBulletsPerShotCount = addedBulletsPerShotCount;
+            copy.addedBulletsPiercingCount = addedBulletsPiercingCount;
+            copy.icon = icon;
+            copy.description = description;
+            return copy;
+        }
     }
 }

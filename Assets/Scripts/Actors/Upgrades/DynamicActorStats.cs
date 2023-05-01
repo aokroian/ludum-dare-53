@@ -18,6 +18,8 @@ namespace Actors.Upgrades
 
         private void Awake()
         {
+            var copy = ActorStatsSo.GetCopy();
+            ActorStatsSo = copy;
             ActorStatsSo.OnValidateEvent += ApplyStatsToAllReceivers;
         }
 
