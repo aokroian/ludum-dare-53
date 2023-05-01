@@ -96,7 +96,7 @@ namespace Map.Runtime
             }
         }
 
-        private void EnemyEliminated()
+        private void EnemyEliminated(ActorHealth actorHealth)
         {
             enemiesLeft--;
             if (enemiesLeft == 0)

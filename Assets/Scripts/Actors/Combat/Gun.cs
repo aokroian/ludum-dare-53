@@ -1,4 +1,4 @@
-using Actors.InputThings;
+using Sounds;
 using UnityEngine;
 
 namespace Actors.Combat
@@ -8,9 +8,8 @@ namespace Actors.Combat
         [field: SerializeField] public GunTypes GunType { get; private set; }
         [SerializeField] private Bullet bulletPrefab;
         [SerializeField] private Transform bulletSpawnPoint;
-        
-        [Space] 
-        
+
+        [Space]
         [SerializeField] private float shootRate = 1;
         [SerializeField] private int bulletsPerShotCount = 1;
         [SerializeField] private float bulletsDispersionAngle;
@@ -50,6 +49,7 @@ namespace Actors.Combat
                         transform.rotation.eulerAngles.z + initialAngle + (i * angleBetweenBullets));
                     var spawnedBullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletRotation);
                     spawnedBullet.ownerActor = _gunSystem.transform;
+                    SoundSystem.GunShotSound(this);
                 }
 
                 _shootRateTimer = 1 / shootRate;
