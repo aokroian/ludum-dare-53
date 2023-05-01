@@ -912,6 +912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cac62c27c7124b28b8d7b6c2184e4504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exitTrigger: {fileID: 646781931745443466}
   direction: 1
   shrinkCollider: {fileID: 7270096818197443773}
   door: {fileID: 7925427156154582715}

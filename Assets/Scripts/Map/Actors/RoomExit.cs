@@ -8,6 +8,7 @@ namespace Map.Model
 {
     public class RoomExit : MonoBehaviour
     {
+        [SerializeField] private BoxCollider2D exitTrigger;
         [SerializeField] private WallDirection direction;
         [SerializeField] private BoxCollider2D shrinkCollider;
         public WallDirection Direction => direction;
@@ -25,14 +26,21 @@ namespace Map.Model
         
         public void CloseDoor()
         {
+            exitTrigger.enabled = false;
             door.SetActive(true);
             shrinkCollider.gameObject.SetActive(false);
         }
         
         public void OpenDoor()
         {
+            exitTrigger.enabled = true;
             door.SetActive(false);
             shrinkCollider.gameObject.SetActive(true);
+        }
+        
+        public void SetTriggerEnabled(bool enabled)
+        {
+            exitTrigger.enabled = enabled;
         }
     }
 }

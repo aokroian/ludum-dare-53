@@ -35,7 +35,7 @@ namespace Map.Runtime
             _cameraController.MoveToRoom(curRoom);
             
             player.ToggleInput(false);
-            player.gameObject.GetComponent<Collider2D>().enabled = false;
+            // player.gameObject.GetComponent<Collider2D>().enabled = false;
             
             player.transform.DOMove(center + new Vector3(4, 0, 0), 0.6f)
                 .OnComplete(() => OnRoomEntered(player, curRoom));
@@ -44,7 +44,7 @@ namespace Map.Runtime
         public void ExitRoom(PlayerActorInput player, Room room, RoomExit exit)
         {
             player.ToggleInput(false);
-            player.gameObject.GetComponent<Collider2D>().enabled = false;
+            // player.gameObject.GetComponent<Collider2D>().enabled = false;
             
             var newRoom = currentLevel.rooms[currentLevel.GetRoomPosition(room) +
                                              CommonUtils.DirectionToVector(exit.Direction)];
@@ -59,6 +59,7 @@ namespace Map.Runtime
 
         private void OnRoomSwitchStarted(Room prevRoom, RoomExit exit, Room newRoom, RoomEntrance entrance)
         {
+            newRoom.SetExitTriggersEnabled(false);
             _cameraController.MoveToRoom(newRoom, roomSwitchDuration);
             prevRoom.FadeOut(roomSwitchDuration);
             newRoom.FadeIn(roomSwitchDuration);
@@ -78,7 +79,8 @@ namespace Map.Runtime
         {
             currentRoom = room;
             player.ToggleInput(true);
-            player.gameObject.GetComponent<Collider2D>().enabled = true;
+            room.SetExitTriggersEnabled(true);
+            // player.gameObject.GetComponent<Collider2D>().enabled = true;
             room.visited = true;
 
             if (enemiesLeft > 0)
