@@ -6,6 +6,7 @@ TagManager:
   tags:
   - AI_Walk_Area
   - Enemy
+  - Damage_Collider
   layers:
   - Default
   - TransparentFX

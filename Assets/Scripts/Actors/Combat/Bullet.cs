@@ -57,8 +57,13 @@ namespace Actors.Combat
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.transform.IsChildOf(ownerActor) || other.CompareTag("AI_Walk_Area"))
+            if (other.transform.IsChildOf(ownerActor) ||
+                other.CompareTag("AI_Walk_Area") ||
+                other.CompareTag("Damage_Collider"))
+            {
                 return;
+            }
+
             if (other.CompareTag("Enemy") || other.CompareTag("Player"))
             {
                 var actorHealth = other.GetComponentInChildren<ActorHealth>();
