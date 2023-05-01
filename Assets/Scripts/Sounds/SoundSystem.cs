@@ -2,6 +2,8 @@ using System.Collections;
 using System.Linq;
 using Actors;
 using Actors.Combat;
+using Actors.InputThings;
+using Map.Model;
 using UnityEngine;
 
 namespace Sounds
@@ -20,6 +22,18 @@ namespace Sounds
         }
 
         private static SoundsConfig _sounds;
+
+        private static Camera MainCamera
+        {
+            get
+            {
+                if (_camera == null)
+                    _camera = Camera.main;
+                return _camera;
+            }
+        }
+
+        private static Camera _camera;
 
 
         #region Music
@@ -127,7 +141,7 @@ namespace Sounds
 
         #endregion
 
-        #region ActorSounds
+        #region Actor_Sounds
 
         public static void ActorDamageSound(ActorHealth actorHealth)
         {
@@ -146,7 +160,7 @@ namespace Sounds
 
         #endregion
 
-        #region CombatSounds
+        #region Combat_Sounds
 
         public static void BulletHitSound(Bullet bullet)
         {
@@ -160,6 +174,59 @@ namespace Sounds
             var sound = Sounds.gunShotsSound.FirstOrDefault(p => p.gunType == gun.GunType)?.shotSound;
             if (sound != null)
                 AudioSource.PlayClipAtPoint(sound, gun.transform.position);
+        }
+
+        #endregion
+
+        #region Map_Related_Sounds
+
+        public static void PlayMoveToAnotherDepthSound(PlayerActorInput player)
+        {
+            AudioSource.PlayClipAtPoint(Sounds.moveToAnotherDepthSound, player.transform.position);
+        }
+
+        public static void PlayDoorOpenSound(Room room)
+        {
+            AudioSource.PlayClipAtPoint(Sounds.doorsOpenSound, room.transform.position);
+        }
+
+        public static void PlayDoorCloseSound(Room room)
+        {
+            AudioSource.PlayClipAtPoint(Sounds.doorsCloseSound, room.transform.position);
+        }
+
+        public static void PlayCollectableSound(MonoBehaviour collectable)
+        {
+            AudioSource.PlayClipAtPoint(Sounds.collectableSound, collectable.transform.position);
+        }
+
+        public static void PlayDeliveryReceivedSound(PlayerActorInput player)
+        {
+            AudioSource.PlayClipAtPoint(Sounds.deliveryReceivedSound, player.transform.position);
+        }
+
+        public static void PlayDeliverySuccessSound(PlayerActorInput player)
+        {
+            AudioSource.PlayClipAtPoint(Sounds.deliverySuccessSound, player.transform.position);
+        }
+
+        #endregion
+
+        #region UI_Sounds
+
+        public static void PlayMenuButtonClickSound()
+        {
+            AudioSource.PlayClipAtPoint(Sounds.menuButtonClickSound, MainCamera.transform.position);
+        }
+
+        public static void PlayUpgradeButtonClickSound()
+        {
+            AudioSource.PlayClipAtPoint(Sounds.upgradeButtonClickSound, MainCamera.transform.position);
+        }
+
+        public static void PlayDialogueSound()
+        {
+            AudioSource.PlayClipAtPoint(Sounds.dialogueSound, MainCamera.transform.position);
         }
 
         #endregion
