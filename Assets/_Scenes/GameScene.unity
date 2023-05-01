@@ -466,10 +466,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1159252010573160953, guid: 7a63a46520ceb2b459b655acbb98abe6, type: 3}
-      propertyPath: <ActorStatsSo>k__BackingField
-      value: 
-      objectReference: {fileID: 11400000, guid: 688ba0138538a4d0f8d360cf6ff3285f, type: 2}
     - target: {fileID: 2889042778872502699, guid: 7a63a46520ceb2b459b655acbb98abe6, type: 3}
       propertyPath: m_Name
       value: Player

@@ -6,14 +6,14 @@ namespace Actors
 {
     public class ActorGunSystem : ActorSystem
     {
-        [SerializeField] private float gunDistance = 0.6f;
         [SerializeField] private GunTypes startGunType = GunTypes.Pistol;
+        [SerializeField] private Transform gunPoint; 
 
         public event Action<Gun> OnActiveGunChanged;
 
         private Gun _currentActiveGun;
         private GunsConfigSo _gunsConfig;
-        
+
         private bool _isGunSpawned;
 
         protected override void Awake()
@@ -22,12 +22,13 @@ namespace Actors
             _gunsConfig = Resources.Load<GunsConfigSo>("GunsConfig");
 
             ChangeActiveGun(startGunType);
-        } 
+        }
 
         private void Update()
         {
             if (!_isGunSpawned)
                 return;
+            _currentActiveGun.transform.position = gunPoint.position; 
             RotateGunAroundPlayer();
             if (ActorInput.Fire)
                 _currentActiveGun.Fire();
@@ -70,12 +71,7 @@ namespace Actors
             var direction = (mousePosition - position).normalized;
 
             var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            _currentActiveGun.transform.rotation = Quaternion.Euler(0, 0, angle);
-
-            var gunPosition = position + Quaternion.Euler(0.4f, 0, angle) * Vector3.right * gunDistance;
-            gunPosition.z = -1;
-            gunPosition.y -= 0.2f;
-            _currentActiveGun.transform.position = gunPosition;
+            _currentActiveGun.transform.rotation = Quaternion.Euler(0, 0, angle); 
             _currentActiveGun.FlipSprite(angle);
         }
     }
