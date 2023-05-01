@@ -14,7 +14,17 @@ namespace UI.Dialogue
         [SerializeField] private TMP_Text confirmBtnText;
         [SerializeField] private Button cancelBtn;
         [SerializeField] private TMP_Text cancelBtnText;
-        
+
+        private void OnEnable()
+        {
+            Cursor.visible = true;
+        }
+
+        private void OnDisable()
+        {
+            Cursor.visible = false;
+        }
+
         public void Show(DialogueConfig config, Action confirmAction = null, Action cancelAction = null)
         {
             ApplyConfig(config);

@@ -14,10 +14,19 @@ namespace Upgrades
         [SerializeField] private GameObject upgradePanel;
         [SerializeField] private RectTransform upgradeItemsContainer;
         [SerializeField] private UpgradeItemUI upgradeItemPrefab;
-        
+
         private ActorStatsSo[] _upgrades;
 
         private DynamicActorStats _playerStats;
+        private GoLifecycleEventEmitter _upgradePanelLifecycleEvents;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            _upgradePanelLifecycleEvents = upgradePanel.AddComponent<GoLifecycleEventEmitter>();
+            _upgradePanelLifecycleEvents.OnEnableEvent += () => { Cursor.visible = true; };
+            _upgradePanelLifecycleEvents.OnDisableEvent += () => { Cursor.visible = false; };
+        }
 
         public void Initialize()
         {
@@ -29,22 +38,22 @@ namespace Upgrades
         public void ShowUpgradeSelection(Action<ActorStatsSo> callback)
         {
             ClearContainer();
-            
+
             var selectedUpgrades = new List<ActorStatsSo>();
             while (selectedUpgrades.Count < 3)
             {
                 var upgrade = _upgrades[Random.Range(0, _upgrades.Length)];
                 if (selectedUpgrades.Contains(upgrade))
                     continue;
-                
+
                 selectedUpgrades.Add(upgrade);
                 Instantiate(upgradeItemPrefab, upgradeItemsContainer)
                     .Initialize(upgrade, upgrade => OnUpgradeSelected(upgrade, callback));
             }
-            
+
             upgradePanel.SetActive(true);
         }
-        
+
         private void ClearContainer()
         {
             foreach (Transform child in upgradeItemsContainer)

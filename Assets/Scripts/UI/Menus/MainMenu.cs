@@ -1,4 +1,5 @@
-﻿using Scene;
+﻿using System;
+using Scene;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,16 @@ namespace UI.Menus
     {
         [SerializeField] private Button startBtn;
         [SerializeField] private Button exitBtn;
+
+        private void OnEnable()
+        {
+            Cursor.visible = true;
+        }
+
+        private void OnDisable()
+        {
+            Cursor.visible = false;
+        }
 
         private void Awake()
         {
