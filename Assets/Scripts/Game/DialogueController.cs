@@ -42,7 +42,7 @@ namespace Game
             {
                 portrait = letterSprite,
                 // title = "NPC_NAME",
-                message = "You received envelop.",
+                message = "You received envelope.",
                 confirmBtnText = "Ok",
                 // cancelBtnText = "Fine"
             };
@@ -55,7 +55,7 @@ namespace Game
             {
                 portrait = null,
                 title = "Can't go upstairs",
-                message = "I have a letter to deliver deliver here.",
+                message = "I have a letter to deliver here.",
                 confirmBtnText = "Ok",
                 cancelBtnText = "Fine"
             };
