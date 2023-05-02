@@ -10,16 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 587d749586a84ab09750f85eac272afb, type: 3}
-  m_Name: DamageUpgrade
+  m_Name: Shot_Rate_Up_Bullets_Cound_Down
   m_EditorClassIdentifier: 
   addedMovementSpeed: 0
   addedScaleModifier: 0
   addedMaxHealth: 0
-  addedShootRate: 0
+  addedShootRate: 0.5
   addedBulletsSpeed: 0
-  addedBulletsDamage: 2
+  addedBulletsDamage: 0
   addedBulletsScale: 0
-  addedBulletsPerShotCount: 0
+  addedBulletsPerShotCount: -1
   addedBulletsPiercingCount: 0
-  icon: {fileID: 21300000, guid: 117b17facff65dc42b1b57deb7c21551, type: 3}
-  description: + Damage
+  icon: {fileID: 21300000, guid: b7f77607c82ea4142a2070c0e37e1756, type: 3}
+  description: 'Shot Rate UP
+
+    Bullets Count DOWN'

@@ -181,7 +181,7 @@ MonoBehaviour:
   isDeathSound: 0
   isDamageSound: 0
   isHealSound: 0
-  maxHealth: 70
+  maxHealth: 30
 --- !u!114 &-1721827253177301238
 MonoBehaviour:
   m_ObjectHideFlags: 0

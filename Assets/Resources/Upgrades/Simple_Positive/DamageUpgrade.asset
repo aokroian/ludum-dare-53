@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 587d749586a84ab09750f85eac272afb, type: 3}
-  m_Name: HealthUpgrade
+  m_Name: DamageUpgrade
   m_EditorClassIdentifier: 
   addedMovementSpeed: 0
   addedScaleModifier: 0
-  addedMaxHealth: 2
+  addedMaxHealth: 0
   addedShootRate: 0
   addedBulletsSpeed: 0
-  addedBulletsDamage: 0
+  addedBulletsDamage: 2
   addedBulletsScale: 0
   addedBulletsPerShotCount: 0
   addedBulletsPiercingCount: 0
-  icon: {fileID: 21300000, guid: 87a7c4321fd50514c8e41d6779a071da, type: 3}
-  description: Additional heart
+  icon: {fileID: 21300000, guid: d1b0810a7bee633469a729543f4e6659, type: 3}
+  description: Damage UP

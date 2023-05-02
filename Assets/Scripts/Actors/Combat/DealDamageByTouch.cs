@@ -41,7 +41,7 @@ namespace Actors.Combat
                 if (actorHealth == null)
                     return;
                 actorHealth.TakeDamage(damage);
-                PushVictim(other.transform);
+                // PushVictim(other.transform);
                 _damageTimer = 0;
             }
         }

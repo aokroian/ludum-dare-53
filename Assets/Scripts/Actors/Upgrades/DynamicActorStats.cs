@@ -26,8 +26,14 @@ namespace Actors.Upgrades
 
         public void ModifyCurrentStatsSo(ActorStatsSo actorStatsToAdd)
         {
+            if (actorStatsToAdd.description == "Random")
+            {
+                AddRandomStats();
+                return;
+            }
+
             ActorStatsSo.addedMovementSpeed += actorStatsToAdd.addedMovementSpeed;
-            ActorStatsSo.addedScaleModifier += actorStatsToAdd.addedScaleModifier; 
+            ActorStatsSo.addedScaleModifier += actorStatsToAdd.addedScaleModifier;
             ActorStatsSo.addedMaxHealth += actorStatsToAdd.addedMaxHealth;
             ActorStatsSo.addedShootRate += actorStatsToAdd.addedShootRate;
             ActorStatsSo.addedBulletsSpeed += actorStatsToAdd.addedBulletsSpeed;
@@ -35,6 +41,21 @@ namespace Actors.Upgrades
             ActorStatsSo.addedBulletsScale += actorStatsToAdd.addedBulletsScale;
             ActorStatsSo.addedBulletsPerShotCount += actorStatsToAdd.addedBulletsPerShotCount;
             ActorStatsSo.addedBulletsPiercingCount += actorStatsToAdd.addedBulletsPiercingCount;
+            ApplyStatsToAllReceivers();
+        }
+
+        private void AddRandomStats()
+        {
+            ActorStatsSo.addedMovementSpeed += Random.Range(-0.5f, 0.5f);
+            ActorStatsSo.addedScaleModifier += Random.Range(-0.5f, 0.5f);
+            ActorStatsSo.addedMaxHealth += Random.Range(-5, 5);
+            ActorStatsSo.addedShootRate += Random.Range(-0.5f, 0.5f);
+            ActorStatsSo.addedBulletsSpeed += Random.Range(-0.5f, 0.5f);
+            ActorStatsSo.addedBulletsDamage += Random.Range(-5, 5);
+            ActorStatsSo.addedBulletsScale += Random.Range(-0.5f, 0.5f);
+            ActorStatsSo.addedBulletsPerShotCount += Random.Range(-1, 1);
+            ActorStatsSo.addedBulletsPiercingCount += Random.Range(-1, 1);
+
             ApplyStatsToAllReceivers();
         }
 

@@ -22,6 +22,6 @@ MonoBehaviour:
   addedBulletsPerShotCount: 0
   addedBulletsPiercingCount: -1
   icon: {fileID: 21300000, guid: b7f77607c82ea4142a2070c0e37e1756, type: 3}
-  description: '+ Bullets Size
+  description: 'Bullets Size UP
 
-    - Piercing'
+    Piercing DOWN'
