@@ -127,12 +127,12 @@ namespace Sounds
 
         public static void PlayMenuMusic()
         {
-            CrossFadeMusic(Sounds.menuMusic, .3f);
+            CrossFadeMusic(Sounds.menuMusic, .25f);
         }
 
         public static void PlayCombatMusic()
         {
-            CrossFadeMusic(Sounds.combatMusic, .12f);
+            CrossFadeMusic(Sounds.combatMusic, .1f);
         }
 
         public static void PlayPeacefulMusic()
@@ -234,7 +234,7 @@ namespace Sounds
 
         private static void PlayAtPointIfNotNull(AudioClip clip, Vector3 position)
         {
-            if (clip != null) 
+            if (clip != null)
                 AudioSource.PlayClipAtPoint(clip, position);
         }
     }
