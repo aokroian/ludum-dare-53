@@ -22,19 +22,6 @@ namespace Actors.Spawn
                 
             var walkArea = room.walkArea;
 
-            // temp spawn random enemies
-            // var randCount = Random.Range(1, 4);
-            // var spawnedEnemies = new AIActorInput[randCount];
-            // for (var i = 0; i < randCount; i++)
-            // {
-            //     // var randEnemyType = EnemyTypes.StationaryShooter; // Random.Range(0, 2);
-            //     // var enemyType = (EnemyTypes) randEnemyType;
-            //     var enemy = SpawnUtil.SpawnEnemy(enemyType, walkArea.transform, walkArea.walkArea.bounds, entranceDirection);
-            //     spawnedEnemies[i] = enemy;
-            // }
-            //
-            // return spawnedEnemies;
-
             var prefabs = GetEnemiesByDifficultyWeight(
                 CalcDifficulty(room),
                 out var difficultyCostLeft);
@@ -94,7 +81,7 @@ namespace Actors.Spawn
 
         private static Vector3 RandomPointInBounds(Bounds bounds, WallDirection entranceDirection)
         {
-            var smallerBounds = new Bounds(bounds.center, bounds.size - (Vector3.one * 3));
+            var smallerBounds = new Bounds(bounds.center, bounds.size - (Vector3.one * 4));
             var offset = CommonUtils.DirectionToVector(entranceDirection) * 2;
 
             return new Vector3(

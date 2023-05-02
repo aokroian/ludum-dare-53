@@ -363,7 +363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 275777586a4f4a3eae45fc7be4a1b654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomSeed: 0
+  randomSeed: 1
   globalSeed: 12345
 --- !u!4 &285465856
 Transform:
