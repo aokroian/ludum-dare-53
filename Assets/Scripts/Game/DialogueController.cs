@@ -35,7 +35,7 @@ namespace Game
             {
                 portrait = npc1Portrait,
                 title = NameGenerator.GetRandomName(),
-                message = "Greetings, Can you deliver .",
+                message = $"Greetings! Can you please deliver the letter to my cousin?",
                 confirmBtnText = "Ok",
                 // cancelBtnText = "Fine"
             };
@@ -63,7 +63,7 @@ namespace Game
             {
                 portrait = npc1Portrait,
                 title = package.receiverName,
-                message = "Thank you!",
+                message = "Thank you! Can you also deliver letter for my cousin? He lives on the next level.",
                 confirmBtnText = "Ok",
                 cancelBtnText = package.receiverDepth == 0 ? "Later" : null
             };
@@ -79,7 +79,7 @@ namespace Game
             {
                 portrait = npc1Portrait,
                 title = _deliveredPackage.receiverName,
-                message = "Help me to deliver this letter",
+                message = "Help me to deliver the letter",
                 confirmBtnText = "Ok",
                 cancelBtnText = _deliveredPackage.receiverDepth == 0 ? "Later" : null
             };
