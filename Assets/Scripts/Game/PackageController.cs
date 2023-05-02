@@ -1,6 +1,7 @@
 ﻿using Common;
 using UnityEngine;
 using UnityEngine.UI;
+using Utils;
 
 namespace Game
 {
@@ -16,8 +17,8 @@ namespace Game
         {
             currentPackage = new PackageToDeliver(senderDepth,
                 senderDepth + 1,
-                _lastPackage?.receiverName ?? "San Palych",
-                "Pal Sanych");
+                _lastPackage?.receiverName ?? "Palych",
+                NameGenerator.GetRandomName());
             
             packageImage.gameObject.SetActive(true);
         }

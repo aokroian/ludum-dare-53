@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Common;
+using Sounds;
 using UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -43,6 +44,14 @@ namespace Scene
 
             _TMP_ALREADY_LOADED = true;
 #endif
+            
+            if (activeScene.buildIndex == indexStartMenu)
+            {
+                SoundSystem.PlayMenuMusic();
+            } else if (activeScene.buildIndex == indexGame)
+            {
+                SoundSystem.PlayCombatMusic();
+            }
         }
         
         private IEnumerator InitializeComponentsCoroutine(UnityEngine.SceneManagement.Scene scene)
@@ -72,11 +81,15 @@ namespace Scene
 
         public void LoadGameScene()
         {
+            if (_currentSceneIndex != indexGame)
+                SoundSystem.PlayCombatMusic();
             SwitchScene(indexGame);
         }
 
         public void LoadStartMenuScene()
         {
+            if (_currentSceneIndex != indexStartMenu)
+                SoundSystem.PlayMenuMusic();
             SwitchScene(indexStartMenu);
             Cursor.visible = true;
         }
@@ -85,6 +98,7 @@ namespace Scene
         {
             loadingScreen.Show();
             SceneManager.LoadScene(sceneIndex);
+            _currentSceneIndex = sceneIndex;
         }
     }
 }

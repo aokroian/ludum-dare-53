@@ -5,6 +5,7 @@ using Sounds;
 using UI.Dialogue;
 using UnityEngine;
 using Upgrades;
+using Utils;
 
 namespace Game
 {
@@ -33,8 +34,8 @@ namespace Game
             var config = new DialogueConfig
             {
                 portrait = npc1Portrait,
-                title = "NPC_NAME",
-                message = "Greetings, I have a letter to deliver to you.",
+                title = NameGenerator.GetRandomName(),
+                message = "Greetings, Can you deliver .",
                 confirmBtnText = "Ok",
                 // cancelBtnText = "Fine"
             };
