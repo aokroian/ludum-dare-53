@@ -4,6 +4,7 @@ using Actors.InputThings;
 using Actors.Upgrades;
 using Common;
 using Scene;
+using Sounds;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -64,6 +65,7 @@ namespace Upgrades
 
         private void OnUpgradeSelected(ActorStatsSo upgrade, Action<ActorStatsSo> callback)
         {
+            SoundSystem.PlayUpgradeButtonClickSound();
             upgradePanel.SetActive(false);
             _playerStats.ModifyCurrentStatsSo(upgrade);
             callback?.Invoke(upgrade);

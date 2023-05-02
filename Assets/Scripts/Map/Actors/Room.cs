@@ -1,5 +1,6 @@
 ﻿using Bonus;
 using DG.Tweening;
+using Sounds;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -42,6 +43,7 @@ namespace Map.Model
 
         public void CloseDoors()
         {
+            SoundSystem.PlayDoorCloseSound(this);
             foreach (var roomExit in exits)
             {
                 roomExit.CloseDoor();
@@ -50,6 +52,7 @@ namespace Map.Model
         
         public void OpenDoors()
         {
+            SoundSystem.PlayDoorOpenSound(this);
             foreach (var roomExit in exits)
             {
                 roomExit.OpenDoor();

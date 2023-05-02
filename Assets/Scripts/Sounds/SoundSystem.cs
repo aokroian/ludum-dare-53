@@ -201,14 +201,14 @@ namespace Sounds
             PlayAtPointIfNotNull(Sounds.collectableSound, collectable.transform.position);
         }
 
-        public static void PlayDeliveryReceivedSound(PlayerActorInput player)
+        public static void PlayDeliveryReceivedSound()
         {
-            PlayAtPointIfNotNull(Sounds.deliveryReceivedSound, player.transform.position);
+            PlayAtPointIfNotNull(Sounds.deliveryReceivedSound, MainCamera.transform.position);
         }
 
-        public static void PlayDeliverySuccessSound(PlayerActorInput player)
+        public static void PlayDeliverySuccessSound()
         {
-            PlayAtPointIfNotNull(Sounds.deliverySuccessSound, player.transform.position);
+            PlayAtPointIfNotNull(Sounds.deliverySuccessSound, MainCamera.transform.position);
         }
 
         #endregion

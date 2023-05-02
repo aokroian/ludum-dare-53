@@ -1,6 +1,7 @@
 ﻿using Actors.InputThings;
 using Common;
 using Game;
+using Sounds;
 using UnityEngine;
 
 namespace Map.Runtime
@@ -52,6 +53,7 @@ namespace Map.Runtime
             var level = levelGenerator.GenerateLevel(config);
             crawlController.currentLevel = level;
             crawlController.SetPlayerPosStairsRoom(player, downstairs);
+            SoundSystem.PlayMoveToAnotherDepthSound(player);
         }
 
         private int CalcRoomsCount(int depth)

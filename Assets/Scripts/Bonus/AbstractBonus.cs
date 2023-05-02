@@ -1,6 +1,7 @@
 ﻿using System;
 using Actors.InputThings;
 using DG.Tweening;
+using Sounds;
 using UnityEngine;
 
 namespace Bonus
@@ -31,6 +32,7 @@ namespace Bonus
         {
             if (other.CompareTag("Player"))
             {
+                SoundSystem.PlayCollectableSound(this);
                 ApplyBonus(other.GetComponent<PlayerActorInput>());
                 gameObject.SetActive(false);
                 // Destroy(gameObject);

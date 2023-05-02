@@ -1,6 +1,7 @@
 ﻿using System;
 using Common;
 using Scene;
+using Sounds;
 using UI.Dialogue;
 using UnityEngine;
 using Upgrades;
@@ -68,6 +69,7 @@ namespace Game
 
             dialoguePanel.Show(config, () => UpgradeCallback(anyAction), anyAction);
             PackageController.Instance.DeliverPackage();
+            SoundSystem.PlayDeliverySuccessSound();
         }
 
         public void AlreadyDelivered(Action anyAction)
@@ -107,6 +109,7 @@ namespace Game
             };
             dialoguePanel.Show(config, confirm);
             PackageController.Instance.ReceivePackage(curDepth);
+            SoundSystem.PlayDeliveryReceivedSound();
         }
         
         public void CantGoUpstairs(Action action = null)
