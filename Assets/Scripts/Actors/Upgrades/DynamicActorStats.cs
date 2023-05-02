@@ -48,10 +48,10 @@ namespace Actors.Upgrades
         {
             ActorStatsSo.addedMovementSpeed += Random.Range(-0.5f, 0.5f);
             ActorStatsSo.addedScaleModifier += Random.Range(-0.5f, 0.5f);
-            ActorStatsSo.addedMaxHealth += Random.Range(-5, 5);
+            ActorStatsSo.addedMaxHealth += Random.Range(-1, 1);
             ActorStatsSo.addedShootRate += Random.Range(-0.5f, 0.5f);
             ActorStatsSo.addedBulletsSpeed += Random.Range(-0.5f, 0.5f);
-            ActorStatsSo.addedBulletsDamage += Random.Range(-5, 5);
+            ActorStatsSo.addedBulletsDamage += Random.Range(-1, 1);
             ActorStatsSo.addedBulletsScale += Random.Range(-0.5f, 0.5f);
             ActorStatsSo.addedBulletsPerShotCount += Random.Range(-1, 1);
             ActorStatsSo.addedBulletsPiercingCount += Random.Range(-1, 1);

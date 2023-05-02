@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7232331186250003792}
   - component: {fileID: 7771498504625810193}
   - component: {fileID: -1721827253177301238}
+  - component: {fileID: -4132902310341346799}
   m_Layer: 0
   m_Name: Stationary_Shooter
   m_TagString: Enemy
@@ -195,6 +196,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathEffectPrefab: {fileID: 5962918912480743457, guid: e846776bcbb324013b471db118a0d0a7, type: 3}
+--- !u!114 &-4132902310341346799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98447242287292652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e68283b00ed44e1fb98cc616df3750f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &99899696419084042
 GameObject:
   m_ObjectHideFlags: 0

@@ -122,6 +122,7 @@ GameObject:
   - component: {fileID: 3618191280411072265}
   - component: {fileID: 8359792392462821338}
   - component: {fileID: -5530050865184091242}
+  - component: {fileID: -7415247590303413800}
   m_Layer: 0
   m_Name: Simple_Chaser
   m_TagString: Enemy
@@ -285,6 +286,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathEffectPrefab: {fileID: 5962918912480743457, guid: e846776bcbb324013b471db118a0d0a7, type: 3}
+--- !u!114 &-7415247590303413800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4751480028244441766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e68283b00ed44e1fb98cc616df3750f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8075084929147126852
 GameObject:
   m_ObjectHideFlags: 0
