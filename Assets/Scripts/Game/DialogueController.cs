@@ -1,5 +1,6 @@
 ﻿using System;
 using Common;
+using Scene;
 using UI.Dialogue;
 using UnityEngine;
 using Upgrades;
@@ -65,18 +66,33 @@ namespace Game
                 cancelBtnText = package.receiverDepth == 0 ? "Later" : null
             };
 
-            dialoguePanel.Show(config, UpgradeCallback, anyAction);
+            dialoguePanel.Show(config, () => UpgradeCallback(anyAction), anyAction);
             PackageController.Instance.DeliverPackage();
-            
-            void NextMsgCallback()
-            {
-                ReceivePackage(_deliveredPackage.receiverDepth, anyAction);
-            }
+        }
 
-            void UpgradeCallback()
+        public void AlreadyDelivered(Action anyAction)
+        {
+            var config = new DialogueConfig
             {
-                UpgradeSystemUI.Instance.ShowUpgradeSelection(_ => NextMsgCallback());
-            }
+                portrait = npc1Portrait,
+                title = _deliveredPackage.receiverName,
+                message = "Help me to deliver this letter",
+                confirmBtnText = "Ok",
+                cancelBtnText = _deliveredPackage.receiverDepth == 0 ? "Later" : null
+            };
+
+            dialoguePanel.Show(config, () => UpgradeCallback(anyAction), anyAction);
+            PackageController.Instance.DeliverPackage();
+        }
+        
+        private void NextMsgCallback(Action action)
+        {
+            ReceivePackage(_deliveredPackage.receiverDepth, action);
+        }
+
+        private void UpgradeCallback(Action action)
+        {
+            UpgradeSystemUI.Instance.ShowUpgradeSelection(_ => NextMsgCallback(action));
         }
 
         public void ReceivePackage(int curDepth, Action confirm)
@@ -118,6 +134,18 @@ namespace Game
                 cancelBtnText = "Main menu"
             };
             dialoguePanel.Show(config, confirm, cancel);
+        }
+
+        public void Ending()
+        {
+            var config = new DialogueConfig
+            {
+                portrait = null,
+                title = "The End",
+                message = "You delivered package. Thank you for playing!",
+                confirmBtnText = "Main menu"
+            };
+            dialoguePanel.Show(config, SceneController.Instance.LoadStartMenuScene);
         }
     }
 }

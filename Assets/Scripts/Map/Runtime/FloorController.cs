@@ -1,9 +1,6 @@
-﻿using Actors;
-using Actors.InputThings;
+﻿using Actors.InputThings;
 using Common;
-using DG.Tweening;
 using Game;
-using Map.Model;
 using UnityEngine;
 
 namespace Map.Runtime
@@ -20,12 +17,21 @@ namespace Map.Runtime
         {
             if (downstairs && (depth == 0 || PackageController.Instance.currentPackage?.receiverDepth == depth))
             {
-                EnterLevel(player, depth, downstairs, startRoomPos);
+                GameLoopController.Instance.NextFloorAnim(
+                    depth,
+                    () => EnterLevel(player, depth, downstairs, startRoomPos));
+            }
+            else if (!downstairs && depth == -1 && PackageController.Instance.currentPackage == null)
+            {
+                EndingController.Instance.Ending();
             }
             else if (!downstairs)
             {
                 player.ToggleInput(false);
                 DialogueController.Instance.CantGoUpstairs(() => player.ToggleInput(true));
+            } else if (downstairs && depth == 1)
+            {
+                DialogueController.Instance.AlreadyDelivered(() => player.ToggleInput(true));
             }
         }
         
