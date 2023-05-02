@@ -60,7 +60,8 @@ namespace Actors.Combat
         {
             if (other.transform.IsChildOf(ownerActor) ||
                 other.CompareTag("AI_Walk_Area") ||
-                other.CompareTag("Damage_Collider"))
+                other.CompareTag("Damage_Collider") ||
+                other.CompareTag("Fit_Player_To_Door_Area"))
             {
                 return;
             }

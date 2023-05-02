@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2796146471227456176}
   m_Layer: 0
   m_Name: Fit_Player_To_Doors_Area
-  m_TagString: Untagged
+  m_TagString: Fit_Player_To_Door_Area
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

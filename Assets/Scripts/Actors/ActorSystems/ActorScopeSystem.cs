@@ -9,7 +9,7 @@ namespace Actors
         private Transform _currentScope;
         private SpriteRenderer _currentScopeSpite;
         private GunTypes _currentGunType;
-        
+
 
         private GunsConfigSo _gunsConfig;
         private ActorGunSystem _actorGunSystem;
@@ -36,8 +36,9 @@ namespace Actors
             if (_currentGunType == GunTypes.Shotgun)
             {
                 RotationForShotgun();
+                ScaleForShotgun();
             }
-            
+
             SetScopeColor();
         }
 
@@ -59,17 +60,26 @@ namespace Actors
             _isScopeSpawned = true;
         }
 
+        private void ScaleForShotgun()
+        {
+            const float maxScale = 4f;
+            const float minScale = .7f;
+            const float distanceForMaxScale = 4f;
+            var distance = Vector2.Distance(transform.position, _currentScope.transform.position);
+            var scale = Mathf.Clamp(distance / distanceForMaxScale, minScale, maxScale);
+            _currentScope.transform.localScale = Vector3.one * scale;
+        }
+
         private void RotationForShotgun()
         {
-            
             var direction = _currentScope.transform.position - transform.position;
             var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            
+
             _currentScope.transform.rotation = Quaternion.Euler(0, 0, angle + 270);
         }
 
         private void SetScopeColor()
-        {  
+        {
             var checkRadius = 0.13f;
             var results = new Collider2D[3];
             var size = Physics2D.OverlapCircleNonAlloc(_currentScope.transform.position, checkRadius, results);
@@ -82,7 +92,10 @@ namespace Actors
                 isEnemyInRange = true;
                 break;
             }
-            _currentScopeSpite.color = isEnemyInRange ? Color.red : Color.white;
+
+            _currentScopeSpite.color = isEnemyInRange
+                ? Color.red
+                : Color.white;
         }
     }
 }
