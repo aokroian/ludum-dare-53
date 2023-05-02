@@ -77,7 +77,7 @@ namespace Sounds
         private static Coroutine _crossFadeAudioCoroutine;
         private static MonoBehaviour _crossFadeAudioCoroutineOwner;
 
-        private static IEnumerator CrossFadeAudio(AudioClip clip)
+        private static IEnumerator CrossFadeAudio(AudioClip clip, float toVolume)
         {
             if (_currentMusicAudioSource != null &&
                 _currentMusicAudioSource.isPlaying &&
@@ -105,39 +105,39 @@ namespace Sounds
 
             while (t < 0.98f)
             {
-                t = Mathf.Lerp(t, 1f, Time.deltaTime * 0.7f);
+                t = Mathf.Lerp(t, 1f, Time.deltaTime * 1f);
                 from.volume = Mathf.Lerp(v, 0f, t);
-                to.volume = Mathf.Lerp(0f, 1f, t);
+                to.volume = Mathf.Lerp(0f, toVolume, t);
                 yield return null;
             }
 
             from.Play();
             from.volume = 0f;
-            to.volume = 1f;
+            to.volume = toVolume;
         }
 
-        private static void CrossFadeMusic(AudioClip musicClip)
+        private static void CrossFadeMusic(AudioClip musicClip, float toVolume)
         {
             if (_crossFadeAudioCoroutineOwner == null)
                 Debug.Log(MusicAudioSource1.name);
             if (_crossFadeAudioCoroutine != null)
                 _crossFadeAudioCoroutineOwner.StopCoroutine(_crossFadeAudioCoroutine);
-            _crossFadeAudioCoroutineOwner.StartCoroutine(CrossFadeAudio(musicClip));
+            _crossFadeAudioCoroutineOwner.StartCoroutine(CrossFadeAudio(musicClip, toVolume));
         }
 
         public static void PlayMenuMusic()
         {
-            CrossFadeMusic(Sounds.menuMusic);
+            CrossFadeMusic(Sounds.menuMusic, .3f);
         }
 
         public static void PlayCombatMusic()
         {
-            CrossFadeMusic(Sounds.combatMusic);
+            CrossFadeMusic(Sounds.combatMusic, .12f);
         }
 
         public static void PlayPeacefulMusic()
         {
-            CrossFadeMusic(Sounds.peacefulMusic);
+            CrossFadeMusic(Sounds.peacefulMusic, 1f);
         }
 
         #endregion
