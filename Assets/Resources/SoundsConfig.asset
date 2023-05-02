@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SoundsConfig
   m_EditorClassIdentifier: 
   menuMusic: {fileID: 8300000, guid: 1f2ad53bacc245642854dbdc8ea71a9b, type: 3}
-  combatMusic: {fileID: 8300000, guid: c39a46df834194123b7f29817cd66432, type: 3}
+  combatMusic: {fileID: 8300000, guid: 51a4f1157b7ff1449b5e5cf064d584c7, type: 3}
   peacefulMusic: {fileID: 8300000, guid: 51a4f1157b7ff1449b5e5cf064d584c7, type: 3}
   actorDamageSound: {fileID: 0}
   actorDeathSound: {fileID: 0}
