@@ -651,7 +651,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelGenerator: {fileID: 1387696723}
   crawlController: {fileID: 571594262}
-  startRoomsCount: 3
+  startRoomsCount: 6
 --- !u!114 &571594262
 MonoBehaviour:
   m_ObjectHideFlags: 0

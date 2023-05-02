@@ -81,7 +81,7 @@ namespace Actors.Spawn
             var costLeft = difficultyWeight;
             while (costLeft > 0)
             {
-                var enemy = _enemiesConfig.GetRandomLessThenDifficultyWeight(costLeft, 2);
+                var enemy = _enemiesConfig.GetRandomLessThenDifficultyWeight(costLeft, 1);
                 if (enemy == null)
                     break;
                 enemies.Add(enemy);
@@ -94,8 +94,8 @@ namespace Actors.Spawn
 
         private static Vector3 RandomPointInBounds(Bounds bounds, WallDirection entranceDirection)
         {
-            var smallerBounds = new Bounds(bounds.center, bounds.size - (Vector3.one * 2));
-            var offset = CommonUtils.DirectionToVector(entranceDirection);
+            var smallerBounds = new Bounds(bounds.center, bounds.size - (Vector3.one * 3));
+            var offset = CommonUtils.DirectionToVector(entranceDirection) * 2;
 
             return new Vector3(
                 Random.Range(smallerBounds.min.x, smallerBounds.max.x),

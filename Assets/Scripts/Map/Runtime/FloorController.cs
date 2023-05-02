@@ -24,6 +24,7 @@ namespace Map.Runtime
             }
             else if (!downstairs && depth == -1 && PackageController.Instance.currentPackage == null)
             {
+                player.ToggleInput(false);
                 EndingController.Instance.Ending();
             }
             else if (!downstairs)
