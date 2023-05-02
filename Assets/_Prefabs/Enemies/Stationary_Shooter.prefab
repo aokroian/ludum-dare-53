@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d333a27351a4676a0105a1da6835fee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startGunType: 2
+  startGunType: 3
   gunPoint: {fileID: 1023618185738290259}
 --- !u!114 &7771498504625810193
 MonoBehaviour:
@@ -181,7 +181,7 @@ MonoBehaviour:
   isDeathSound: 0
   isDamageSound: 0
   isHealSound: 0
-  maxHealth: 10
+  maxHealth: 70
 --- !u!114 &-1721827253177301238
 MonoBehaviour:
   m_ObjectHideFlags: 0

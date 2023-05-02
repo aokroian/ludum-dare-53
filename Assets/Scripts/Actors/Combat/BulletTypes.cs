@@ -5,5 +5,6 @@ namespace Actors.Combat
         Simple,
         TwelveGauge,
         Razor, 
+        StationaryShooterEnemyRazor
     }
 }

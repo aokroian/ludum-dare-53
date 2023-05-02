@@ -22,4 +22,4 @@ MonoBehaviour:
   addedBulletsPerShotCount: 0
   addedBulletsPiercingCount: 0
   icon: {fileID: 21300000, guid: 117b17facff65dc42b1b57deb7c21551, type: 3}
-  description: Bonus damage
+  description: + Damage

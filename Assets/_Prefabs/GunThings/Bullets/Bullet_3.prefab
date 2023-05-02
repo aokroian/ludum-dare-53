@@ -156,10 +156,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e17c05449bbc88144a53873f7add02a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <BulletType>k__BackingField: 0
   particlesPrefab: {fileID: 1685472729878100105, guid: 611ef9b1b97bc79469cc1ac8e31928e7, type: 3}
   bulletSpeed: 10
-  bulletDamage: 30
+  bulletDamage: 250
+  bulletPiercingCount: 4
   ownerActor: {fileID: 0}
+  dynamicActorStats: {fileID: 0}
 --- !u!114 &7259999933867886880
 MonoBehaviour:
   m_ObjectHideFlags: 0

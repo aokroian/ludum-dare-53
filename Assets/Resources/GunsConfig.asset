@@ -22,3 +22,6 @@ MonoBehaviour:
   - gunType: 2
     gunPrefab: {fileID: 5685811395722452794, guid: fdd762e65d3d0ba4a8d7febb1aa565bd, type: 3}
     scopePrefab: {fileID: 6224954752013038033, guid: 38289117ca54842fc834938a09159c0c, type: 3}
+  - gunType: 3
+    gunPrefab: {fileID: 5685811395722452794, guid: a37efe3f989ba4db5810a40490abcaa1, type: 3}
+    scopePrefab: {fileID: 6224954752013038033, guid: 38289117ca54842fc834938a09159c0c, type: 3}

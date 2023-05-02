@@ -22,4 +22,4 @@ MonoBehaviour:
   addedBulletsPerShotCount: 0
   addedBulletsPiercingCount: 0
   icon: {fileID: 21300000, guid: 805736230f06ac449a72b0ecb951e522, type: 3}
-  description: Additional heart
+  description: + Movement Speed

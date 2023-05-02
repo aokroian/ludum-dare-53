@@ -30,7 +30,9 @@ namespace Actors.Upgrades
 
         [Header("Others")]
         public Sprite icon;
+        [TextArea]
         public string description;
+
 
         public ActorStatsSo GetCopy()
         {

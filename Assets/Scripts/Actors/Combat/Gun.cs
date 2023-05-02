@@ -32,7 +32,7 @@ namespace Actors.Combat
         {
             _currentShootRate = shootRate;
             _currentBulletsPerShotCount = bulletsPerShotCount;
-            
+
             _dynamicActorStats = GetComponentInParent<DynamicActorStats>();
             _initialScale = transform.localScale;
             _gunSystem = GetComponentInParent<ActorGunSystem>();
@@ -55,7 +55,11 @@ namespace Actors.Combat
         public void ApplyDynamicStats(ActorStatsSo actorStatsSo)
         {
             _currentShootRate = shootRate + actorStatsSo.addedShootRate;
+            if (_currentShootRate <= 0)
+                _currentShootRate = 0.1f;
             _currentBulletsPerShotCount = bulletsPerShotCount + actorStatsSo.addedBulletsPerShotCount;
+            if (_currentBulletsPerShotCount < 1)
+                _currentBulletsPerShotCount = 1;
         }
 
         public void Fire()

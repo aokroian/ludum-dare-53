@@ -4,6 +4,7 @@ namespace Actors.Combat
     {
         Pistol,
         Shotgun,
-        Rifle
+        Rifle,
+        StationaryShooterEnemyGun,
     }
 }

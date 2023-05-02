@@ -9,9 +9,9 @@ namespace Actors.Combat
     {
         [field: SerializeField] public BulletTypes BulletType { get; private set; }
         [SerializeField] private GameObject particlesPrefab;
-        [SerializeField] [Range(0.1f, 30f)] private float bulletSpeed = 10f;
-        [SerializeField] [Range(1, 1000)] private int bulletDamage = 30;
-        [SerializeField] [Range(0, 4)] private int bulletPiercingCount;
+        [SerializeField] private float bulletSpeed = 10f;
+        [SerializeField] private int bulletDamage;
+        [SerializeField] private int bulletPiercingCount;
 
         [HideInInspector] public Transform ownerActor;
 
@@ -47,6 +47,10 @@ namespace Actors.Combat
             _currentBulletSpeed = bulletSpeed + actorStatsSo.addedBulletsSpeed;
             _currentBulletScale = _defaultBulletScale + actorStatsSo.addedBulletsScale;
             _currentBulletPiercingCount = bulletPiercingCount + actorStatsSo.addedBulletsPiercingCount;
+
+            if (_currentBulletPiercingCount < 0)
+                _currentBulletPiercingCount = 0;
+
 
             transform.localScale = Vector3.one * _currentBulletScale;
         }

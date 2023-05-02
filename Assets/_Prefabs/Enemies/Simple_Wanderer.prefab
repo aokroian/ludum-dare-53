@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaad42d2e62f471992cf701cacab3dde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 2
 --- !u!114 &1413302277214033110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
   isDeathSound: 0
   isDamageSound: 0
   isHealSound: 0
-  maxHealth: 10
+  maxHealth: 30
 --- !u!114 &-7800894590172054192
 MonoBehaviour:
   m_ObjectHideFlags: 0
