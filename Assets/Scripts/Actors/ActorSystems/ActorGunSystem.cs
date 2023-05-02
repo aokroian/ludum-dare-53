@@ -38,12 +38,12 @@ namespace Actors.ActorSystems
                 _currentActiveGun.Fire();
 
             // temp code jus for testing 
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-                ChangeActiveGun(GunTypes.Pistol);
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-                ChangeActiveGun(GunTypes.Shotgun);
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-                ChangeActiveGun(GunTypes.Rifle);
+            // if (Input.GetKeyDown(KeyCode.Alpha1))
+            //     ChangeActiveGun(GunTypes.Pistol);
+            // if (Input.GetKeyDown(KeyCode.Alpha2))
+            //     ChangeActiveGun(GunTypes.Shotgun);
+            // if (Input.GetKeyDown(KeyCode.Alpha3))
+            //     ChangeActiveGun(GunTypes.Rifle);
         }
 
         public Gun ChangeActiveGun(GunTypes gunType)
