@@ -179,7 +179,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.039233953, y: 0.014457315}
+  m_Offset: {x: 0.08741993, y: 0.0010722876}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -190,7 +190,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5447301, y: 0.83419746}
+  m_Size: {x: 0.87667763, y: 1.1607909}
   m_EdgeRadius: 0
 --- !u!50 &2364214993096420641
 Rigidbody2D:
@@ -231,7 +231,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaad42d2e62f471992cf701cacab3dde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2.5
+  actorStatsController: {fileID: 0}
+  defaultSpeed: 2.5
 --- !u!114 &8061048113161756813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,11 +269,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b42004af44f24c859ba2617bbc0b4b32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actorStatsController: {fileID: 0}
   invincibilityTime: 0
   isDeathSound: 0
   isDamageSound: 0
   isHealSound: 0
-  maxHealth: 35
+  defaultMaxHealth: 20
 --- !u!114 &-5530050865184091242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,7 +365,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.040094614, y: 0.025965571}
+  m_Offset: {x: 0.06418753, y: 0.00990355}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -374,7 +376,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0805557, y: 1.1303279}
+  m_Size: {x: 0.96812177, y: 1.1196198}
   m_EdgeRadius: 0
 --- !u!114 &8945405314045015953
 MonoBehaviour:
