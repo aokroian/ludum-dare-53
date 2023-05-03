@@ -2,7 +2,7 @@ using UnityEditor;
 
 namespace Actors.Upgrades.Editor
 {
-    [CustomEditor(typeof(DynamicActorStats))]
+    [CustomEditor(typeof(ActorStatsController))]
     public class ActorStatsEditor : UnityEditor.Editor
     {
         private UnityEditor.Editor _editorInstance;
@@ -14,9 +14,9 @@ namespace Actors.Upgrades.Editor
 
         public override void OnInspectorGUI()
         {
-            var dynamicActorStats = (DynamicActorStats) target;
+            var dynamicActorStats = (ActorStatsController) target;
             if (_editorInstance == null)
-                _editorInstance = CreateEditor(dynamicActorStats.ActorStatsSo);
+                _editorInstance = CreateEditor(dynamicActorStats.Stats);
             base.OnInspectorGUI(); 
             
             EditorGUILayout.Space();

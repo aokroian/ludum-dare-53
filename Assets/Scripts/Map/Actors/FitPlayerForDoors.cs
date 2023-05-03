@@ -36,10 +36,10 @@ namespace Map.Actors
 
         private static float GetUnaffectedScaleValue(GameObject player)
         {
-            var dynamicActorStats = player.GetComponent<DynamicActorStats>();
+            var dynamicActorStats = player.GetComponent<ActorStatsController>();
             var actorPhysics = player.GetComponent<ActorPhysics>();
 
-            var scaleValue = actorPhysics.DefaultScale + dynamicActorStats.ActorStatsSo.addedScaleModifier;
+            var scaleValue = actorPhysics.DefaultScale + dynamicActorStats.Stats.addedScaleModifier;
             return scaleValue;
         }
     }

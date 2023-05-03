@@ -2,10 +2,11 @@ using Actors.ActorSystems;
 using Actors.Upgrades;
 using Sounds;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Actors.Combat
 {
-    public class Bullet : MonoBehaviour, IDynamicStatsReceiver
+    public class Bullet : MonoBehaviour, IActorStatsReceiver
     {
         [field: SerializeField] public BulletTypes BulletType { get; private set; }
         [SerializeField] private GameObject particlesPrefab;
@@ -15,7 +16,7 @@ namespace Actors.Combat
 
         [HideInInspector] public Transform ownerActor;
 
-        public DynamicActorStats dynamicActorStats;
+        [FormerlySerializedAs("dynamicActorStats")] public ActorStatsController actorStatsController;
 
         private float _defaultBulletScale;
         private float _currentBulletSpeed;
@@ -31,14 +32,14 @@ namespace Actors.Combat
             _currentBulletDamage = bulletDamage;
             _currentBulletPiercingCount = bulletPiercingCount;
 
-            if (dynamicActorStats != null)
-                dynamicActorStats.AddReceiver(this);
+            if (actorStatsController != null)
+                actorStatsController.AddReceiver(this);
         }
 
         private void OnDestroy()
         {
-            if (dynamicActorStats != null)
-                dynamicActorStats.RemoveReceiver(this);
+            if (actorStatsController != null)
+                actorStatsController.RemoveReceiver(this);
         }
 
         public void ApplyDynamicStats(ActorStatsSo actorStatsSo)

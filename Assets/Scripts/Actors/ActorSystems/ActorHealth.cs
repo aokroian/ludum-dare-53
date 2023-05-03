@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Actors.ActorSystems
 {
-    public class ActorHealth : ActorSystem, IDynamicStatsReceiver
+    public class ActorHealth : ActorSystem, IActorStatsReceiver
     {
         public float invincibilityTime;
 
@@ -24,7 +24,7 @@ namespace Actors.ActorSystems
         public int CurrentMaxHealth { get; private set; }
         public int CurrentHealth { get; private set; }
 
-        private DynamicActorStats _dynamicActorStats;
+        private ActorStatsController _actorStatsController;
 
         private float _invincibilityEndTime;
 
@@ -35,15 +35,15 @@ namespace Actors.ActorSystems
 
             base.Awake();
 
-            _dynamicActorStats = GetComponent<DynamicActorStats>();
-            if (_dynamicActorStats != null)
-                _dynamicActorStats.AddReceiver(this);
+            _actorStatsController = GetComponent<ActorStatsController>();
+            if (_actorStatsController != null)
+                _actorStatsController.AddReceiver(this);
         }
 
         private void OnDestroy()
         {
-            if (_dynamicActorStats != null)
-                _dynamicActorStats.RemoveReceiver(this);
+            if (_actorStatsController != null)
+                _actorStatsController.RemoveReceiver(this);
         }
 
         public void ApplyDynamicStats(ActorStatsSo actorStatsSo)

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Actors.Combat
 {
-    public class Gun : MonoBehaviour, IDynamicStatsReceiver
+    public class Gun : MonoBehaviour, IActorStatsReceiver
     {
         [field: SerializeField] public GunTypes GunType { get; private set; }
         [SerializeField] private Bullet bulletPrefab;
@@ -21,7 +21,7 @@ namespace Actors.Combat
         private Vector3 _initialScale;
 
         private ActorGunSystem _gunSystem;
-        private DynamicActorStats _dynamicActorStats;
+        private ActorStatsController _actorStatsController;
 
         private float _currentShootRate;
         private float _currentBulletsPerShotCount;
@@ -33,18 +33,18 @@ namespace Actors.Combat
             _currentShootRate = shootRate;
             _currentBulletsPerShotCount = bulletsPerShotCount;
 
-            _dynamicActorStats = GetComponentInParent<DynamicActorStats>();
+            _actorStatsController = GetComponentInParent<ActorStatsController>();
             _initialScale = transform.localScale;
             _gunSystem = GetComponentInParent<ActorGunSystem>();
 
-            if (_dynamicActorStats != null)
-                _dynamicActorStats.AddReceiver(this);
+            if (_actorStatsController != null)
+                _actorStatsController.AddReceiver(this);
         }
 
         private void OnDestroy()
         {
-            if (_dynamicActorStats != null)
-                _dynamicActorStats.RemoveReceiver(this);
+            if (_actorStatsController != null)
+                _actorStatsController.RemoveReceiver(this);
         }
 
         private void Update()
@@ -80,7 +80,7 @@ namespace Actors.Combat
                         0,
                         transform.rotation.eulerAngles.z + initialAngle + i * zAngleBetweenBullets);
                     var spawnedBullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletRotation);
-                    spawnedBullet.dynamicActorStats = _dynamicActorStats;
+                    spawnedBullet.actorStatsController = _actorStatsController;
                     spawnedBullet.Init();
                     spawnedBullet.ownerActor = _gunSystem.transform;
                 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Actors.ActorSystems
 {
-    public class ActorPhysics : ActorSystem, IDynamicStatsReceiver
+    public class ActorPhysics : ActorSystem, IActorStatsReceiver
     {
         [SerializeField] private float speed = 5f;
         private Rigidbody2D _rigidbody2D;
@@ -11,7 +11,7 @@ namespace Actors.ActorSystems
         private float _currentSpeed;
         public float DefaultScale { get; private set; }
         private float _currentScale;
-        private DynamicActorStats _dynamicActorStats;
+        private ActorStatsController _actorStatsController;
 
 
         protected override void Awake()
@@ -23,15 +23,15 @@ namespace Actors.ActorSystems
             base.Awake();
             _rigidbody2D = GetComponent<Rigidbody2D>();
 
-            _dynamicActorStats = GetComponent<DynamicActorStats>();
-            if (_dynamicActorStats != null)
-                _dynamicActorStats.AddReceiver(this);
+            _actorStatsController = GetComponent<ActorStatsController>();
+            if (_actorStatsController != null)
+                _actorStatsController.AddReceiver(this);
         }
 
         private void OnDestroy()
         {
-            if (_dynamicActorStats != null)
-                _dynamicActorStats.RemoveReceiver(this);
+            if (_actorStatsController != null)
+                _actorStatsController.RemoveReceiver(this);
         }
 
         public void ApplyDynamicStats(ActorStatsSo actorStatsSo)
