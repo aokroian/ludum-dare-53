@@ -2,6 +2,8 @@ namespace Actors.Upgrades
 {
     public interface IActorStatsReceiver
     {
-        public void ApplyDynamicStats(ActorStatsSo actorStatsSo);
+        public void RegisterActorStatsReceiver();
+        public void UnregisterActorStatsReceiver();
+        public void ReceiveActorStats(ActorStatsSo actorStatsSo);
     }
 }

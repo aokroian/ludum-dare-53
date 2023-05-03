@@ -53,7 +53,7 @@ namespace Actors.Upgrades
         private void ApplyStatsToAllReceivers()
         {
             foreach (var receiver in _statsReceivers)
-                receiver.ApplyDynamicStats(Stats);
+                receiver.ReceiveActorStats(Stats);
         }
 
         public void AddReceiver(IActorStatsReceiver actorStatsReceiver)
@@ -61,7 +61,7 @@ namespace Actors.Upgrades
             if (_statsReceivers.Contains(actorStatsReceiver))
                 return;
             _statsReceivers.Add(actorStatsReceiver);
-            actorStatsReceiver.ApplyDynamicStats(Stats);
+            actorStatsReceiver.ReceiveActorStats(Stats);
         }
 
         public void RemoveReceiver(IActorStatsReceiver actorStatsReceiver)

@@ -16,9 +16,7 @@ namespace UI.Hud
         private void Awake()
         {
             var playerHealth = GetComponentInParent<ActorHealth>();
-            SetHealth(playerHealth.CurrentMaxHealth, playerHealth.CurrentHealth);
-            playerHealth.OnHealthChanged +=
-                curHealth => SetHealth(playerHealth.CurrentMaxHealth, curHealth);
+            playerHealth.OnHealthChanged += (curHealth, curMaxHealth) => SetHealth(curMaxHealth, curHealth);
         }
 
         private void SetHealth(int maxHealth, int health)

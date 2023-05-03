@@ -5,39 +5,48 @@ namespace Actors.ActorSystems
 {
     public class ActorPhysics : ActorSystem, IActorStatsReceiver
     {
-        [SerializeField] private float speed = 5f;
-        private Rigidbody2D _rigidbody2D;
+        [SerializeField] private ActorStatsController actorStatsController;
+        [SerializeField] private float defaultSpeed = 5f;
 
+        private float _defaultScale;
         private float _currentSpeed;
-        public float DefaultScale { get; private set; }
         private float _currentScale;
-        private ActorStatsController _actorStatsController;
 
+        private Rigidbody2D _rigidbody2D;
 
         protected override void Awake()
         {
-            _currentSpeed = speed;
-            DefaultScale = transform.localScale.x;
-            _currentScale = DefaultScale;
-
             base.Awake();
             _rigidbody2D = GetComponent<Rigidbody2D>();
 
-            _actorStatsController = GetComponent<ActorStatsController>();
-            if (_actorStatsController != null)
-                _actorStatsController.AddReceiver(this);
+            _currentSpeed = defaultSpeed;
+            _defaultScale = transform.localScale.x;
+            _currentScale = _defaultScale;
+
+            RegisterActorStatsReceiver();
         }
 
         private void OnDestroy()
         {
-            if (_actorStatsController != null)
-                _actorStatsController.RemoveReceiver(this);
+            UnregisterActorStatsReceiver();
         }
 
-        public void ApplyDynamicStats(ActorStatsSo actorStatsSo)
+        public void RegisterActorStatsReceiver()
         {
-            _currentSpeed = speed + actorStatsSo.addedMovementSpeed;
-            _currentScale = DefaultScale + actorStatsSo.addedScaleModifier;
+            if (actorStatsController != null)
+                actorStatsController.AddReceiver(this);
+        }
+
+        public void UnregisterActorStatsReceiver()
+        {
+            if (actorStatsController != null)
+                actorStatsController.RemoveReceiver(this);
+        }
+
+        public void ReceiveActorStats(ActorStatsSo actorStatsSo)
+        {
+            _currentSpeed = defaultSpeed + actorStatsSo.addedMovementSpeed;
+            _currentScale = _defaultScale + actorStatsSo.addedScaleModifier;
 
             transform.localScale = new Vector3(_currentScale, _currentScale, 1);
         }
