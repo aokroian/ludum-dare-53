@@ -101,8 +101,8 @@ MonoBehaviour:
   <GunType>k__BackingField: 2
   bulletPrefab: {fileID: 8046959318469718091, guid: 832baa5849ecc44c78d75571c7910b5e, type: 3}
   bulletSpawnPoint: {fileID: 8971872787659182349}
-  shootRate: 1
-  bulletsPerShotCount: 1
+  defaultShootRate: 0.5
+  defaultBulletsPerShotCount: 1
   zAngleBetweenBullets: 8
 --- !u!1 &7876265652095531552
 GameObject:

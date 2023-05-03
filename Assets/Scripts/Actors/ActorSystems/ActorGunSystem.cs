@@ -1,11 +1,13 @@
 using System;
 using Actors.Combat;
+using Actors.Upgrades;
 using UnityEngine;
 
 namespace Actors.ActorSystems
 {
     public class ActorGunSystem : ActorSystem
     {
+        [field: SerializeField] public ActorStatsController ActorStatsController { get; private set; }
         [SerializeField] private GunTypes startGunType = GunTypes.Pistol;
         [SerializeField] private Transform gunPoint; 
 
@@ -61,10 +63,12 @@ namespace Actors.ActorSystems
                 Destroy(_currentActiveGun.gameObject);
 
             var spawnedGun = Instantiate(gun, transform);
+            spawnedGun.Init(this); 
 
             _currentActiveGun = spawnedGun;
             _isGunSpawned = true;
             OnActiveGunChanged?.Invoke(_currentActiveGun);
+
             return spawnedGun;
         }
 

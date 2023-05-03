@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Actors.Combat
 {
-    public class Bullet : MonoBehaviour, IDynamicStatsReceiver
+    public class Bullet : MonoBehaviour, IActorStatsReceiver
     {
         [field: SerializeField] public BulletTypes BulletType { get; private set; }
         [SerializeField] private GameObject particlesPrefab;
@@ -13,35 +13,48 @@ namespace Actors.Combat
         [SerializeField] private int bulletDamage;
         [SerializeField] private int bulletPiercingCount;
 
-        [HideInInspector] public Transform ownerActor;
 
-        public DynamicActorStats dynamicActorStats;
-
+        private Gun _gun;
+        private ActorStatsController _actorStatsController;
+        
         private float _defaultBulletScale;
         private float _currentBulletSpeed;
         private int _currentBulletDamage;
         private float _currentBulletScale;
         private float _currentBulletPiercingCount;
 
-        public void Init()
+        public void Init(Gun gun)
         {
+            _gun = gun;
+            _actorStatsController = gun.ActorStatsController;
+            
             _defaultBulletScale = transform.localScale.x;
             _currentBulletScale = _defaultBulletScale;
             _currentBulletSpeed = bulletSpeed;
             _currentBulletDamage = bulletDamage;
             _currentBulletPiercingCount = bulletPiercingCount;
 
-            if (dynamicActorStats != null)
-                dynamicActorStats.AddReceiver(this);
+            RegisterActorStatsReceiver();
         }
 
         private void OnDestroy()
         {
-            if (dynamicActorStats != null)
-                dynamicActorStats.RemoveReceiver(this);
+            UnregisterActorStatsReceiver();
         }
 
-        public void ApplyDynamicStats(ActorStatsSo actorStatsSo)
+        public void RegisterActorStatsReceiver()
+        {
+            if (_actorStatsController != null)
+                _actorStatsController.AddReceiver(this);
+        }
+
+        public void UnregisterActorStatsReceiver()
+        {
+            if (_actorStatsController != null)
+                _actorStatsController.RemoveReceiver(this);
+        }
+
+        public void ReceiveActorStats(ActorStatsSo actorStatsSo)
         {
             _currentBulletDamage = bulletDamage + actorStatsSo.addedBulletsDamage;
             _currentBulletSpeed = bulletSpeed + actorStatsSo.addedBulletsSpeed;
@@ -50,7 +63,6 @@ namespace Actors.Combat
 
             if (_currentBulletPiercingCount < 0)
                 _currentBulletPiercingCount = 0;
-
 
             transform.localScale = Vector3.one * _currentBulletScale;
         }
@@ -62,7 +74,7 @@ namespace Actors.Combat
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.transform.IsChildOf(ownerActor) ||
+            if (other.transform.IsChildOf(_gun.OwnerActor) ||
                 other.CompareTag("AI_Walk_Area") ||
                 other.CompareTag("Damage_Collider") ||
                 other.CompareTag("Fit_Player_To_Door_Area"))

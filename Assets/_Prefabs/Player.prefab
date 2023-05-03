@@ -177,7 +177,7 @@ Transform:
   - {fileID: 789645390867607132}
   - {fileID: 5128511365247913657}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &9214779968190576420
 BoxCollider2D:
@@ -305,6 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d333a27351a4676a0105a1da6835fee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <ActorStatsController>k__BackingField: {fileID: 1159252010573160953}
   startGunType: 0
   gunPoint: {fileID: 5128511365247913657}
 --- !u!114 &7027276179020110475
@@ -319,7 +320,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaad42d2e62f471992cf701cacab3dde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  actorStatsController: {fileID: 1159252010573160953}
+  defaultSpeed: 5
 --- !u!114 &6167454294725120480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,11 +358,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b42004af44f24c859ba2617bbc0b4b32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actorStatsController: {fileID: 1159252010573160953}
   invincibilityTime: 0.5
   isDeathSound: 1
   isDamageSound: 1
   isHealSound: 1
-  maxHealth: 6
+  defaultMaxHealth: 30
 --- !u!114 &1159252010573160953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,11 +376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 863ce373c0c54f15b90449ebd8fc117e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <ActorStatsSo>k__BackingField: {fileID: 11400000, guid: 688ba0138538a4d0f8d360cf6ff3285f, type: 2}
-  <ActorGunSystem>k__BackingField: {fileID: 4831910466470118224}
-  <ActorHealthSystem>k__BackingField: {fileID: 1139072629945911033}
-  <ActorPhysicsSystem>k__BackingField: {fileID: 7027276179020110475}
-  <ActorScopeSystem>k__BackingField: {fileID: 3470803016355783899}
+  <Stats>k__BackingField: {fileID: 11400000, guid: 688ba0138538a4d0f8d360cf6ff3285f, type: 2}
 --- !u!1 &5875356456875413847
 GameObject:
   m_ObjectHideFlags: 0

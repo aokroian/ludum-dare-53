@@ -18,7 +18,7 @@ namespace Upgrades
 
         private ActorStatsSo[] _upgrades;
 
-        private DynamicActorStats _playerStats;
+        private ActorStatsController _playerStatsController;
         private GoLifecycleEventEmitter _upgradePanelLifecycleEvents;
 
         protected override void Awake()
@@ -33,7 +33,7 @@ namespace Upgrades
         {
             _upgrades = Resources.LoadAll<ActorStatsSo>("Upgrades");
             var player = FindObjectOfType<PlayerActorInput>();
-            _playerStats = player.GetComponent<DynamicActorStats>();
+            _playerStatsController = player.GetComponent<ActorStatsController>();
         }
 
         public void ShowUpgradeSelection(Action<ActorStatsSo> callback)
@@ -67,7 +67,7 @@ namespace Upgrades
         {
             SoundSystem.PlayUpgradeButtonClickSound();
             upgradePanel.SetActive(false);
-            _playerStats.ModifyCurrentStatsSo(upgrade);
+            _playerStatsController.ModifyCurrentStats(upgrade);
             callback?.Invoke(upgrade);
         }
     }
